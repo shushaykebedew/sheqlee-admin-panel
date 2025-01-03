@@ -1,0 +1,15 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 27rem 1fr;
+  column-gap: 3rem;
+  background-color: #fcfcfc;
+  overflow: auto;
+  font-family: "Kantumruy Pro", sans-serif;
+  padding-left: 4rem;
+  padding-right: 5rem;
+  overflow-x: hidden;
+}
+
+.right {
+  background-color: #f7f7f7;
+}

@@ -1,0 +1,17 @@
+.button {
+  display: inline-block;
+  padding: 1.1rem 2rem;
+  background-color: var(--font-color);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 2rem 0;
+  font-family: var(--font-family);
+}
+
+.valid {
+  background-color: var(--primary-color);
+}

@@ -1,0 +1,63 @@
+/* Login Container */
+.login-container {
+  width: 60rem;
+  margin: 4.8rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* Form Elements */
+.login-form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font: bold 2.3rem/2.8rem var(--font-family);
+  color: var(--font-color);
+}
+
+.form-container {
+  width: 32rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* Error Message */
+.error-message {
+  color: var(--error-color);
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+/* Reset Link */
+.reset-link {
+  font-size: 1.6rem;
+}
+
+.reset-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.reset-link a:hover {
+  text-decoration: underline;
+}
+
+/* First-time Text */
+.first-time-text {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+.first-time-text a {
+  color: var(--secondary-color);
+  font-weight: bold;
+}

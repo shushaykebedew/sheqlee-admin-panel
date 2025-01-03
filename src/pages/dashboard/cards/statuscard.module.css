@@ -1,0 +1,46 @@
+.status-card {
+  background-color: #dfdfdf;
+  flex-basis: 44rem;
+  height: 18rem;
+  display: flex;
+  border-radius: 10px;
+  gap: 3rem;
+  padding: 2rem;
+  font-weight: 500;
+}
+.number {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.text {
+  font-size: 2.3rem;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex: 2;
+
+  text-align: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  /* gap: 0.1rem; */
+}
+.icon svg {
+  height: 3.5rem;
+}
+.percentage {
+  font-size: 2rem;
+}
+.increased {
+  color: #0f9d58;
+}
+.decreased {
+  color: #db4437;
+}

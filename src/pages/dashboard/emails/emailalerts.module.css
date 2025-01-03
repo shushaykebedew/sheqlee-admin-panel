@@ -1,0 +1,14 @@
+.email-alerts {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+.counter-cards {
+  display: flex;
+  justify-content: space-between;
+}
+.status-cards {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #8967b3;
+  --secondary-color: #0c47ec;
+  --font-color: #000000;
+  --placeholder-color: #444444;
+  --input-bg-color: #dfdfdf;
+  --error-color: red;
+  --font-family: "Kantumruy Pro", sans-serif;
+}

@@ -1,0 +1,48 @@
+.activation-container {
+  width: 80rem;
+  padding-top: 5rem;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.activation-form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  text-align: left;
+  font: bold 2.2rem/2.8rem "Kantumruy Pro";
+  color: var(--font-color);
+}
+
+.activation-form-container {
+  width: 70rem;
+}
+
+.activation-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.action-buttons {
+  align-self: flex-end;
+}
+
+.activation-message {
+  font-size: 1.6rem;
+  margin-bottom: 2.4rem;
+  padding-right: 1rem;
+}

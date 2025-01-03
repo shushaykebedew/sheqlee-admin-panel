@@ -1,0 +1,177 @@
+.freelancers {
+  position: relative;
+  overflow: auto;
+  bottom: 2rem;
+}
+
+.freelancers table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+  overflow-y: auto;
+}
+
+.freelancers-table td {
+  padding: 0.9rem 1rem;
+  max-width: 16rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.freelancers-table td:nth-child(5),
+.freelancers-table td:nth-child(6) {
+  text-align: center;
+}
+/* .freelancers-table td:nth-child(7) {
+  text-align: left;
+} */
+
+.freelancers-table .email-link a {
+  text-decoration: none;
+  color: #0c47ec;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.freelancers-table tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.freelancers-table tr:nth-child(even) {
+  background-color: var(--input-bg-color);
+}
+
+.freelancers-table th {
+  padding: 1.2rem 1rem;
+  background-color: var(--input-bg-color);
+  color: #000000;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+}
+.freelancers-table th:last-child {
+  padding-left: 2rem;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.status-icon img {
+  height: 2.2rem;
+  width: 2.8rem;
+  cursor: pointer;
+}
+.action svg {
+  height: 1.4rem;
+}
+.action button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  /* justify-content: center; */
+}
+
+.link-icon svg {
+  height: 1.1rem;
+  cursor: pointer;
+}
+
+.pagination {
+  padding: 2rem;
+  padding-left: 60rem;
+  font-size: 1.5rem;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: var(--input-bg-color);
+  border-top: 4px solid #f7f7f7;
+}
+/* .pagination-even {
+  background-color: #f7f7f7;
+}
+.pagination-odd {
+  background-color: gray;
+} */
+
+.text {
+  display: flex;
+  gap: 1rem;
+}
+
+.rows-per-page input {
+  all: unset;
+  width: 3rem;
+}
+
+.rows-per-page {
+  border-bottom: 2px solid #b4b4b4;
+  font-weight: 500;
+  padding-left: 0.5rem;
+  display: flex;
+}
+/* .polygon-icon svg {
+  margin-left: 0.9rem;
+  height: 1rem;
+  cursor: pointer;
+} */
+ul {
+  list-style: none;
+}
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2rem;
+}
+.pages li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pages button {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.backward button,
+.forward button {
+  font-weight: bold;
+  cursor: pointer;
+  color: #000000;
+}
+
+.disabled button {
+  color: gray;
+  pointer-events: none;
+}
+.page-number {
+  text-align: center;
+}
+.link-icon {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.no-data-message {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 3rem;
+}

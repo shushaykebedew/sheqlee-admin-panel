@@ -1,0 +1,20 @@
+.job-posts {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.job-posts-table {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.date-modal {
+  font-size: 1.6rem;
+}
+.no-data-message {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 3rem;
+}

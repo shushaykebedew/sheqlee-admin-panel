@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #8967b3;
+  --secondary-color: #0c47ec;
+  --font-color: #000000;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.logo svg {
+  height: 12rem !important;
+}
+.title {
+  text-align: center;
+  font: normal normal 900 2.4rem/3.2rem Recoleta;
+  color: var(--font-color);
+  opacity: 1;
+  font-family: "Recoleta";
+  -webkit-text-stroke: 1px var(--font-color);
+}
+
+@font-face {
+  font-family: "Recoleta";
+  src: url("/fonts/Recoleta-Bold.ttf") format("truetype");
+}
+
+.underline {
+  width: 19rem;
+  height: 0.6rem;
+  background-color: var(--primary-color);
+  margin: 0.5rem auto 1rem;
+  border-radius: 10px;
+}

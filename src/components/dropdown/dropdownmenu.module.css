@@ -1,0 +1,25 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown {
+  width: 100%;
+  padding: 1rem;
+  padding-right: 3.5rem;
+  font-size: 1.6rem;
+  border-radius: 6px;
+  appearance: none;
+  background-color: #000000;
+  color: #ffffff;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

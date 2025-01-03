@@ -1,0 +1,53 @@
+.account-info {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0.3rem 2.2rem 0.7rem;
+}
+
+.account-info .logo svg {
+  height: 6rem;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+}
+.account-details {
+  display: flex;
+  margin-top: 3rem;
+  justify-content: space-between;
+  padding: 1rem 0 1rem 1rem;
+}
+.acount-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+}
+.profile-img {
+  height: 4rem;
+  border-radius: 50%;
+}
+.username {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 500;
+}
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+.logout-button {
+  text-decoration: none;
+  border-bottom: 2px solid rgb(39, 37, 37);
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: #000000;
+  cursor: pointer;
+}
+.forward-arrow {
+  margin-left: 0.2rem;
+  height: 1rem;
+}

@@ -1,0 +1,41 @@
+.headers {
+  display: flex;
+}
+.main-header {
+  width: 20rem;
+}
+.main-header-text {
+  font-weight: bold;
+  color: #000000;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-top: 8rem;
+  margin-left: 3rem;
+  font-family: inherit;
+}
+
+.sub-header-text {
+  font-weight: bold;
+  color: #000000;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  margin-top: 2rem;
+  margin-left: 8rem;
+  font-family: inherit;
+}
+.main-header-line {
+  width: 6.8rem;
+  height: 1rem;
+  background-color: #000000;
+  margin: 0.5rem 3rem;
+  border-radius: 10px;
+}
+.sub-header-line {
+  width: 3.3rem;
+  height: 0.7rem;
+  background-color: #000000;
+  margin: 0.2rem 8rem;
+  border-radius: 10px;
+}
