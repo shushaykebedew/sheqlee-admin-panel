@@ -1,0 +1,8 @@
+.top {
+  display: flex;
+  height: 24rem;
+}
+.job-applicants {
+  display: flex;
+  flex-direction: column;
+}

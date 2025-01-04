@@ -1,0 +1,64 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  font-size: 1.8rem;
+  width: 100%;
+}
+
+.backward svg {
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.header-content {
+  line-height: 1.8;
+}
+
+.company-name,
+.apply-link,
+.job-title {
+  display: flex;
+  gap: 1rem;
+}
+
+.company-label,
+.apply-link-label,
+.job-title-label {
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  width: 12rem;
+}
+
+.company-label::after,
+.apply-link-label::after,
+.job-title-label::after {
+  content: ":";
+  margin-left: 1.5rem;
+  font-weight: bold;
+}
+
+.company-value {
+  font-weight: bold;
+  padding: 0;
+}
+
+.apply-link-value {
+  color: #0c47ec;
+}
+
+.job-title-value {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.underline {
+  background-color: black;
+  width: 11.2rem;
+  height: 0.8rem;
+  border-radius: 5px;
+}

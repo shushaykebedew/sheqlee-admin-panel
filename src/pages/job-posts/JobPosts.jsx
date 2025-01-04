@@ -3,6 +3,7 @@ import JobPostsTable from "./job-posts-table/JobPostsTable";
 import classes from "./jobposts.module.css";
 import { dummyJobPosts } from "./data";
 import Filteration from "./filteration/Filteration";
+import { Outlet, useLocation } from "react-router-dom";
 
 export const JobsContext = createContext();
 
@@ -93,6 +94,11 @@ const jobPostsReducer = (state, action) => {
 };
 
 function JobPosts() {
+  const location = useLocation();
+  const isJobApplicantsDataRoute = location.pathname.endsWith(
+    "job-applicants-data"
+  );
+
   const initialState = {
     filters: {},
     searchQuery: "",
@@ -142,26 +148,33 @@ function JobPosts() {
         dummyJobPosts: state.filteredJobs,
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
-        onSortChange: handleSortChange,
         onDelete: handleJobPostDelete,
+        onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
       }}
     >
-      {dummyJobPosts.length === 0 ? (
-        <p className={classes["no-data-message"]}>
-          There are no job posts right now!
-        </p>
-      ) : (
-        <div className={classes["job-posts"]}>
-          <div className={classes["filters"]}>
-            <Filteration />
-          </div>
-          <div className="job-posts-table">
-            <JobPostsTable />
-          </div>
-        </div>
-      )}
+      <div className={classes["job-posts"]}>
+        {!isJobApplicantsDataRoute && dummyJobPosts.length === 0 ? (
+          <p className={classes["no-data-message"]}>
+            There are no job posts right now!
+          </p>
+        ) : (
+          <>
+            {!isJobApplicantsDataRoute && (
+              <>
+                <div className={classes["filters"]}>
+                  <Filteration />
+                </div>
+                <div className="job-posts-table">
+                  <JobPostsTable />
+                </div>
+              </>
+            )}
+            <Outlet />
+          </>
+        )}
+      </div>
     </JobsContext.Provider>
   );
 }

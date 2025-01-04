@@ -1,0 +1,17 @@
+.sub-header-text {
+  font-weight: bold;
+  color: #000000;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 1rem;
+
+  font-family: inherit;
+}
+.sub-header-line {
+  width: 3.3rem;
+  height: 0.7rem;
+  background-color: #000000;
+  margin: 0.2rem;
+  border-radius: 10px;
+}

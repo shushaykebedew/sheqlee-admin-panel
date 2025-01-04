@@ -24,6 +24,7 @@ import DashboardCompanies from "./pages/dashboard/companies/Dashboard_Companies"
 import DashboardFreelancers from "./pages/dashboard/freelancers/Dashboard_Freelancers";
 import EmailAlerts from "./pages/dashboard/emails/EmailAlerts";
 import AddCategory from "./pages/categories/add-category/AddCategory";
+import JobApplicantsData from "./pages/job-posts/job-applicants-data/JobApplicantsData";
 
 function App() {
   return (
@@ -43,7 +44,9 @@ function App() {
             <Route path="freelancers" element={<DashboardFreelancers />} />
             <Route path="email-alerts" element={<EmailAlerts />} />
           </Route>
-          <Route path="job-posts" element={<JobPosts />} />
+          <Route path="job-posts" element={<JobPosts />}>
+            <Route path="job-applicants-data" element={<JobApplicantsData />} />
+          </Route>
           <Route path="companies" element={<Companies />} />
           <Route path="freelancers" element={<Freelancers />} />
           <Route path="categories" element={<Categories />}>
