@@ -60,6 +60,32 @@ const CategoriesReducer = (state, action) => {
       };
     }
 
+    case "SET_SORT": {
+      const { sortBy, sortOrder } = action.payload;
+
+      const sortedCategories = [...state.filteredCategories].sort((a, b) => {
+        let aValue = a[sortBy];
+        let bValue = b[sortBy];
+
+        // Convert postDate to Date object if sorting by postDate
+        if (sortBy === "postDate") {
+          aValue = new Date(aValue);
+          bValue = new Date(bValue);
+        }
+
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
+
+      return {
+        ...state,
+        sortBy,
+        sortOrder,
+        filteredCategories: sortedCategories,
+      };
+    }
+
     case "DELETE_CATEGORY": {
       const updatedCategories = state.filteredCategories.filter(
         (category) => category.catId !== action.payload
@@ -82,6 +108,8 @@ function Categories() {
     searchQuery: "",
     dateRange: { startDate: null, endDate: null },
     filteredCategories: dummyCategories,
+    sortBy: null,
+    sortOrder: "asc",
   };
 
   const [state, dispatch] = useReducer(CategoriesReducer, initialState);
@@ -97,6 +125,13 @@ function Categories() {
 
   const handleDateRangeChange = (startDate, endDate) => {
     dispatch({ type: "SET_DATE_RANGE", payload: { startDate, endDate } });
+  };
+
+  const handleSortChange = (sortBy) => {
+    const sortOrder =
+      state.sortBy === sortBy && state.sortOrder === "asc" ? "desc" : "asc";
+
+    dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
   const handleCategoryDeletion = (catId) => {
@@ -118,6 +153,9 @@ function Categories() {
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
         onDelete: handleCategoryDeletion,
+        onSortChange: handleSortChange,
+        sortBy: state.sortBy,
+        sortOrder: state.sortOrder,
       }}
     >
       <div className={classes["categories"]}>

@@ -58,6 +58,27 @@ const jobPostsReducer = (state, action) => {
       };
     }
 
+    case "SET_SORT": {
+      const { sortBy, sortOrder } = action.payload;
+
+      const sortedJobs = [...state.filteredJobs].sort((a, b) => {
+        let aValue = a[sortBy];
+        let bValue = b[sortBy];
+
+        // Convert postDate to Date object if sorting by postDate
+        if (sortBy === "postDate") {
+          aValue = new Date(aValue);
+          bValue = new Date(bValue);
+        }
+
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
+
+      return { ...state, sortBy, sortOrder, filteredJobs: sortedJobs };
+    }
+
     case "DELETE_POST": {
       const updatedJobs = state.filteredJobs.filter(
         (jobPost) => jobPost.id !== action.payload
@@ -77,6 +98,8 @@ function JobPosts() {
     searchQuery: "",
     dateRange: { startDate: null, endDate: null },
     filteredJobs: dummyJobPosts,
+    sortBy: null,
+    sortOrder: "asc",
   };
 
   const [state, dispatch] = useReducer(jobPostsReducer, initialState);
@@ -92,6 +115,13 @@ function JobPosts() {
 
   const handleDateRangeChange = (startDate, endDate) => {
     dispatch({ type: "SET_DATE_RANGE", payload: { startDate, endDate } });
+  };
+
+  const handleSortChange = (sortBy) => {
+    const sortOrder =
+      state.sortBy === sortBy && state.sortOrder === "asc" ? "desc" : "asc";
+
+    dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
   const handleJobPostDelete = (id) => {
@@ -112,12 +142,14 @@ function JobPosts() {
         dummyJobPosts: state.filteredJobs,
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
+        onSortChange: handleSortChange,
         onDelete: handleJobPostDelete,
+        sortBy: state.sortBy,
+        sortOrder: state.sortOrder,
       }}
     >
       {dummyJobPosts.length === 0 ? (
         <p className={classes["no-data-message"]}>
-          {" "}
           There are no job posts right now!
         </p>
       ) : (

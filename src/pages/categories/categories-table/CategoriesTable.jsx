@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import classes from "./categoriestable.module.css";
 import statusRed from "../../../images/switch-red.png";
@@ -14,7 +14,8 @@ function CategoriesTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
-  const { dummyCategories, onDelete } = useContext(CategoriesContext);
+  const { dummyCategories, onDelete, onSortChange, sortBy, sortOrder } =
+    useContext(CategoriesContext);
 
   const totalCategories = dummyCategories.length;
   const totalPages = Math.ceil(totalCategories / rowsPerPage);
@@ -48,17 +49,63 @@ function CategoriesTable() {
     setIsModalOpen(false);
   };
 
+  const getSortIndicator = (column) => {
+    if (sortBy === column) {
+      return sortOrder === "asc" ? "▼" : "▲";
+    }
+    return "▼";
+  };
+
+  // Initialize the sorting state if not set
+  useEffect(() => {
+    if (!sortBy) {
+      onSortChange("catId", "desc");
+    }
+  }, [sortBy, onSortChange]);
+
   return (
     <div className={classes.categories}>
       <table className={classes["categories-table"]}>
         <thead>
           <tr>
-            <th>Cat. ID</th>
-            <th>Category title</th>
+            <th>
+              Cat. ID
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("catId")}
+              >
+                {getSortIndicator("catId")}
+              </button>
+            </th>
+            <th>
+              Category title
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("title")}
+              >
+                {getSortIndicator("title")}
+              </button>
+            </th>
             <th>Tags</th>
 
-            <th>Jobs</th>
-            <th>Subs</th>
+            <th>
+              Jobs
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("jobs")}
+              >
+                {getSortIndicator("jobs")}
+              </button>
+            </th>
+            <th>
+              Subs
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("subs")}
+              >
+                {getSortIndicator("subs")}
+              </button>
+            </th>
             <th>Created on</th>
             <th>Action</th>
           </tr>

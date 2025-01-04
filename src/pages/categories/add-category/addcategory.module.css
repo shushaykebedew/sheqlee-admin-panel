@@ -1,0 +1,11 @@
+.add-category {
+  margin-left: 2.4rem;
+}
+.inputs {
+  display: flex;
+  margin-top: 3rem;
+  gap: 1.8rem;
+}
+.image-inputs {
+  width: 12rem;
+}

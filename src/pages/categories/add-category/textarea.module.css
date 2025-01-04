@@ -1,0 +1,34 @@
+.textarea {
+  position: relative;
+  width: 30rem;
+}
+
+.textarea textarea {
+  height: 14rem;
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  resize: none;
+}
+
+.textarea textarea::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+
+.textarea .counter {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  font-size: 1.4rem;
+  color: var(--placeholder-color);
+  pointer-events: none;
+}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import classes from "./freelancerstable.module.css";
 import statusRed from "../../../images/switch-red.png";
@@ -19,7 +19,8 @@ function FreelancersTable() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFreelancer, setSelectedFreelancer] = useState(null);
 
-  const { dummyFreelancers, onDelete } = useContext(FreelancersContext);
+  const { dummyFreelancers, onDelete, onSortChange, sortBy, sortOrder } =
+    useContext(FreelancersContext);
 
   const totalFreelancers = dummyFreelancers.length;
   const totalPages = Math.ceil(totalFreelancers / rowsPerPage);
@@ -53,13 +54,43 @@ function FreelancersTable() {
     setIsModalOpen(false);
   };
 
+  const getSortIndicator = (column) => {
+    if (sortBy === column) {
+      return sortOrder === "asc" ? "▼" : "▲";
+    }
+    return "▼";
+  };
+
+  // Initialize the sorting state if not set
+  useEffect(() => {
+    if (!sortBy) {
+      onSortChange("id", "desc");
+    }
+  }, [sortBy, onSortChange]);
+
   return (
     <div className={classes.freelancers}>
       <table className={classes["freelancers-table"]}>
         <thead>
           <tr>
-            <th>Fr. ID</th>
-            <th>Name</th>
+            <th>
+              Fr. ID
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("frId")}
+              >
+                {getSortIndicator("frId")}
+              </button>
+            </th>
+            <th>
+              Name
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("name")}
+              >
+                {getSortIndicator("name")}
+              </button>
+            </th>
             <th>Title</th>
             <th>E-mail</th>
             <th>Reg. date</th>

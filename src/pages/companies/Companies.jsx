@@ -59,6 +59,33 @@ const companiesReducer = (state, action) => {
       };
     }
 
+    case "SET_SORT": {
+      const { sortBy, sortOrder } = action.payload;
+
+      // Fix: change filteredJobs to filteredCompanies
+      const sortedCompanies = [...state.filteredCompanies].sort((a, b) => {
+        let aValue = a[sortBy];
+        let bValue = b[sortBy];
+
+        // Convert dates to Date objects if sorting by regDate
+        if (sortBy === "regDate") {
+          aValue = new Date(aValue);
+          bValue = new Date(bValue);
+        }
+
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
+
+      return {
+        ...state,
+        sortBy,
+        sortOrder,
+        filteredCompanies: sortedCompanies,
+      };
+    }
+
     case "DELETE_COMPANY": {
       const updatedCompanies = state.filteredCompanies.filter(
         (company) => company.coID !== action.payload
@@ -78,6 +105,8 @@ function Companies() {
     searchQuery: "",
     dateRange: { startDate: null, endDate: null },
     filteredCompanies: dummyCompanies,
+    sortBy: null,
+    sortOrder: "asc",
   };
 
   const [state, dispatch] = useReducer(companiesReducer, initialState);
@@ -93,6 +122,13 @@ function Companies() {
 
   const handleDateRangeChange = (startDate, endDate) => {
     dispatch({ type: "SET_DATE_RANGE", payload: { startDate, endDate } });
+  };
+
+  const handleSortChange = (sortBy) => {
+    const sortOrder =
+      state.sortBy === sortBy && state.sortOrder === "asc" ? "desc" : "asc";
+
+    dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
   const handleCompanyDeletion = (coID) => {
@@ -114,6 +150,9 @@ function Companies() {
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
         onDelete: handleCompanyDeletion,
+        onSortChange: handleSortChange,
+        sortBy: state.sortBy,
+        sortOrder: state.sortOrder,
       }}
     >
       {dummyCompanies.length === 0 ? (

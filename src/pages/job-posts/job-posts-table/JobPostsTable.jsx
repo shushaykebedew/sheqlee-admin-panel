@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import classes from "./jobpoststable.module.css";
 import statusRed from "../../../images/switch-red.png";
@@ -10,7 +10,8 @@ function JobPostsTable() {
   const [rowsPerPage, setRowsPerPage] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { dummyJobPosts, onDelete } = useContext(JobsContext);
+  const { dummyJobPosts, onDelete, onSortChange, sortBy, sortOrder } =
+    useContext(JobsContext);
 
   const totalPosts = dummyJobPosts.length;
   const totalPages = Math.ceil(totalPosts / rowsPerPage);
@@ -30,16 +31,54 @@ function JobPostsTable() {
     }
   };
 
+  const getSortIndicator = (column) => {
+    if (sortBy === column) {
+      return sortOrder === "asc" ? "▼" : "▲";
+    }
+    return "▼";
+  };
+
+  // Initialize the sorting state if not set
+  useEffect(() => {
+    if (!sortBy) {
+      onSortChange("id", "desc");
+    }
+  }, [sortBy, onSortChange]);
+
   return (
     <div className={classes.jobs}>
       <table className={classes["jobs-table"]}>
         <thead>
           <tr>
-            <th>Job ID</th>
+            <th>
+              <span>Job ID</span>
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("id")}
+              >
+                {getSortIndicator("id")}
+              </button>
+            </th>
             <th>Job Title</th>
             <th>Company</th>
-            <th>Applicants</th>
-            <th>Post Date</th>
+            <th>
+              <span>Applicants</span>
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("applicants")}
+              >
+                {getSortIndicator("applicants")}
+              </button>
+            </th>
+            <th>
+              <span>Post Date</span>
+              <button
+                className={classes["sort-icon"]}
+                onClick={() => onSortChange("postDate")}
+              >
+                {getSortIndicator("postDate")}
+              </button>
+            </th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -61,7 +100,7 @@ function JobPostsTable() {
               <td>
                 <div className={classes.action}>
                   <span className={classes["status-icon"]}>
-                    {post.action === "Active" ? (
+                    {post.status === "Active" ? (
                       <img src={statusGreen} alt="active" />
                     ) : (
                       <img src={statusRed} alt="inactive" />

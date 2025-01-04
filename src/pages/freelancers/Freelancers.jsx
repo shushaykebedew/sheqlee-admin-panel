@@ -61,6 +61,32 @@ const FreelancersReducer = (state, action) => {
       };
     }
 
+    case "SET_SORT": {
+      const { sortBy, sortOrder } = action.payload;
+
+      const sortedFreelancers = [...state.filteredFreelancers].sort((a, b) => {
+        let aValue = a[sortBy];
+        let bValue = b[sortBy];
+
+        // Convert postDate to Date object if sorting by postDate
+        if (sortBy === "postDate") {
+          aValue = new Date(aValue);
+          bValue = new Date(bValue);
+        }
+
+        if (aValue < bValue) return sortOrder === "asc" ? -1 : 1;
+        if (aValue > bValue) return sortOrder === "asc" ? 1 : -1;
+        return 0;
+      });
+
+      return {
+        ...state,
+        sortBy,
+        sortOrder,
+        filteredFreelancers: sortedFreelancers,
+      };
+    }
+
     case "DELETE_FREELANCER": {
       const updatedFreelancers = state.filteredFreelancers.filter(
         (freelancer) => freelancer.frId !== action.payload
@@ -80,6 +106,8 @@ function Freelancers() {
     searchQuery: "",
     dateRange: { startDate: null, endDate: null },
     filteredFreelancers: dummyFreelancers,
+    sortBy: null,
+    sortOrder: "asc",
   };
 
   const [state, dispatch] = useReducer(FreelancersReducer, initialState);
@@ -95,6 +123,13 @@ function Freelancers() {
 
   const handleDateRangeChange = (startDate, endDate) => {
     dispatch({ type: "SET_DATE_RANGE", payload: { startDate, endDate } });
+  };
+
+  const handleSortChange = (sortBy) => {
+    const sortOrder =
+      state.sortBy === sortBy && state.sortOrder === "asc" ? "desc" : "asc";
+
+    dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
   const handleFreelancerDeletion = (frId) => {
@@ -116,6 +151,9 @@ function Freelancers() {
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
         onDelete: handleFreelancerDeletion,
+        onSortChange: handleSortChange,
+        sortBy: state.sortBy,
+        sortOrder: state.sortOrder,
       }}
     >
       {dummyFreelancers.length === 0 ? (
