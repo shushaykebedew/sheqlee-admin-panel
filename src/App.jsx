@@ -26,6 +26,8 @@ import EmailAlerts from "./pages/dashboard/emails/EmailAlerts";
 import AddCategory from "./pages/categories/add-category/AddCategory";
 import JobApplicantsData from "./pages/job-posts/job-applicants-data/JobApplicantsData";
 import UpdateCategory from "./pages/categories/update-category/UpdateCategory";
+import AddTag from "./pages/tags/add-tag/AddTag";
+import UpdateTag from "./pages/tags/update-tag/UpdateTag";
 
 function App() {
   return (
@@ -57,7 +59,10 @@ function App() {
               element={<UpdateCategory />}
             />
           </Route>
-          <Route path="tags" element={<Tags />} />
+          <Route path="tags" element={<Tags />}>
+            <Route path="add-tag" element={<AddTag />} />
+            <Route path="update-tag/:tagId?" element={<UpdateTag />} />
+          </Route>
           <Route path="subscribers" element={<Subscribers />} />
           <Route path="system-config" element={<SystemConfig />} />
           <Route path="users" element={<Users />} />

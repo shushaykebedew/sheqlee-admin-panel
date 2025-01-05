@@ -1,17 +1,17 @@
-.categories {
+.tags {
   position: relative;
   overflow: auto;
   bottom: 2rem;
 }
 
-.categories table {
+.tags table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
 }
 
-.categories-table td {
+.tags-table td {
   padding: 0.9rem 1rem;
   max-width: 16rem;
   overflow: hidden;
@@ -20,27 +20,20 @@
   font-family: inherit;
 }
 
-.categories-table tr:nth-child(odd) {
+.tags-table tr:nth-child(odd) {
   background-color: #f7f7f7;
 }
 
-.categories-table tr:nth-child(even) {
+.tags-table tr:nth-child(even) {
   background-color: var(--input-bg-color);
 }
-.categories-table th:nth-child(1),
-.categories-table td:nth-child(1) {
+
+.tags-table th:nth-child(1),
+.tags-table td:nth-child(1) {
   padding-left: 2rem;
 }
 
-.categories-table th:nth-child(2),
-.categories-table td:nth-child(2) {
-  width: 36rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.categories-table th {
+.tags-table th {
   padding: 1.2rem 1rem;
   background-color: var(--input-bg-color);
   color: #000000;
@@ -48,7 +41,7 @@
   font-size: 2rem;
   text-align: left;
 }
-.categories-table th:last-child {
+.tags-table th:last-child {
   padding-left: 2rem;
 }
 .sort-icon {

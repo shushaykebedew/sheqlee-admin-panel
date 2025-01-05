@@ -1,0 +1,118 @@
+.container {
+  position: relative;
+  width: 100%;
+  font-size: 1.4rem;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.control {
+  height: 4.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: var(--input-bg-color);
+  border-radius: 8px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  box-shadow: none;
+  font-size: 1.6rem;
+  color: var(--placeholder-color);
+}
+
+.label {
+  font-size: 1.6rem;
+}
+
+.iconDown {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 7px;
+  z-index: 10;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 30rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.option {
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.option:hover {
+  background-color: #f0f0f0;
+}
+
+.selectedCats {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: hsl(0, 0%, 98%);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #efefef;
+  padding: 1rem 1.4rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid rgba(163, 161, 161, 0.425);
+}
+
+.cat:last-child {
+  border-bottom: 0;
+}
+.cat span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 3rem);
+  display: block;
+}
+
+.removeIcon {
+  all: unset;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.menu::-webkit-scrollbar {
+  width: 5px;
+  height: 20px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
