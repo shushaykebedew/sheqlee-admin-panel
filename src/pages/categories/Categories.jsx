@@ -86,6 +86,14 @@ const CategoriesReducer = (state, action) => {
       };
     }
 
+    case "ADD_CATEGORY": {
+      const newCategory = action.payload;
+      return {
+        ...state,
+        filteredCategories: [...state.filteredCategories, newCategory],
+      };
+    }
+
     case "DELETE_CATEGORY": {
       const updatedCategories = state.filteredCategories.filter(
         (category) => category.catId !== action.payload
@@ -134,6 +142,10 @@ function Categories() {
     dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
+  const handleAddCategory = (newCategory) => {
+    dispatch({ type: "ADD_CATEGORY", payload: newCategory });
+  };
+
   const handleCategoryDeletion = (catId) => {
     if (
       window.confirm(
@@ -152,6 +164,7 @@ function Categories() {
         dummyCategories: state.filteredCategories,
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
+        onAddCategory: handleAddCategory,
         onDelete: handleCategoryDeletion,
         onSortChange: handleSortChange,
         sortBy: state.sortBy,

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { PolygonDown, CancelIconCircled } from "../../../SvgIcons";
+import { PolygonDown, RemoveIconCircled } from "../../../SvgIcons";
 import classes from "./addtags.module.css";
 
-function AddTags() {
+function AddTags({ onChange }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedTags, setSelectedTags] = useState([]);
 
@@ -24,17 +24,20 @@ function AddTags() {
   ];
 
   const handleOptionClick = (option) => {
-    // Add tag only if it's not already selected
     if (!selectedTags.find((tag) => tag.value === option.value)) {
-      setSelectedTags([...selectedTags, option]);
+      const newTags = [...selectedTags, option];
+      setSelectedTags(newTags);
+      onChange(newTags); // Pass selected tags back to parent
     }
     setIsDropdownOpen(false);
   };
 
   const handleRemoveTag = (tagToRemove) => {
-    setSelectedTags(
-      selectedTags.filter((tag) => tag.value !== tagToRemove.value)
+    const newTags = selectedTags.filter(
+      (tag) => tag.value !== tagToRemove.value
     );
+    setSelectedTags(newTags);
+    onChange(newTags); // Pass selected tags back to parent
   };
 
   return (
@@ -55,7 +58,9 @@ function AddTags() {
           }`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <span className={classes.label}>Add Tags</span>
+          <span className={classes.label}>
+            {selectedTags.length > 0 ? "Add More Tags" : "Add Tags"}
+          </span>
           <PolygonDown className={classes.iconDown} />
         </div>
 
@@ -79,10 +84,12 @@ function AddTags() {
         {selectedTags.map((tag) => (
           <div key={tag.value} className={classes.tag}>
             <span>{tag.label}</span>
-            <CancelIconCircled
+            <button
               className={classes.removeIcon}
               onClick={() => handleRemoveTag(tag)}
-            />
+            >
+              <RemoveIconCircled />
+            </button>
           </div>
         ))}
       </div>

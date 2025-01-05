@@ -6,7 +6,7 @@ function Header() {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/home/job-posts");
+    navigate("..");
   };
 
   return (

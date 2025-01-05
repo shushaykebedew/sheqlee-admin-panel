@@ -1,4 +1,4 @@
-import { BackwardArrowIcon } from "../../../../SvgIcons";
+import { BackwardArrowIcon } from "../../../SvgIcons";
 import classes from "./headers.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,7 @@ function Headers() {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/home/categories");
+    navigate("..");
   };
 
   return (
