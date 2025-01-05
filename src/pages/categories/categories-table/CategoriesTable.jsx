@@ -7,15 +7,21 @@ import statusGray from "../../../images/switch-black.png";
 import { EditIcon, DeleteIcon, LinkIcon } from "../../../SvgIcons";
 import { CategoriesContext } from "../Categories";
 import DeletionReasonModal from "./DeletionReasonModal";
+import { useNavigate } from "react-router-dom";
 
 function CategoriesTable() {
   const [rowsPerPage, setRowsPerPage] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
   const { dummyCategories, onDelete, onSortChange, sortBy, sortOrder } =
     useContext(CategoriesContext);
+
+  const navigate = useNavigate();
+  const handleNavigateUpdate = (category) => {
+    navigate(`update-category/${category.catId}`);
+    console.log(category.catId);
+  };
 
   const totalCategories = dummyCategories.length;
   const totalPages = Math.ceil(totalCategories / rowsPerPage);
@@ -136,7 +142,7 @@ function CategoriesTable() {
                   <span className={classes["status-icon"]}>
                     {getStatusIcon[category.status]}
                   </span>
-                  <button>
+                  <button onClick={() => handleNavigateUpdate(category)}>
                     <EditIcon />
                   </button>
                   <button onClick={() => onDelete(category.catId)}>

@@ -14,6 +14,7 @@ function AddCategory() {
   const [categoryTags, setCategoryTags] = useState("");
   const [categoryJobs, setCategoryJobs] = useState(0);
   const [categorySubs, setCategorySubs] = useState(0);
+  const [categoryStatus, setCategoryStatus] = useState("Active");
   const [icon, setIcon] = useState(defaultIcon);
   const navigate = useNavigate();
   const maxChars = 128;
@@ -27,6 +28,7 @@ function AddCategory() {
       tags: categoryTags,
       jobs: categoryJobs,
       subs: categorySubs,
+      status: categoryStatus,
       createdOn: new Date().toLocaleDateString(),
     };
 
@@ -38,6 +40,7 @@ function AddCategory() {
     setCategoryTags("");
     setCategoryJobs(0);
     setCategorySubs(0);
+    setCategoryStatus("Active");
     setIcon(defaultIcon);
   };
 

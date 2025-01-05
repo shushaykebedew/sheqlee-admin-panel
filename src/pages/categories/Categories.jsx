@@ -94,6 +94,14 @@ const CategoriesReducer = (state, action) => {
       };
     }
 
+    case "UPDATE_CATEGORY": {
+      const updatedCategory = action.payload;
+      const updatedCategories = state.filteredCategories.map((category) =>
+        category.catId === updatedCategory.catId ? updatedCategory : category
+      );
+      return { ...state, filteredCategories: updatedCategories };
+    }
+
     case "DELETE_CATEGORY": {
       const updatedCategories = state.filteredCategories.filter(
         (category) => category.catId !== action.payload
@@ -110,6 +118,7 @@ const CategoriesReducer = (state, action) => {
 function Categories() {
   const location = useLocation();
   const isAddCategoryRoute = location.pathname.endsWith("add-category");
+  const isUpdateCategoryRoute = location.pathname.includes("update-category");
 
   const initialState = {
     filters: {},
@@ -146,6 +155,10 @@ function Categories() {
     dispatch({ type: "ADD_CATEGORY", payload: newCategory });
   };
 
+  const handleUpdateCategory = (updatedCategory) => {
+    dispatch({ type: "UPDATE_CATEGORY", payload: updatedCategory });
+  };
+
   const handleCategoryDeletion = (catId) => {
     if (
       window.confirm(
@@ -165,6 +178,7 @@ function Categories() {
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
         onAddCategory: handleAddCategory,
+        onUpdate: handleUpdateCategory,
         onDelete: handleCategoryDeletion,
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
@@ -172,13 +186,15 @@ function Categories() {
       }}
     >
       <div className={classes["categories"]}>
-        {!isAddCategoryRoute && dummyCategories.length === 0 ? (
+        {!isAddCategoryRoute &&
+        !isUpdateCategoryRoute &&
+        dummyCategories.length === 0 ? (
           <p className={classes["no-data-message"]}>
             There are no categories right now!
           </p>
         ) : (
           <>
-            {!isAddCategoryRoute && (
+            {!isAddCategoryRoute && !isUpdateCategoryRoute && (
               <>
                 <div className={classes["header"]}>
                   <div className={classes.titles}>

@@ -25,6 +25,7 @@ import DashboardFreelancers from "./pages/dashboard/freelancers/Dashboard_Freela
 import EmailAlerts from "./pages/dashboard/emails/EmailAlerts";
 import AddCategory from "./pages/categories/add-category/AddCategory";
 import JobApplicantsData from "./pages/job-posts/job-applicants-data/JobApplicantsData";
+import UpdateCategory from "./pages/categories/update-category/UpdateCategory";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
           <Route path="freelancers" element={<Freelancers />} />
           <Route path="categories" element={<Categories />}>
             <Route path="add-category" element={<AddCategory />} />
+            <Route
+              path="update-category/:catId?"
+              element={<UpdateCategory />}
+            />
           </Route>
           <Route path="tags" element={<Tags />} />
           <Route path="subscribers" element={<Subscribers />} />
