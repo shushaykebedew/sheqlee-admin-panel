@@ -108,7 +108,7 @@ function AddUser() {
               />
             </div>
             <label className={classes["upload-button"]}>
-              Upload photo
+              {profile === defaultProfile ? "Upload photo" : "Change photo"}
               <input
                 type="file"
                 accept="images/*"

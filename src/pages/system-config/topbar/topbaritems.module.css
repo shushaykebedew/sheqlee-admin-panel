@@ -1,3 +1,8 @@
+.topbar-items {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 .topbar-items ul {
   display: flex;
   border-top-right-radius: 10px;

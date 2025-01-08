@@ -40,7 +40,7 @@ function UpdateUser() {
       fullName: fullName,
       email: email,
       phone: phone,
-      userRole: userRole,
+      role: userRole,
       status: userStatus,
       profile: profile,
       updatedOn: new Date().toLocaleDateString(),
@@ -116,7 +116,7 @@ function UpdateUser() {
               />
             </div>
             <label className={classes["upload-button"]}>
-              Change photo
+              {profile === defaultProfile ? "Upload photo" : "Change photo"}
               <input
                 type="file"
                 accept="images/*"

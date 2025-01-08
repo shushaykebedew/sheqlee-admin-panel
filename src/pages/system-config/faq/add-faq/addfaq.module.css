@@ -1,0 +1,102 @@
+.add-faq {
+  margin-left: 2.4rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6rem;
+  background-color: #000000;
+  padding: 1.4rem;
+  color: #ffffff;
+  width: 30rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.label.valid {
+  color: #ffc60b;
+}
+.faq-id {
+  font-size: 1.6rem;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  gap: 1.5rem;
+}
+.text-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.image-inputs {
+  width: 14rem;
+  margin-right: 5rem;
+}
+.dropdown {
+  width: 32rem;
+}
+.save-btn {
+  margin-top: 5rem;
+}
+
+.input input {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 30rem;
+}
+
+.input input::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+
+.textarea {
+  position: relative;
+  width: 30rem;
+}
+
+.textarea textarea {
+  height: 14rem;
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  resize: none;
+  max-height: 14rem;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+.textarea textarea::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+.textarea textarea::-webkit-scrollbar {
+  width: 4px;
+}
+
+.textarea textarea::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #444444;
+}

@@ -1,12 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { PolygonDown, PolygonUp } from "../../../SvgIcons";
 import classes from "./selectrole.module.css";
 
 function SelectRole({ onChange, selectedRole }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    selectedRole ? selectedRole : "User role"
-  );
+  const [selectedOption, setSelectedOption] = useState("User role");
 
   const options = [
     { value: "", label: "User role" },
@@ -15,9 +13,16 @@ function SelectRole({ onChange, selectedRole }) {
     { value: "sales", label: "Sales" },
   ];
 
+  useEffect(() => {
+    const matchingOption = options.find(
+      (option) => option.value === selectedRole.toLowerCase()
+    );
+    setSelectedOption(matchingOption ? matchingOption.label : "User role");
+  }, [selectedRole]);
+
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onChange(option.value);
+    onChange(option.value); // Notify parent about the change
     setIsDropdownOpen(false);
   };
 

@@ -1,26 +1,24 @@
 import React, { useContext, useState } from "react";
-import { PolygonDown, PolygonUp } from "../../../SvgIcons";
-import classes from "./FilterByRole.module.css";
+import { PolygonDown, PolygonUp } from "../../../../SvgIcons";
+import classes from "./FilterByAudience.module.css";
+import { FAQsContext } from "../FAQ";
 
-import { UsersContext } from "../Users";
-
-function FilterByRole() {
+function FilterByAudience() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Role");
+  const [selectedOption, setSelectedOption] = useState("Audience");
 
-  const { onFilterChange } = useContext(UsersContext);
+  const { onFilterChange } = useContext(FAQsContext);
 
   const options = [
-    { value: "", label: "Role" },
-    { value: "all-roles", label: "All Roles" },
-    { value: "superadmin", label: "Super admin" },
-    { value: "admin", label: "Admin" },
-    { value: "sales", label: "Sales" },
+    { value: "", label: "Audience" },
+    { value: "all-audience", label: "All Audience" },
+    { value: "freelancers", label: "Freelancers" },
+    { value: "companies", label: "Companies" },
   ];
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onFilterChange(`role:${option.value}`);
+    onFilterChange(`audience:${option.value}`);
     setIsDropdownOpen(false);
   };
 
@@ -79,4 +77,4 @@ function FilterByRole() {
   );
 }
 
-export default FilterByRole;
+export default FilterByAudience;

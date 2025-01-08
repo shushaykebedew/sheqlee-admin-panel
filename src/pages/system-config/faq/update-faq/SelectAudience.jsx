@@ -1,26 +1,28 @@
-import React, { useContext, useState } from "react";
-import { PolygonDown, PolygonUp } from "../../../SvgIcons";
-import classes from "./FilterByRole.module.css";
+import React, { useState, useEffect } from "react";
+import { PolygonDown, PolygonUp } from "../../../../SvgIcons";
+import classes from "./selectaudience.module.css";
 
-import { UsersContext } from "../Users";
-
-function FilterByRole() {
+function SelectAudience({ onChange, selectedAudience }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Role");
-
-  const { onFilterChange } = useContext(UsersContext);
+  const [selectedOption, setSelectedOption] = useState("Audience");
 
   const options = [
-    { value: "", label: "Role" },
-    { value: "all-roles", label: "All Roles" },
-    { value: "superadmin", label: "Super admin" },
-    { value: "admin", label: "Admin" },
-    { value: "sales", label: "Sales" },
+    { value: "", label: "Audience" },
+    { value: "all-audience", label: "All Audience" },
+    { value: "freelancers", label: "Freelancers" },
+    { value: "companies", label: "Companies" },
   ];
+
+  useEffect(() => {
+    const matchingOption = options.find(
+      (option) => option.value === selectedAudience?.toLowerCase()
+    );
+    setSelectedOption(matchingOption ? matchingOption.label : "Audience");
+  }, [selectedAudience]);
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onFilterChange(`role:${option.value}`);
+    onChange(option.value);
     setIsDropdownOpen(false);
   };
 
@@ -50,20 +52,9 @@ function FilterByRole() {
               <li
                 key={option.value}
                 className={classes.option}
-                style={{
-                  borderBottom:
-                    index === options.length - 1
-                      ? "none"
-                      : index === 0
-                      ? "1px solid #B4B4B4"
-                      : "1px solid #b4b4b49d",
-
-                  marginLeft: index !== 0 ? "1rem" : "0",
-                  paddingLeft: index === 0 ? "1rem" : "0",
-                }}
                 onClick={() => handleOptionClick(option)}
               >
-                <span> {option.label}</span>
+                <span>{option.label}</span>
                 {index === 0 && (
                   <PolygonUp
                     className={classes.iconUp}
@@ -79,4 +70,4 @@ function FilterByRole() {
   );
 }
 
-export default FilterByRole;
+export default SelectAudience;

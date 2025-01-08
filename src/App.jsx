@@ -38,6 +38,8 @@ import UpdateTag from "./pages/tags/update-tag/UpdateTag";
 import CompaniesStats from "./pages/subscribers/companies/CompaniesStats";
 import CategoriesStats from "./pages/subscribers/categories/CategoriesStats";
 import TagsStats from "./pages/subscribers/tags/TagsStats";
+import AddFAQ from "./pages/system-config/faq/add-faq/AddFAQ";
+import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
 
 function App() {
   return (
@@ -81,7 +83,10 @@ function App() {
           </Route>
           <Route path="system-config" element={<SystemConfig />}>
             <Route index element={<Navigate to="faq" replace />} />
-            <Route path="faq" element={<FAQ />} />
+            <Route path="faq" element={<FAQ />}>
+              <Route path="add-faq" element={<AddFAQ />} />
+              <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
+            </Route>
 
             <Route path="apgspptscp" element={<APGSPPTSCP />} />
             <Route path="testimonials" element={<Testimonials />} />
