@@ -1,8 +1,8 @@
 export const EditIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22.824"
-    height="15.216"
+    width="16"
+    height="14"
     viewBox="0 0 22.824 15.216"
   >
     <path
@@ -17,8 +17,8 @@ export const EditIcon = () => (
 export const DeleteIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="26"
-    height="20.8"
+    width="17"
+    height="17"
     viewBox="0 0 26 20.8"
   >
     <path
@@ -72,11 +72,12 @@ export const PolygonIcon = () => (
     </g>
   </svg>
 );
+
 export const Eye = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="22.824"
-    height="15.216"
+    width="20"
+    height="20"
     viewBox="0 0 22.824 15.216"
   >
     <path
@@ -90,8 +91,8 @@ export const Eye = () => (
 export const EyeSlash = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="34"
-    height="27.2"
+    width="22"
+    height="22"
     viewBox="0 0 34 27.2"
   >
     <path
@@ -217,8 +218,8 @@ export const BackwardArrowIcon = () => (
 export const DocumentIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="17.216"
-    height="22.608"
+    width="12"
+    height="14"
     viewBox="0 0 17.216 22.608"
   >
     <g id="document" transform="translate(-61.5 512)">

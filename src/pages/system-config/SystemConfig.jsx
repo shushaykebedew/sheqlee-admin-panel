@@ -1,7 +1,14 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
+import classes from "./system-config.module.css";
+import TopbarItems from "./topbar/TopbarItems";
 
-function SystemConfig() {
-  return <h1>SystemConfig</h1>;
+function SysytemConfig() {
+  return (
+    <div className={classes["system-config"]}>
+      <TopbarItems />
+      <Outlet />
+    </div>
+  );
 }
 
-export default SystemConfig;
+export default SysytemConfig;

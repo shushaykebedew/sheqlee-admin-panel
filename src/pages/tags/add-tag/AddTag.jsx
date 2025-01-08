@@ -9,12 +9,12 @@ import { useNavigate } from "react-router-dom";
 
 function AddTag() {
   const { onAddTag } = useContext(TagsContext);
-  const [TagTitle, setTagTitle] = useState("");
+  const [tagTitle, setTagTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [TagCats, setTagCats] = useState("");
-  const [TagJobs, setTagJobs] = useState(0);
-  const [TagSubs, setTagSubs] = useState(0);
-  const [TagStatus, setTagStatus] = useState("Active");
+  const [tagCats, setTagCats] = useState("");
+  const [tagJobs, setTagJobs] = useState(0);
+  const [tagSubs, setTagSubs] = useState(0);
+  const [tagStatus, setTagStatus] = useState("Active");
   const [icon, setIcon] = useState(defaultIcon);
   const navigate = useNavigate();
   const maxChars = 128;
@@ -24,16 +24,16 @@ function AddTag() {
 
     const newTag = {
       tagId: Date.now(),
-      title: TagTitle,
-      tags: TagCats,
-      jobs: TagJobs,
-      subs: TagSubs,
-      status: TagStatus,
+      title: tagTitle,
+      tags: tagCats,
+      jobs: tagJobs,
+      subs: tagSubs,
+      status: tagStatus,
       createdOn: new Date().toLocaleDateString(),
     };
 
     onAddTag(newTag);
-
+    navigate("..");
     // Reset the form
     setTagTitle("");
     setDescription("");
@@ -53,16 +53,12 @@ function AddTag() {
     }
   };
 
-  const handleSave = () => {
-    navigate("..");
-  };
-
-  const handleTagsChange = (newTags) => {
-    setTagCats(newTags.length);
+  const handleCatsChange = (newCats) => {
+    setTagCats(newCats.length);
   };
 
   const isFormValid =
-    TagTitle !== "" && description !== "" && icon !== defaultIcon;
+    tagTitle !== "" && description !== "" && icon !== defaultIcon;
 
   return (
     <div className={classes["add-Tag"]}>
@@ -78,7 +74,7 @@ function AddTag() {
               <input
                 type="text"
                 placeholder="Tag title"
-                value={TagTitle}
+                value={tagTitle}
                 onChange={(e) => setTagTitle(e.target.value)}
               />
             </div>
@@ -110,7 +106,7 @@ function AddTag() {
             </label>
           </div>
           <div className={classes["dropdown"]}>
-            <AddCats onChange={handleTagsChange} />
+            <AddCats onChange={handleCatsChange} />
           </div>
         </div>
         <div className={classes["save-btn"]}>
@@ -118,7 +114,6 @@ function AddTag() {
             type="submit"
             className={`${classes.button} ${isFormValid ? classes.valid : ""}`}
             disabled={!isFormValid}
-            onClick={handleSave}
           >
             Save
           </Button>

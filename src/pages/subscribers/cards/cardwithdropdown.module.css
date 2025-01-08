@@ -1,0 +1,29 @@
+.card-with-dropdown {
+  background-color: #dfdfdf;
+  flex-basis: 29rem;
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 2rem;
+  font-weight: 500;
+}
+.lower {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.number {
+  font-size: 3.5rem;
+  font-weight: bold;
+  padding-top: 2rem;
+}
+.text {
+  font-size: 2.2rem;
+  text-align: center;
+  padding: 0 1rem;
+}

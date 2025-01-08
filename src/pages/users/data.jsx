@@ -1,0 +1,38 @@
+export const dummyUsers = [
+  {
+    userId: "USR001",
+    fullName: "Shaqa Gurmesa",
+    email: "shaqa.g@gmail.com",
+    phone: "+251921453682",
+    role: "Superadmin",
+    createdOn: "02 Sep 2020",
+    status: "Active",
+  },
+  {
+    userId: "USR002",
+    fullName: "Bekele Abebe",
+    email: "bekele.a@gmail.com",
+    phone: "+251911021634",
+    role: "Admin",
+    createdOn: "02 Sep 2021",
+    status: "Inactive",
+  },
+  {
+    userId: "USR003",
+    fullName: "Balcha Chala",
+    email: "balcha.c@gmail.com",
+    phone: "+251901262390",
+    role: "Sales",
+    createdOn: "02 Sep 2022",
+    status: "Active",
+  },
+  {
+    userId: "USR004",
+    fullName: "Yidnekachew Asfaw",
+    email: "yidne.asfaw@gmail.com",
+    phone: "+251943261893",
+    role: "Admin",
+    createdOn: "02 Sep 2023",
+    status: "Inactive",
+  },
+];

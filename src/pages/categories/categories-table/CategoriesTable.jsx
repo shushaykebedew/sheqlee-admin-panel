@@ -118,7 +118,7 @@ function CategoriesTable() {
         </thead>
         <tbody>
           {currentCategories.map((category) => (
-            <tr key={category.catID}>
+            <tr key={category.catId}>
               <td>{category.catId}</td>
               <td>{category.title}</td>
               <td>{category.tags}</td>

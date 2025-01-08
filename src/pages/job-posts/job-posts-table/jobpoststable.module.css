@@ -48,15 +48,12 @@
 .action {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 .status-icon img {
   height: 2.2rem;
   width: 2.8rem;
   cursor: pointer;
-}
-.action svg {
-  height: 1.2rem;
 }
 .action button {
   background: none;

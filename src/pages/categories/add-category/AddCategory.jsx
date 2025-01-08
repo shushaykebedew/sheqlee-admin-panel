@@ -33,6 +33,7 @@ function AddCategory() {
     };
 
     onAddCategory(newCategory);
+    navigate("..");
 
     // Reset the form
     setCategoryTitle("");
@@ -51,10 +52,6 @@ function AddCategory() {
       reader.onload = (e) => setIcon(e.target.result);
       reader.readAsDataURL(file);
     }
-  };
-
-  const handleSave = () => {
-    navigate("..");
   };
 
   const handleTagsChange = (newTags) => {
@@ -122,7 +119,6 @@ function AddCategory() {
             type="submit"
             className={`${classes.button} ${isFormValid ? classes.valid : ""}`}
             disabled={!isFormValid}
-            onClick={handleSave}
           >
             Save
           </Button>

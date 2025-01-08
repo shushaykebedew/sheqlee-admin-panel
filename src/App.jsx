@@ -18,7 +18,14 @@ import Categories from "./pages/categories/Categories";
 import Tags from "./pages/tags/Tags";
 import Subscribers from "./pages/subscribers/Subscribers";
 import SystemConfig from "./pages/system-config/SystemConfig";
+import FAQ from "./pages/system-config/faq/FAQ";
+import APGSPPTSCP from "./pages/system-config/apgspptscp/APGSPPTSCP";
+import Testimonials from "./pages/system-config/testimonials/Testimonials";
+import Hero from "./pages/system-config/hero/Hero";
+import Footer from "./pages/system-config/footer/Footer";
 import Users from "./pages/users/Users";
+import AddUser from "./pages/users/add-user/AddUser";
+import UpdateUser from "./pages/users/update-user/UpdateUser";
 import DashboardJobPosts from "./pages/dashboard/job-posts/DashboardJobPosts";
 import DashboardCompanies from "./pages/dashboard/companies/Dashboard_Companies";
 import DashboardFreelancers from "./pages/dashboard/freelancers/Dashboard_Freelancers";
@@ -28,6 +35,9 @@ import JobApplicantsData from "./pages/job-posts/job-applicants-data/JobApplican
 import UpdateCategory from "./pages/categories/update-category/UpdateCategory";
 import AddTag from "./pages/tags/add-tag/AddTag";
 import UpdateTag from "./pages/tags/update-tag/UpdateTag";
+import CompaniesStats from "./pages/subscribers/companies/CompaniesStats";
+import CategoriesStats from "./pages/subscribers/categories/CategoriesStats";
+import TagsStats from "./pages/subscribers/tags/TagsStats";
 
 function App() {
   return (
@@ -63,9 +73,25 @@ function App() {
             <Route path="add-tag" element={<AddTag />} />
             <Route path="update-tag/:tagId?" element={<UpdateTag />} />
           </Route>
-          <Route path="subscribers" element={<Subscribers />} />
-          <Route path="system-config" element={<SystemConfig />} />
-          <Route path="users" element={<Users />} />
+          <Route path="subscribers" element={<Subscribers />}>
+            <Route index element={<Navigate to="companies" replace />} />
+            <Route path="companies" element={<CompaniesStats />} />
+            <Route path="categories" element={<CategoriesStats />} />
+            <Route path="tags" element={<TagsStats />} />
+          </Route>
+          <Route path="system-config" element={<SystemConfig />}>
+            <Route index element={<Navigate to="faq" replace />} />
+            <Route path="faq" element={<FAQ />} />
+
+            <Route path="apgspptscp" element={<APGSPPTSCP />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="hero" element={<Hero />} />
+            <Route path="footer" element={<Footer />} />
+          </Route>
+          <Route path="users" element={<Users />}>
+            <Route path="add-user" element={<AddUser />} />
+            <Route path="update-user/:userId?" element={<UpdateUser />} />
+          </Route>
         </Route>
       </Routes>
     </Router>
