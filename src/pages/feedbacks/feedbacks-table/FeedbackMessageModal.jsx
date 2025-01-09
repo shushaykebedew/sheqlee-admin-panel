@@ -31,8 +31,8 @@ function FeedbackMessageModal({ isOpen, onClose, feedback }) {
           setCopySuccess(true);
           setTimeout(() => {
             setCopySuccess(false);
-            onClose(); // Close the modal after showing the message
-          }, 2000); // Show the message for 2 seconds before closing
+            onClose();
+          }, 2000);
         },
         (error) => {
           console.error("Failed to copy text:", error);

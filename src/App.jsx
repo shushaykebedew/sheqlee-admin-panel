@@ -44,6 +44,7 @@ import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
 import UpdateTestimonial from "./pages/system-config/testimonials/update-testimonial/UpdateTestimonial";
 import UpdateFooter from "./pages/system-config/footer/update-footer/UpdateFooter";
 import Feedbacks from "./pages/feedbacks/Feedbacks";
+import Profile from "./pages/sidebar/Profile";
 
 function App() {
   return (
@@ -113,6 +114,7 @@ function App() {
             <Route path="add-user" element={<AddUser />} />
             <Route path="update-user/:userId?" element={<UpdateUser />} />
           </Route>
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </Router>

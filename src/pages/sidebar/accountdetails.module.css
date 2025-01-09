@@ -1,0 +1,45 @@
+.account-details {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.account-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+  cursor: pointer;
+  pointer-events: auto;
+}
+.profile-img {
+  height: 4rem;
+  border-radius: 50%;
+}
+.username {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 500;
+}
+.action {
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -12rem;
+}
+.logout-button {
+  all: unset;
+
+  color: #000000;
+  cursor: pointer;
+}
+.logout-text {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  border-bottom: 2px solid rgb(39, 37, 37);
+}
+.forward-arrow svg {
+  margin-right: 0.5rem;
+  margin-bottom: -0.2rem;
+  height: 1rem !important;
+}

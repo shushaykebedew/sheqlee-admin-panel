@@ -1,4 +1,11 @@
+import AccountDetails from "./AccountDetails";
+
 export const sidebarItems = [
+  {
+    id: 0,
+    title: <AccountDetails />,
+    to: "profile",
+  },
   {
     id: 1,
     title: "Dashboard",
