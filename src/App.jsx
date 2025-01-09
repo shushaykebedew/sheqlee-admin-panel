@@ -42,6 +42,7 @@ import TagsStats from "./pages/subscribers/tags/TagsStats";
 import AddFAQ from "./pages/system-config/faq/add-faq/AddFAQ";
 import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
 import UpdateTestimonial from "./pages/system-config/testimonials/update-testimonial/UpdateTestimonial";
+import UpdateFooter from "./pages/system-config/footer/update-footer/UpdateFooter";
 
 function App() {
   return (
@@ -89,7 +90,6 @@ function App() {
               <Route path="add-faq" element={<AddFAQ />} />
               <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
             </Route>
-
             <Route path="apgspptscp" element={<APGSPPTSCP />} />
             <Route path="testimonials" element={<Testimonials />}>
               <Route
@@ -100,7 +100,12 @@ function App() {
             <Route path="hero" element={<Hero />}>
               <Route path="update-hero/:sectionId?" element={<UpdateHero />} />
             </Route>
-            <Route path="footer" element={<Footer />} />
+            <Route path="footer" element={<Footer />}>
+              <Route
+                path="update-footer/:sectionId?"
+                element={<UpdateFooter />}
+              />
+            </Route>
           </Route>
           <Route path="users" element={<Users />}>
             <Route path="add-user" element={<AddUser />} />

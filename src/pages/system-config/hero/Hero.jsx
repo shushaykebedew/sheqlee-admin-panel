@@ -10,24 +10,20 @@ export const HeroContext = createContext();
 const HeroReducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_SECTION": {
-      const updatedSections =
-        action.type === "ADD_SECTION"
-          ? [...state.filteredSection, action.payload]
-          : state.filteredSection.map((section) =>
-              section.sectionId === action.payload.sectionId
-                ? action.payload
-                : section
-            );
+      const updatedSection = action.payload;
+      const updatedSections = state.filteredSection.map((section) =>
+        section.sectionId === updatedSection.sectionId
+          ? updatedSection
+          : section
+      );
       return { ...state, filteredSection: updatedSections };
     }
 
     case "DELETE_SECTION": {
-      return {
-        ...state,
-        filteredSection: state.filteredSection.filter(
-          (section) => section.sectionId !== action.payload
-        ),
-      };
+      const updatedSections = state.filteredSection.filter(
+        (section) => section.sectionId !== action.payload
+      );
+      return { ...state, filteredSection: updatedSections };
     }
 
     default:
@@ -39,58 +35,60 @@ function Hero() {
   const location = useLocation();
   const isUpdateHeroRoute = location.pathname.includes("update-hero");
 
-  const initialState = { filters: {}, filteredSection: heroData };
+  const initialState = {
+    filters: {},
+    filteredSection: heroData,
+  };
+
   const [state, dispatch] = useReducer(HeroReducer, initialState);
 
-  const handleAction = (type, payload) => dispatch({ type, payload });
+  const handleUpdateSection = (updatedSection) => {
+    dispatch({ type: "UPDATE_SECTION", payload: updatedSection });
+  };
+
+  const handleSectionDeletion = (sectionId) => {
+    if (
+      window.confirm(
+        `Are you sure you want to delete this section with id ${sectionId}?`
+      )
+    ) {
+      dispatch({ type: "DELETE_SECTION", payload: sectionId });
+    }
+  };
 
   const contextValue = {
     heroData: state.filteredSection,
-    onUpdateSection: (updatedSection) =>
-      handleAction("UPDATE_SECTION", updatedSection),
-    onDelete: (sectionId) => {
-      if (
-        window.confirm(
-          `Are you sure you want to delete section with ID ${sectionId}?`
-        )
-      ) {
-        handleAction("DELETE_SECTION", sectionId);
-      }
-    },
+    onUpdateSection: handleUpdateSection,
+    onDelete: handleSectionDeletion,
   };
 
   const isHeroEmpty = state.filteredSection.length === 0;
 
-  const renderContent = () => {
-    if (isUpdateHeroRoute) {
-      return <Outlet />;
-    }
-
-    if (isHeroEmpty) {
-      return (
-        <p className={classes["no-data-message"]}>
-          There are no Hero sections right now!
-        </p>
-      );
-    }
-
-    return (
-      <>
-        <div className={classes.header}>
-          <div className={classes.titles}>
-            <Headers />
-          </div>
-        </div>
-        <div className={classes["hero-table-container"]}>
-          <HeroTable />
-        </div>
-      </>
-    );
-  };
-
   return (
     <HeroContext.Provider value={contextValue}>
-      <div className={classes.hero}>{renderContent()}</div>
+      <div className={classes.hero}>
+        {isHeroEmpty && !isUpdateHeroRoute ? (
+          <p className={classes["no-data-message"]}>
+            There are no Hero sections right now!
+          </p>
+        ) : (
+          <>
+            {!isUpdateHeroRoute && (
+              <>
+                <div className={classes.header}>
+                  <div className={classes.titles}>
+                    <Headers />
+                  </div>
+                </div>
+                <div className={classes["hero-table-container"]}>
+                  <HeroTable />
+                </div>
+              </>
+            )}
+            <Outlet />
+          </>
+        )}
+      </div>
     </HeroContext.Provider>
   );
 }
