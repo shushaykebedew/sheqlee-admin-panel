@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import classes from "./topbaritems.module.css";
 import { Link } from "react-router-dom";
 
@@ -18,11 +18,14 @@ const topbarItems = [
 ];
 
 function TopbarItems() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [subscribersActiveIndex, setSubscribersActiveIndex] = useLocalStorage(
+    0,
+    "subscribersActiveIndex"
+  );
 
-  function handleItemClick(index) {
-    setActiveIndex(index);
-  }
+  const handleItemClick = (index) => {
+    setSubscribersActiveIndex(index);
+  };
 
   return (
     <div className={classes["topbar-items"]}>
@@ -31,15 +34,16 @@ function TopbarItems() {
           <li
             key={item.to}
             className={`${classes["topbar-item"]} ${
-              activeIndex === index ? classes.active : ""
+              subscribersActiveIndex === index ? classes.active : ""
             }`}
             onClick={() => handleItemClick(index)}
           >
             <Link to={item.to}>{item.title}</Link>
 
-            {index < topbarItems.length - 1 && activeIndex - 1 !== index && (
-              <span className={classes["vertical-line"]}></span>
-            )}
+            {index < topbarItems.length - 1 &&
+              subscribersActiveIndex - 1 !== index && (
+                <span className={classes["vertical-line"]}></span>
+              )}
           </li>
         ))}
       </ul>

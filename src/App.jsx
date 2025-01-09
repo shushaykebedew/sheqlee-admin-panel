@@ -43,6 +43,7 @@ import AddFAQ from "./pages/system-config/faq/add-faq/AddFAQ";
 import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
 import UpdateTestimonial from "./pages/system-config/testimonials/update-testimonial/UpdateTestimonial";
 import UpdateFooter from "./pages/system-config/footer/update-footer/UpdateFooter";
+import Feedbacks from "./pages/feedbacks/Feedbacks";
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
             <Route path="categories" element={<CategoriesStats />} />
             <Route path="tags" element={<TagsStats />} />
           </Route>
+          <Route path="feedbacks" element={<Feedbacks />} />
           <Route path="system-config" element={<SystemConfig />}>
             <Route index element={<Navigate to="faq" replace />} />
             <Route path="faq" element={<FAQ />}>

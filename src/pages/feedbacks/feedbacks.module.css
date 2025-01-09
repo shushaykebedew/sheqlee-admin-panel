@@ -1,0 +1,21 @@
+.feedbacks {
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 15rem;
+}
+.titles {
+  width: 64.5rem;
+}
+.filters {
+  width: 100%;
+}
+.no-data-message {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 3rem;
+}

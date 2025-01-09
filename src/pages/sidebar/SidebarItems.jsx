@@ -7,10 +7,13 @@ import { useLocalStorage } from "../../hooks/useLocalStorage";
 function SidebarItems() {
   const navigate = useNavigate();
 
-  const [activeIndex, setActiveIndex] = useLocalStorage(0, "activeIndex");
+  const [sidebarActiveIndex, setSidebarActiveIndex] = useLocalStorage(
+    0,
+    "sidebarActiveIndex"
+  );
 
   const handleItemClick = (index, path) => {
-    setActiveIndex(index);
+    setSidebarActiveIndex(index);
     navigate(path);
   };
 
@@ -21,7 +24,7 @@ function SidebarItems() {
           <li
             key={item.to}
             className={`${classes["sidebar-item"]} ${
-              activeIndex === index ? classes.active : ""
+              sidebarActiveIndex === index ? classes.active : ""
             }`}
             onClick={() => handleItemClick(index, item.to)}
           >

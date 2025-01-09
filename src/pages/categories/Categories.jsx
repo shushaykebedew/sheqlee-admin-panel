@@ -34,7 +34,7 @@ const CategoriesReducer = (state, action) => {
 
       const filteredCategories = dummyCategories.filter((category) => {
         const title = category.title?.toLowerCase() || "";
-        const categoryTags = category.tags?.toLowerCase() || "";
+        const categoryTags = category.tags.toString(); // Convert the number to string for comparison
         const query = searchQuery.toLowerCase();
 
         return title.includes(query) || categoryTags.includes(query);
