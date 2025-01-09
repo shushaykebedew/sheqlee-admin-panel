@@ -9,7 +9,7 @@ import useEmailValidation from "../hooks/useEmailValidation";
 import usePasswordValidation from "../hooks/usePasswordValidation";
 
 const userData = {
-  storedEmail: "sh@gm.co",
+  storedEmail: "sk@gmail.com",
   storedPassword: "Abc123",
 };
 

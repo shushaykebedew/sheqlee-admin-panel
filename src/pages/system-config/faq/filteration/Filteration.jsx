@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import classes from "./filteration.module.css";
 import { SearchIcon, CalendarIcon } from "../../../../SvgIcons";
 import DateModal from "./DateModal";
-import FilterByRole from "./FilterByAudience";
+import FilterByAudience from "./FilterByAudience";
 import { FAQsContext } from "../FAQ";
 import SubHeader from "../headings/SubHeader";
 
@@ -52,7 +52,7 @@ function Filteration() {
             <SubHeader />
           </div>
           <div className={classes["filteration-group"]}>
-            <FilterByRole />
+            <FilterByAudience />
           </div>
         </div>
         <div className={classes.search}>
