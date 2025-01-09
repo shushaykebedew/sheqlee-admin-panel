@@ -40,6 +40,7 @@ import CategoriesStats from "./pages/subscribers/categories/CategoriesStats";
 import TagsStats from "./pages/subscribers/tags/TagsStats";
 import AddFAQ from "./pages/system-config/faq/add-faq/AddFAQ";
 import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
+import UpdateTestimonial from "./pages/system-config/testimonials/update-testimonial/UpdateTestimonial";
 
 function App() {
   return (
@@ -89,7 +90,12 @@ function App() {
             </Route>
 
             <Route path="apgspptscp" element={<APGSPPTSCP />} />
-            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="testimonials" element={<Testimonials />}>
+              <Route
+                path="update-testimonial/:testimonialId?"
+                element={<UpdateTestimonial />}
+              />
+            </Route>
             <Route path="hero" element={<Hero />} />
             <Route path="footer" element={<Footer />} />
           </Route>

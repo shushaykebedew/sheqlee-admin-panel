@@ -6,9 +6,13 @@ function SysytemConfig() {
   const location = useLocation();
   const isAddFAQRoute = location.pathname.endsWith("add-faq");
   const isUpdateFAQRoute = location.pathname.includes("update-faq");
+  const isUpdateTestimonialRoute =
+    location.pathname.includes("update-testimonial");
   return (
     <div className={classes["system-config"]}>
-      {!isAddFAQRoute && !isUpdateFAQRoute && <TopbarItems />}
+      {!isAddFAQRoute && !isUpdateFAQRoute && !isUpdateTestimonialRoute && (
+        <TopbarItems />
+      )}
       <Outlet />
     </div>
   );
