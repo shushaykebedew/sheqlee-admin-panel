@@ -22,6 +22,7 @@ import FAQ from "./pages/system-config/faq/FAQ";
 import APGSPPTSCP from "./pages/system-config/apgspptscp/APGSPPTSCP";
 import Testimonials from "./pages/system-config/testimonials/Testimonials";
 import Hero from "./pages/system-config/hero/Hero";
+import UpdateHero from "./pages/system-config/hero/update-hero/UpdateHero";
 import Footer from "./pages/system-config/footer/Footer";
 import Users from "./pages/users/Users";
 import AddUser from "./pages/users/add-user/AddUser";
@@ -96,7 +97,9 @@ function App() {
                 element={<UpdateTestimonial />}
               />
             </Route>
-            <Route path="hero" element={<Hero />} />
+            <Route path="hero" element={<Hero />}>
+              <Route path="update-hero/:sectionId?" element={<UpdateHero />} />
+            </Route>
             <Route path="footer" element={<Footer />} />
           </Route>
           <Route path="users" element={<Users />}>

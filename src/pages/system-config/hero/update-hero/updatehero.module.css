@@ -1,0 +1,115 @@
+.update-hero {
+  margin-left: 2.4rem;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6rem;
+  background-color: #000000;
+  padding: 1.5rem;
+  color: #ffffff;
+  width: 30rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
+}
+
+.inputs {
+  display: flex;
+  margin-top: 1.8rem;
+  gap: 4rem;
+}
+.text-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.image-inputs {
+  width: 13.5rem;
+  margin-right: 5rem;
+}
+.dropdown {
+  width: 32rem;
+}
+.save-btn {
+  margin-top: 5rem;
+}
+
+.input input {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 30rem;
+}
+
+.input input::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+.textarea {
+  position: relative;
+  width: 30rem;
+}
+
+.textarea textarea {
+  padding: 1.2rem;
+  margin-top: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  height: 14rem; /* Ensure it's large enough to fit counter */
+}
+
+.textarea textarea::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+
+.textarea .counter {
+  position: absolute;
+  bottom: 1rem; /* Adjust this value as needed */
+  right: 2rem; /* Adjust this value as needed */
+  font-size: 1.4rem;
+  color: var(--placeholder-color);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.textarea .pencil {
+  position: absolute;
+  top: 3rem;
+  right: 2rem;
+  font-size: 1.4rem;
+  color: var(--placeholder-color);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.textarea textarea[rows="1"] {
+  height: calc(1.5em + 20px);
+}
+
+.textarea textarea[rows="2"] {
+  height: calc(3em + 40px);
+}
+
+.textarea textarea[rows="4"] {
+  height: calc(6em + 48px);
+}
