@@ -1,0 +1,91 @@
+.update-apgspptscp {
+  margin-left: 3rem;
+  margin-right: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.headers {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+}
+.backward {
+  all: unset;
+}
+.backward svg {
+  height: 1.5rem;
+  cursor: pointer;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.main-header {
+  width: 32rem;
+}
+.main-header-text {
+  font-weight: bold;
+  color: #000000;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-family: inherit;
+}
+
+.main-header-line {
+  width: 6rem;
+  height: 1rem;
+  background-color: #000000;
+  margin-top: 0.5em;
+  border-radius: 10px;
+}
+
+.version {
+  font-size: 1.6rem;
+  padding-left: 1rem;
+  width: 5rem;
+  height: 4.5rem;
+  width: 8rem;
+  border-radius: 5px;
+  background-color: #dfdfdf;
+  margin-top: 5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.polygon-down svg {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.button-container {
+  margin-left: 36rem;
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create-button {
+  all: unset;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  width: 20rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+}
+.update-apgspptscp .rich-text-editor {
+  height: 40rem;
+  background-color: #dfdfdf;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 2rem;
+  border: none;
+}

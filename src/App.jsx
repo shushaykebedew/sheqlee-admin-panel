@@ -44,7 +44,8 @@ import UpdateFAQ from "./pages/system-config/faq/update-faq/UpdateFAQ";
 import UpdateTestimonial from "./pages/system-config/testimonials/update-testimonial/UpdateTestimonial";
 import UpdateFooter from "./pages/system-config/footer/update-footer/UpdateFooter";
 import Feedbacks from "./pages/feedbacks/Feedbacks";
-import Profile from "./pages/sidebar/Profile";
+import EditProfile from "./pages/sidebar/EditProfile";
+import UpdateAPGSPPTSCP from "./pages/system-config/apgspptscp/update-apgspptscp/UpdateAPGSPPTSCP";
 
 function App() {
   return (
@@ -93,7 +94,12 @@ function App() {
               <Route path="add-faq" element={<AddFAQ />} />
               <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
             </Route>
-            <Route path="apgspptscp" element={<APGSPPTSCP />} />
+            <Route path="apgspptscp" element={<APGSPPTSCP />}>
+              <Route
+                path="update-apgspptscp/:pageId?"
+                element={<UpdateAPGSPPTSCP />}
+              />
+            </Route>
             <Route path="testimonials" element={<Testimonials />}>
               <Route
                 path="update-testimonial/:testimonialId?"
@@ -114,7 +120,7 @@ function App() {
             <Route path="add-user" element={<AddUser />} />
             <Route path="update-user/:userId?" element={<UpdateUser />} />
           </Route>
-          <Route path="profile" element={<Profile />} />
+          <Route path="edit-profile" element={<EditProfile />} />
         </Route>
       </Routes>
     </Router>

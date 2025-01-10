@@ -14,11 +14,11 @@ function APGSPPTSCP_Table() {
 
   // Flatten and sort data by updatedOn (Latest to Oldest)
   const flattenedData = dummyAPGSPPTSCP
-    .flatMap((apgsppttcp) =>
-      apgsppttcp.iterations.map((iteration) => ({
-        page: apgsppttcp.page,
-        status: apgsppttcp.status,
-        apgsppttcpId: apgsppttcp.apgsppttcpId,
+    .flatMap((page) =>
+      page.iterations.map((iteration) => ({
+        pageTitle: page.pageTitle,
+        status: page.status,
+        pageId: page.pageId,
         ...iteration,
       }))
     )
@@ -32,14 +32,13 @@ function APGSPPTSCP_Table() {
     currentPage * rowsPerPage
   );
 
-  // Find the latest updatedOn for each page
-  const latestDatesByPage = dummyAPGSPPTSCP.reduce((acc, apgsppttcp) => {
-    const latestDate = apgsppttcp.iterations.reduce((latest, iteration) =>
+  const latestDatesByPage = dummyAPGSPPTSCP.reduce((acc, page) => {
+    const latestDate = page.iterations.reduce((latest, iteration) =>
       new Date(iteration.updatedOn) > new Date(latest.updatedOn)
         ? iteration
         : latest
     );
-    acc[apgsppttcp.page] = latestDate.updatedOn;
+    acc[page.pageTitle] = latestDate.updatedOn;
     return acc;
   }, {});
 
@@ -74,24 +73,22 @@ function APGSPPTSCP_Table() {
         </thead>
         <tbody>
           {currentData.map((data, index) => (
-            <tr key={`${data.apgsppttcpId}-${data.id}-${index}`}>
-              <td>{data.page}</td>
+            <tr key={`${data.pageId}-${data.id}-${index}`}>
+              <td>{data.pageTitle}</td>
               <td>{data.iteration}</td>
               <td>{data.updatedBy}</td>
               <td>{data.updatedOn}</td>
               <td>
                 <div className={classes.action}>
                   <span className={classes["status-icon"]}>
-                    {getStatusIcon(data.page, data.updatedOn)}
+                    {getStatusIcon(data.pageTitle, data.updatedOn)}
                   </span>
                   <button
-                    onClick={() =>
-                      navigate(`update-apgsppttcp/${data.apgsppttcpId}`)
-                    }
+                    onClick={() => navigate(`update-apgspptscp/${data.pageId}`)}
                   >
                     <EditIcon />
                   </button>
-                  <button onClick={() => onDelete(data.apgsppttcpId, data.id)}>
+                  <button onClick={() => onDelete(data.pageId, data.id)}>
                     <DeleteIcon />
                   </button>
                 </div>

@@ -18,21 +18,21 @@ const APGSPPTSCP_Reducer = (state, action) => {
         [filterType]: filterValue,
       };
 
-      const filteredAPGSPPTSCP = dummyAPGSPPTSCP.filter((apgsppttcp) =>
+      const filteredPages = dummyAPGSPPTSCP.filter((page) =>
         Object.entries(updatedFilters).every(([key, value]) => {
           if (value.startsWith("all-") || !value) return true;
-          const apgsppttcpValue = apgsppttcp[key]?.toLowerCase() || "";
-          return apgsppttcpValue === value.toLowerCase();
+          const pageValue = page[key]?.toLowerCase() || "";
+          return pageValue === value.toLowerCase();
         })
       );
 
-      return { ...state, filters: updatedFilters, filteredAPGSPPTSCP };
+      return { ...state, filters: updatedFilters, filteredPages };
     }
 
     case "SET_SORT": {
       const { sortBy, sortOrder } = action.payload;
 
-      const sortedAPGSPPTSCP = [...state.filteredAPGSPPTSCP].sort((a, b) => {
+      const sortedPages = [...state.filteredPages].sort((a, b) => {
         let aValue = a[sortBy];
         let bValue = b[sortBy];
 
@@ -51,42 +51,40 @@ const APGSPPTSCP_Reducer = (state, action) => {
         ...state,
         sortBy,
         sortOrder,
-        filteredAPGSPPTSCP: sortedAPGSPPTSCP,
+        filteredPages: sortedPages,
       };
     }
 
-    case "ADD_APGSPPTSCP": {
-      const newapgsppttcp = action.payload;
+    case "ADD_PAGE": {
+      const newpage = action.payload;
       return {
         ...state,
-        filteredAPGSPPTSCP: [...state.filteredAPGSPPTSCP, newapgsppttcp],
+        filteredPages: [...state.filteredPages, newpage],
       };
     }
 
-    case "UPDATE_APGSPPTSCP": {
-      const updatedapgsppttcp = action.payload;
-      const updatedAPGSPPTSCP = state.filteredAPGSPPTSCP.map((apgsppttcp) =>
-        apgsppttcp.apgsppttcpId === updatedapgsppttcp.apgsppttcpId
-          ? updatedapgsppttcp
-          : apgsppttcp
+    case "UPDATE_PAGE": {
+      const updatedpage = action.payload;
+      const updatedPages = state.filteredPages.map((page) =>
+        page.pageId === updatedpage.pageId ? updatedpage : page
       );
-      return { ...state, filteredAPGSPPTSCP: updatedAPGSPPTSCP };
+      return { ...state, filteredPages: updatedPages };
     }
 
     case "DELETE_APGSPPTSCP": {
-      const { apgsppttcpId, iterationId } = action.payload;
+      const { pageId, iterationId } = action.payload;
 
-      const updatedAPGSPPTSCP = state.filteredAPGSPPTSCP.map((apgsppttcp) => {
-        if (apgsppttcp.apgsppttcpId === apgsppttcpId) {
+      const updatedPages = state.filteredPages.map((page) => {
+        if (page.pageId === pageId) {
           // Filter out the specific iteration based on iterationId
-          apgsppttcp.iterations = apgsppttcp.iterations.filter(
+          page.iterations = page.iterations.filter(
             (iteration) => iteration.id !== iterationId
           );
         }
-        return apgsppttcp;
+        return page;
       });
 
-      return { ...state, filteredAPGSPPTSCP: updatedAPGSPPTSCP };
+      return { ...state, filteredPages: updatedPages };
     }
 
     default:
@@ -99,13 +97,13 @@ function APGSPPTSCP() {
   const location = useLocation();
   const isAddAPGSPPTSCPRoute = location.pathname.endsWith("add-apgsppttcp");
   const isUpdateAPGSPPTSCPRoute =
-    location.pathname.includes("update-apgsppttcp");
+    location.pathname.includes("update-apgspptscp");
 
   const initialState = {
     filters: {},
     searchQuery: "",
     dateRange: { startDate: null, endDate: null },
-    filteredAPGSPPTSCP: dummyAPGSPPTSCP,
+    filteredPages: dummyAPGSPPTSCP,
     sortBy: null,
     sortOrder: "asc",
   };
@@ -132,23 +130,23 @@ function APGSPPTSCP() {
     dispatch({ type: "SET_SORT", payload: { sortBy, sortOrder } });
   };
 
-  const handleAddAPGSPPTSCP = (newAPGSPPTSCP) => {
-    dispatch({ type: "ADD_APGSPPTSCP", payload: newAPGSPPTSCP });
+  const handleAddPage = (newAPGSPPTSCP) => {
+    dispatch({ type: "ADD_PAGE", payload: newAPGSPPTSCP });
   };
 
-  const handleUpdateAPGSPPTSCP = (updateAPGSPPTSCP) => {
-    dispatch({ type: "UPDATE_APGSPPTSCP", payload: updateAPGSPPTSCP });
+  const handleUpdatePage = (updateAPGSPPTSCP) => {
+    dispatch({ type: "UPDATE_PAGE", payload: updateAPGSPPTSCP });
   };
 
-  const handleAPGSPPTSCPDeletion = (apgsppttcpId, iterationId) => {
+  const handlePageDeletion = (pageId, iterationId) => {
     if (
       window.confirm(
-        `Are you sure you want to delete this iteration with ID ${iterationId} from company with ID ${apgsppttcpId}?`
+        `Are you sure you want to delete this iteration with ID ${iterationId} from company with ID ${pageId}?`
       )
     ) {
       dispatch({
         type: "DELETE_APGSPPTSCP",
-        payload: { apgsppttcpId, iterationId },
+        payload: { pageId, iterationId },
       });
     }
   };
@@ -158,12 +156,12 @@ function APGSPPTSCP() {
       value={{
         onFilterChange: handleFilterChange,
         onSearchChange: handleSearchChange,
-        dummyAPGSPPTSCP: state.filteredAPGSPPTSCP,
+        dummyAPGSPPTSCP: state.filteredPages,
         onApply: (startDate, endDate) =>
           handleDateRangeChange(startDate, endDate),
-        onAddAddAPGSPPTSCP: handleAddAPGSPPTSCP,
-        onUpdateAddAPGSPPTSCP: handleUpdateAPGSPPTSCP,
-        onDelete: handleAPGSPPTSCPDeletion,
+        onAddAddPage: handleAddPage,
+        onUpdatePage: handleUpdatePage,
+        onDelete: handlePageDeletion,
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,

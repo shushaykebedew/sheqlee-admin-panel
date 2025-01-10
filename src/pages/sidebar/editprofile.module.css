@@ -1,0 +1,134 @@
+.profile {
+  margin-left: 3rem;
+}
+
+.headers {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 1rem;
+  gap: 8rem;
+}
+
+.main-header-text {
+  font-weight: bold;
+  color: #000000;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-family: inherit;
+}
+
+.main-header-line {
+  width: 7rem;
+  height: 1rem;
+  background-color: #000000;
+  margin-top: 0.5em;
+  border-radius: 10px;
+}
+.backward svg {
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6rem;
+  background-color: #000000;
+  padding: 1.4rem;
+  color: #ffffff;
+  width: 30rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+}
+
+.label.valid {
+  color: #ffc60b;
+}
+.user-id {
+  font-size: 1.6rem;
+}
+
+.inputs {
+  display: flex;
+  margin-top: 3rem;
+  gap: 1.8rem;
+}
+.text-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.image-inputs {
+  width: 14rem;
+  margin-right: 5rem;
+}
+.dropdown {
+  width: 32rem;
+}
+.save-btn {
+  margin-top: 5rem;
+}
+.input {
+  position: relative;
+}
+.input input {
+  width: 100%;
+  padding: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  font-family: inherit;
+  outline: none;
+  width: 30rem;
+}
+.pencil {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.input input::placeholder {
+  color: var(--placeholder-color);
+  font-weight: normal;
+  padding: 0.3rem;
+}
+
+.user-profile-container {
+  background-color: var(--input-bg-color);
+  height: 14rem;
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-profile-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.upload-button {
+  display: inline-block;
+  padding: 1.2rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-family: var(--font-family);
+  width: 100%;
+}
+.file-input {
+  display: none;
+}

@@ -10,13 +10,16 @@ function SysytemConfig() {
     location.pathname.includes("update-testimonial");
   const isUpdateHeroRoute = location.pathname.includes("update-hero");
   const isUpdateFooterRoute = location.pathname.includes("update-footer");
+  const isUpdateAPGSPPTSCPRoute =
+    location.pathname.includes("update-apgspptscp");
   return (
     <div className={classes["system-config"]}>
       {!isAddFAQRoute &&
         !isUpdateFAQRoute &&
         !isUpdateTestimonialRoute &&
         !isUpdateHeroRoute &&
-        !isUpdateFooterRoute && <TopbarItems />}
+        !isUpdateFooterRoute &&
+        !isUpdateAPGSPPTSCPRoute && <TopbarItems />}
       <Outlet />
     </div>
   );

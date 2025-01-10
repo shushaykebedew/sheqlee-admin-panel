@@ -1,10 +1,10 @@
-import AccountDetails from "./AccountDetails";
+import Profile from "./Profile";
 
 export const sidebarItems = [
   {
     id: 0,
-    title: <AccountDetails />,
-    to: "profile",
+    title: <Profile />,
+    to: "edit-profile",
   },
   {
     id: 1,
