@@ -12,8 +12,14 @@ function JobPostsTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
-  const { dummyJobPosts, onDelete, onSortChange, sortBy, sortOrder } =
-    useContext(JobsContext);
+  const {
+    dummyJobPosts,
+    onDelete,
+    onSortChange,
+    sortBy,
+    sortOrder,
+    onToggleStatus,
+  } = useContext(JobsContext);
 
   const totalPosts = dummyJobPosts.length;
   const totalPages = Math.ceil(totalPosts / rowsPerPage);
@@ -110,13 +116,16 @@ function JobPostsTable() {
               <td>{post.status}</td>
               <td>
                 <div className={classes.action}>
-                  <span className={classes["status-icon"]}>
-                    {post.status === "Active" ? (
+                  <button
+                    className={classes["status-icon"]}
+                    onClick={() => onToggleStatus(post.id)}
+                  >
+                    {post.action === "Active" ? (
                       <img src={statusGreen} alt="active" />
                     ) : (
                       <img src={statusRed} alt="inactive" />
                     )}
-                  </span>
+                  </button>
                   <button>
                     <EditIcon />
                   </button>

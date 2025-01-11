@@ -11,8 +11,14 @@ import { useNavigate } from "react-router-dom";
 function FAQsTable() {
   const [rowsPerPage, setRowsPerPage] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
-  const { dummyFAQs, onDelete, onSortChange, sortBy, sortOrder } =
-    useContext(FAQsContext);
+  const {
+    dummyFAQs,
+    onDelete,
+    onSortChange,
+    sortBy,
+    sortOrder,
+    onToggleStatus,
+  } = useContext(FAQsContext);
 
   const navigate = useNavigate();
   const handleNavigateUpdate = (faq) => {
@@ -92,9 +98,12 @@ function FAQsTable() {
               <td>{faq.audience}</td>
               <td>
                 <div className={classes.action}>
-                  <span className={classes["status-icon"]}>
+                  <button
+                    className={classes["status-icon"]}
+                    onClick={() => onToggleStatus(faq.faqId)}
+                  >
                     {getStatusIcon[faq.status]}
-                  </span>
+                  </button>
                   <button onClick={() => handleNavigateUpdate(faq)}>
                     <EditIcon />
                   </button>

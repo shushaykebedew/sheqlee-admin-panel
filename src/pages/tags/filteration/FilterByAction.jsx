@@ -20,7 +20,7 @@ function FilterByAction() {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onFilterChange(`action:${option.value}`);
+    onFilterChange(`status:${option.value}`);
     setIsDropdownOpen(false);
   };
 

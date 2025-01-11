@@ -108,6 +108,18 @@ const FAQsReducer = (state, action) => {
       return { ...state, filteredFAQs: updatedFAQs };
     }
 
+    case "TOGGLE_STATUS": {
+      const updatedFAQs = state.filteredFAQs.map((faq) =>
+        faq.faqId === action.payload
+          ? {
+              ...faq,
+              status: faq.status === "Active" ? "Inactive" : "Active",
+            }
+          : faq
+      );
+      return { ...state, filteredFAQs: updatedFAQs };
+    }
+
     default:
       console.error(`Unknown action type: ${action.type}`);
       return state;
@@ -168,6 +180,9 @@ function FAQs() {
     }
   };
 
+  const handleToggleStatus = (faqId) => {
+    dispatch({ type: "TOGGLE_STATUS", payload: faqId });
+  };
   return (
     <FAQsContext.Provider
       value={{
@@ -182,6 +197,7 @@ function FAQs() {
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
+        onToggleStatus: handleToggleStatus,
       }}
     >
       <div className={classes["faqs"]}>

@@ -86,6 +86,17 @@ const jobPostsReducer = (state, action) => {
       );
       return { ...state, filteredJobs: updatedJobs };
     }
+    case "TOGGLE_STATUS": {
+      const updatedJobs = state.filteredJobs.map((jobPost) =>
+        jobPost.id === action.payload
+          ? {
+              ...jobPost,
+              action: jobPost.action === "Active" ? "Inactive" : "Active",
+            }
+          : jobPost
+      );
+      return { ...state, filteredJobs: updatedJobs };
+    }
 
     default:
       console.error(`Unknown action type: ${action.type}`);
@@ -140,6 +151,10 @@ function JobPosts() {
     }
   };
 
+  const handleToggleStatus = (id) => {
+    dispatch({ type: "TOGGLE_STATUS", payload: id });
+  };
+
   return (
     <JobsContext.Provider
       value={{
@@ -152,6 +167,7 @@ function JobPosts() {
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
+        onToggleStatus: handleToggleStatus,
       }}
     >
       <div className={classes["job-posts"]}>

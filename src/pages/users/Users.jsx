@@ -5,6 +5,7 @@ import { dummyUsers } from "./data";
 import Headers from "./headings/Headers";
 import Filteration from "./filteration/Filteration";
 import { Outlet, useLocation } from "react-router-dom";
+import { use } from "react";
 
 export const UsersContext = createContext();
 
@@ -109,6 +110,18 @@ const UsersReducer = (state, action) => {
       return { ...state, filteredUsers: updatedUsers };
     }
 
+    case "TOGGLE_STATUS": {
+      const updatedUsers = state.filteredUsers.map((user) =>
+        user.userId === action.payload
+          ? {
+              ...user,
+              status: user.status === "Active" ? "Inactive" : "Active",
+            }
+          : user
+      );
+      return { ...state, filteredUsers: updatedUsers };
+    }
+
     default:
       console.error(`Unknown action type: ${action.type}`);
       return state;
@@ -169,6 +182,10 @@ function Users() {
     }
   };
 
+  const handleToggleStatus = (userId) => {
+    dispatch({ type: "TOGGLE_STATUS", payload: userId });
+  };
+
   return (
     <UsersContext.Provider
       value={{
@@ -183,6 +200,7 @@ function Users() {
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
+        onToggleStatus: handleToggleStatus,
       }}
     >
       <div className={classes["users"]}>

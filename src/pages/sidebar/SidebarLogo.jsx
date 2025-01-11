@@ -1,9 +1,9 @@
-import classes from "./accountinfo.module.css";
+import classes from "./sidebarlogo.module.css";
 
 import { SheqleeLogoFilled } from "../../SvgIcons";
-function AccountInfo() {
+function SidebarLogo() {
   return (
-    <div className={classes["account-info"]}>
+    <div className={classes["sidebar-logo"]}>
       <div className={classes.logo}>
         <SheqleeLogoFilled />
       </div>
@@ -11,4 +11,4 @@ function AccountInfo() {
   );
 }
 
-export default AccountInfo;
+export default SidebarLogo;

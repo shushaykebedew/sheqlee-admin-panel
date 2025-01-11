@@ -1,13 +1,12 @@
 import classes from "./sidebar.module.css";
-
-import AccountInfo from "./AccountInfo";
 import SidebarItems from "./SidebarItems";
+import SidebarLogo from "./SidebarLogo";
 
 function Sidebar() {
   return (
     <div className={classes.sidebar}>
-      <div className={classes.account}>
-        <AccountInfo />
+      <div className={classes.logo}>
+        <SidebarLogo />
       </div>
       <div className={classes["sidebar-items"]}>
         <SidebarItems />

@@ -108,6 +108,17 @@ const CategoriesReducer = (state, action) => {
       );
       return { ...state, filteredCategories: updatedCategories };
     }
+    case "TOGGLE_STATUS": {
+      const updatedCategories = state.filteredCategories.map((category) =>
+        category.catId === action.payload
+          ? {
+              ...category,
+              status: category.status === "Active" ? "Inactive" : "Active",
+            }
+          : category
+      );
+      return { ...state, filteredCategories: updatedCategories };
+    }
 
     default:
       console.error(`Unknown action type: ${action.type}`);
@@ -169,6 +180,10 @@ function Categories() {
     }
   };
 
+  const handleToggleStatus = (catId) => {
+    dispatch({ type: "TOGGLE_STATUS", payload: catId });
+  };
+
   return (
     <CategoriesContext.Provider
       value={{
@@ -183,6 +198,7 @@ function Categories() {
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
+        onToggleStatus: handleToggleStatus,
       }}
     >
       <div className={classes["categories"]}>

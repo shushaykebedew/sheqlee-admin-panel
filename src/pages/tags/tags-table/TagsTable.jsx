@@ -14,8 +14,14 @@ function TagsTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState(null);
-  const { dummyTags, onDelete, onSortChange, sortBy, sortOrder } =
-    useContext(TagsContext);
+  const {
+    dummyTags,
+    onDelete,
+    onSortChange,
+    sortBy,
+    sortOrder,
+    onToggleStatus,
+  } = useContext(TagsContext);
 
   const navigate = useNavigate();
   const handleNavigateUpdate = (tag) => {
@@ -138,9 +144,12 @@ function TagsTable() {
               <td>{tag.createdOn}</td>
               <td>
                 <div className={classes.action}>
-                  <span className={classes["status-icon"]}>
+                  <button
+                    className={classes["status-icon"]}
+                    onClick={() => onToggleStatus(tag.tagId)}
+                  >
                     {getStatusIcon[tag.status]}
-                  </span>
+                  </button>
                   <button onClick={() => handleNavigateUpdate(tag)}>
                     <EditIcon />
                   </button>

@@ -14,8 +14,14 @@ function UsersTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  const { dummyUsers, onDelete, onSortChange, sortBy, sortOrder } =
-    useContext(UsersContext);
+  const {
+    dummyUsers,
+    onDelete,
+    onSortChange,
+    sortBy,
+    sortOrder,
+    onToggleStatus,
+  } = useContext(UsersContext);
 
   const navigate = useNavigate();
   const handleNavigateUpdate = (user) => {
@@ -113,9 +119,12 @@ function UsersTable() {
               <td>{user.role}</td>
               <td>
                 <div className={classes.action}>
-                  <span className={classes["status-icon"]}>
+                  <button
+                    className={classes["status-icon"]}
+                    onClick={() => onToggleStatus(user.userId)}
+                  >
                     {getStatusIcon[user.status]}
-                  </span>
+                  </button>
                   <button onClick={() => handleNavigateUpdate(user)}>
                     <EditIcon />
                   </button>

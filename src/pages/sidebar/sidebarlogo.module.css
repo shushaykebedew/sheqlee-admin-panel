@@ -1,11 +1,11 @@
-.account-info {
+.sidebar-logo {
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0rem 2rem 0rem;
   margin-bottom: 3rem;
 }
 
-.account-info .logo svg {
+.sidebar-logo .logo svg {
   height: 6rem;
 }
 .logo {

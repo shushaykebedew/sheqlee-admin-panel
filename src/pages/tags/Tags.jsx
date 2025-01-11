@@ -107,6 +107,18 @@ const TagsReducer = (state, action) => {
       return { ...state, filteredTags: updatedTags };
     }
 
+    case "TOGGLE_STATUS": {
+      const updatedTags = state.filteredTags.map((tag) =>
+        tag.tagId === action.payload
+          ? {
+              ...tag,
+              status: tag.status === "Active" ? "Inactive" : "Active",
+            }
+          : tag
+      );
+      return { ...state, filteredTags: updatedTags };
+    }
+
     default:
       console.error(`Unknown action type: ${action.type}`);
       return state;
@@ -166,7 +178,9 @@ function Tags() {
       dispatch({ type: "DELETE_TAG", payload: tagId });
     }
   };
-
+  const handleToggleStatus = (tagId) => {
+    dispatch({ type: "TOGGLE_STATUS", payload: tagId });
+  };
   return (
     <TagsContext.Provider
       value={{
@@ -181,6 +195,7 @@ function Tags() {
         onSortChange: handleSortChange,
         sortBy: state.sortBy,
         sortOrder: state.sortOrder,
+        onToggleStatus: handleToggleStatus,
       }}
     >
       <div className={classes["tags"]}>

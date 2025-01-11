@@ -7,11 +7,7 @@ import PasswordField from "../components/password-field/PasswordField";
 import Button from "../components/button/Button";
 import useEmailValidation from "../hooks/useEmailValidation";
 import usePasswordValidation from "../hooks/usePasswordValidation";
-
-const userData = {
-  storedEmail: "sk@gmail.com",
-  storedPassword: "Abc123",
-};
+import { dummyUsers } from "../pages/users/data";
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -39,13 +35,14 @@ function Login() {
     setIsSubmitted(true);
 
     if (isFormValid) {
-      if (
-        password === userData.storedPassword &&
-        email === userData.storedEmail
-      ) {
+      // Check if the user exists and if the password matches
+      const user = dummyUsers.find((user) => user.email === email);
+
+      if (user && user.password === password) {
+        // Redirect to home if credentials are valid
         navigate("/home");
       } else {
-        setLoginError("User not found!");
+        setLoginError("Invalid email or password.");
       }
     }
   }

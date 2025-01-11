@@ -14,8 +14,14 @@ function CategoriesTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const { dummyCategories, onDelete, onSortChange, sortBy, sortOrder } =
-    useContext(CategoriesContext);
+  const {
+    dummyCategories,
+    onDelete,
+    onSortChange,
+    sortBy,
+    sortOrder,
+    onToggleStatus,
+  } = useContext(CategoriesContext);
 
   const navigate = useNavigate();
   const handleNavigateUpdate = (category) => {
@@ -139,9 +145,13 @@ function CategoriesTable() {
               <td>{category.createdOn}</td>
               <td>
                 <div className={classes.action}>
-                  <span className={classes["status-icon"]}>
+                  <button
+                    className={classes["status-icon"]}
+                    onClick={() => onToggleStatus(category.catId)}
+                  >
                     {getStatusIcon[category.status]}
-                  </span>
+                  </button>
+
                   <button onClick={() => handleNavigateUpdate(category)}>
                     <EditIcon />
                   </button>

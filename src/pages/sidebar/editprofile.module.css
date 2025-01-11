@@ -54,7 +54,7 @@
 .inputs {
   display: flex;
   margin-top: 3rem;
-  gap: 1.8rem;
+  gap: 3.2rem;
 }
 .text-inputs {
   display: flex;
@@ -65,6 +65,7 @@
 .image-inputs {
   width: 14rem;
   margin-right: 5rem;
+  margin-top: 7rem;
 }
 .dropdown {
   width: 32rem;
@@ -81,7 +82,7 @@
   border: none;
   border-radius: 8px;
   font-size: 1.8rem;
-  color: var(--placeholder-color);
+  color: #000000;
   background-color: var(--input-bg-color);
   font-family: inherit;
   outline: none;
@@ -96,14 +97,14 @@
 }
 
 .input input::placeholder {
-  color: var(--placeholder-color);
+  color: #818181;
   font-weight: normal;
   padding: 0.3rem;
 }
 
 .user-profile-container {
   background-color: var(--input-bg-color);
-  height: 14rem;
+  height: 15rem;
   width: 100%;
   border-radius: 8px;
   display: flex;

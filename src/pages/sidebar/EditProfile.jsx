@@ -121,7 +121,7 @@ function EditProfile() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <p>Leave this empty if you don't want change your password</p>
+            <p>Leave this empty if you don't want change your password.</p>
           </div>
 
           {/* Profile Picture */}
