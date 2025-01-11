@@ -126,7 +126,7 @@ function JobPostsTable() {
                       <img src={statusRed} alt="inactive" />
                     )}
                   </button>
-                  <button>
+                  <button onClick={() => navigate(`job-details/${post.id}`)}>
                     <EditIcon />
                   </button>
                   <button onClick={() => onDelete(post.id)}>

@@ -109,6 +109,7 @@ function JobPosts() {
   const isJobApplicantsDataRoute = location.pathname.endsWith(
     "job-applicants-data"
   );
+  const isJobDetailsRoute = location.pathname.includes("job-details");
 
   const initialState = {
     filters: {},
@@ -171,13 +172,15 @@ function JobPosts() {
       }}
     >
       <div className={classes["job-posts"]}>
-        {!isJobApplicantsDataRoute && dummyJobPosts.length === 0 ? (
+        {!isJobApplicantsDataRoute &&
+        !isJobDetailsRoute &&
+        dummyJobPosts.length === 0 ? (
           <p className={classes["no-data-message"]}>
             There are no job posts right now!
           </p>
         ) : (
           <>
-            {!isJobApplicantsDataRoute && (
+            {!isJobApplicantsDataRoute && !isJobDetailsRoute && (
               <>
                 <div className={classes["filters"]}>
                   <Filteration />

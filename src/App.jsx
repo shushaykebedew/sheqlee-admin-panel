@@ -46,6 +46,7 @@ import UpdateFooter from "./pages/system-config/footer/update-footer/UpdateFoote
 import Feedbacks from "./pages/feedbacks/Feedbacks";
 import EditProfile from "./pages/sidebar/EditProfile";
 import UpdateAPGSPPTSCP from "./pages/system-config/apgspptscp/update-apgspptscp/UpdateAPGSPPTSCP";
+import JobDetails from "./pages/job-posts/job-details/JobDetails";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
           </Route>
           <Route path="job-posts" element={<JobPosts />}>
             <Route path="job-applicants-data" element={<JobApplicantsData />} />
+            <Route path="job-details/:id?" element={<JobDetails />} />
           </Route>
           <Route path="companies" element={<Companies />} />
           <Route path="freelancers" element={<Freelancers />} />
