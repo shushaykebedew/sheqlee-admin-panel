@@ -67,7 +67,10 @@ function App() {
             <Route path="email-alerts" element={<EmailAlerts />} />
           </Route>
           <Route path="job-posts" element={<JobPosts />}>
-            <Route path="job-applicants-data" element={<JobApplicantsData />} />
+            <Route
+              path="job-applicants-data/:id?"
+              element={<JobApplicantsData />}
+            />
             <Route path="job-details/:id?" element={<JobDetails />} />
           </Route>
           <Route path="companies" element={<Companies />} />

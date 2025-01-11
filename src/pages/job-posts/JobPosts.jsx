@@ -106,7 +106,7 @@ const jobPostsReducer = (state, action) => {
 
 function JobPosts() {
   const location = useLocation();
-  const isJobApplicantsDataRoute = location.pathname.endsWith(
+  const isJobApplicantsDataRoute = location.pathname.includes(
     "job-applicants-data"
   );
   const isJobDetailsRoute = location.pathname.includes("job-details");

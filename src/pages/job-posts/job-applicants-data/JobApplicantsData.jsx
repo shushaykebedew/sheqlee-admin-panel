@@ -1,9 +1,11 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import classes from "./jobapplicantsdata.module.css";
 import Header from "./Header";
 import Filteration from "./filteration/Filteration";
 import JobApplicantsTable from "./job-applicants-table/JobApplicantsTable";
 import { dummyApplicants } from "./dummyApplicants";
+import { useParams } from "react-router-dom";
+import { JobsContext } from "../JobPosts";
 
 // Create Context
 export const JobApplicantsContext = createContext();
@@ -14,6 +16,18 @@ function JobApplicantsData() {
   const [endDate, setEndDate] = useState(null);
   const [sortBy, setSortBy] = useState("frId"); // Added state for sorting
   const [sortOrder, setSortOrder] = useState("asc"); // Added state for sorting
+  const [selectedJob, setSelectedJob] = useState(null);
+  const { dummyJobPosts } = useContext(JobsContext);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const job = dummyJobPosts.find((post) => post.id === id);
+    if (!job) {
+      console.error(`Job with ID ${id} not found.`);
+    } else {
+      setSelectedJob(job);
+    }
+  }, [id, dummyJobPosts]);
 
   const applyDateFilter = (start, end) => {
     setStartDate(start);
@@ -65,7 +79,7 @@ function JobApplicantsData() {
     <JobApplicantsContext.Provider value={{ applyDateFilter }}>
       <div className={classes["job-applicants"]}>
         <div className={classes.top}>
-          <Header />
+          <Header jobPost={selectedJob} />
           <Filteration />
         </div>
         <div>

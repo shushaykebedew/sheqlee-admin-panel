@@ -3,13 +3,30 @@
   grid-template-columns: 27rem 1fr;
   column-gap: 3rem;
   background-color: #fcfcfc;
-  overflow: auto;
   font-family: "Kantumruy Pro", sans-serif;
-  /* padding-left: 4rem;
-  padding-right: 5rem; */
+  height: 100vh;
+  overflow: hidden;
+}
+
+.left {
+  position: fixed;
+  height: 100vh;
+  width: 27rem;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
 .right {
+  grid-column: 2;
   background-color: #f7f7f7;
+  overflow-y: auto;
+}
+.right::-webkit-scrollbar {
+  width: 5px;
+  height: 20px;
+}
+
+.right::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 2px;
 }

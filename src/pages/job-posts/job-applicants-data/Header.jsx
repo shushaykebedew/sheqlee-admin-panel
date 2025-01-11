@@ -2,7 +2,7 @@ import { BackwardArrowIcon } from "../../../SvgIcons";
 import classes from "./header.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Header() {
+function Header({ jobPost }) {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
@@ -18,7 +18,9 @@ function Header() {
       <div className={classes["header-content"]}>
         <div className={classes["company-name"]}>
           <p className={classes["company-label"]}>Company </p>
-          <p className={classes["company-value"]}>KEPLER Co.LTD</p>
+          <p className={classes["company-value"]}>
+            {jobPost?.company || "N/A"}
+          </p>
         </div>
         <div className={classes["apply-link"]}>
           <p className={classes["apply-link-label"]}>Apply Link</p>
@@ -26,7 +28,10 @@ function Header() {
         </div>
         <div className={classes["job-title"]}>
           <p className={classes["job-title-label"]}>Job Title </p>
-          <p className={classes["job-title-value"]}>Software Engineer I</p>
+          <p className={classes["job-title-value"]}>
+            {" "}
+            {jobPost?.title || "N/A"}
+          </p>
         </div>
         <div className={classes.underline}></div>
       </div>

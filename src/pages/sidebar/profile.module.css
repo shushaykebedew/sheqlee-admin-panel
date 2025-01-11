@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  padding-bottom: 1rem;
 }
 .account-detail {
   display: flex;
@@ -23,19 +24,18 @@
 .action {
   font-weight: bold;
   position: absolute;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   right: -12rem;
 }
 .logout-button {
   all: unset;
-
   color: #000000;
   cursor: pointer;
 }
 .logout-text {
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   border-bottom: 2px solid rgb(39, 37, 37);
 }
 .forward-arrow svg {

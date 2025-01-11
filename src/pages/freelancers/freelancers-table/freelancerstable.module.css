@@ -1,6 +1,5 @@
 .freelancers {
   position: relative;
-  overflow: auto;
   bottom: 2rem;
 }
 
@@ -8,7 +7,6 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
 }
 
 .freelancers-table td {
@@ -22,9 +20,6 @@
 .freelancers-table td:nth-child(6) {
   text-align: center;
 }
-/* .freelancers-table td:nth-child(7) {
-  text-align: left;
-} */
 
 .freelancers-table .email-link a {
   text-decoration: none;

@@ -46,10 +46,6 @@ function JobPostsTable() {
     return "▼";
   };
 
-  const handleJobApplicantsData = () => {
-    navigate("job-applicants-data");
-  };
-
   // Initialize the sorting state if not set
   useEffect(() => {
     if (!sortBy) {
@@ -63,7 +59,7 @@ function JobPostsTable() {
         <thead>
           <tr>
             <th>
-              <span>Job ID</span>
+              Job ID
               <button
                 className={classes["sort-icon"]}
                 onClick={() => onSortChange("id")}
@@ -74,7 +70,7 @@ function JobPostsTable() {
             <th>Job Title</th>
             <th>Company</th>
             <th>
-              <span>Applicants</span>
+              Applicants
               <button
                 className={classes["sort-icon"]}
                 onClick={() => onSortChange("applicants")}
@@ -83,7 +79,7 @@ function JobPostsTable() {
               </button>
             </th>
             <th>
-              <span>Post Date</span>
+              Post Date
               <button
                 className={classes["sort-icon"]}
                 onClick={() => onSortChange("postDate")}
@@ -106,7 +102,7 @@ function JobPostsTable() {
                   <span>{post.applicants}</span>
                   <button
                     className={classes["link-icon"]}
-                    onClick={handleJobApplicantsData}
+                    onClick={() => navigate(`job-applicants-data/${post.id}`)}
                   >
                     {<LinkIcon />}
                   </button>

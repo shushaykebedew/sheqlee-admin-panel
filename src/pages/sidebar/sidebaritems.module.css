@@ -9,7 +9,10 @@
   align-items: center;
   font-family: "Kantumruy Pro", sans-serif;
   cursor: pointer;
-  padding: 1rem 0 1rem 2.4rem;
+  padding: 0.5rem 0 0.5rem 2.4rem;
+}
+.sidebar-item-text {
+  font-size: 1.8rem;
 }
 .sidebar-links ul li:first-child {
   padding-left: 0.5rem;
