@@ -8,6 +8,7 @@ import Button from "../components/button/Button";
 import useEmailValidation from "../hooks/useEmailValidation";
 import usePasswordValidation from "../hooks/usePasswordValidation";
 import { dummyUsers } from "../pages/users/data";
+import { useAuth } from "../authentication/AuthContext";
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -17,6 +18,7 @@ function Login() {
   const { passwordError } = usePasswordValidation(password);
   const { email, emailError, handleEmailChange } = useEmailValidation();
   const navigate = useNavigate();
+  const { loginUser } = useAuth();
 
   function handlePasswordChange(e) {
     const newPassword = e.target.value;
@@ -39,8 +41,10 @@ function Login() {
       const user = dummyUsers.find((user) => user.email === email);
 
       if (user && user.password === password) {
+        // Update isAuthenticated state in App component
+        loginUser();
         // Redirect to home if credentials are valid
-        navigate("/home");
+        navigate("/");
       } else {
         setLoginError("Invalid email or password.");
       }

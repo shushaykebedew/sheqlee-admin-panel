@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import profile from "../../images/profile-lg.png";
 import classes from "./profile.module.css";
+import { useAuth } from "../../authentication/AuthContext";
 
 function Profile() {
-  const navigate = useNavigate();
+  const { logoutUser } = useAuth();
 
   const handleLogout = (event) => {
     event.stopPropagation();
-    navigate("/");
+    logoutUser();
   };
 
   return (

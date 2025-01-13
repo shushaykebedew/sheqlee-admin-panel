@@ -47,88 +47,121 @@ import Feedbacks from "./pages/feedbacks/Feedbacks";
 import EditProfile from "./pages/sidebar/EditProfile";
 import UpdateAPGSPPTSCP from "./pages/system-config/apgspptscp/update-apgspptscp/UpdateAPGSPPTSCP";
 import JobDetails from "./pages/job-posts/job-details/JobDetails";
+import PageNotFound from "./components/page-not-found/PageNotFound";
+import { AuthProvider, useAuth } from "./authentication/AuthContext";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/new-password" element={<NewPassword />} />
-        <Route path="/account-activation" element={<AccountActivation />} />
-        <Route path="/activation-form" element={<ActivationForm />} />
-        <Route path="/home" element={<HomePage />}>
-          <Route index element={<Navigate to="dashboard" replace />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route index element={<Navigate to="job-posts" replace />} />
-            <Route path="job-posts" element={<DashboardJobPosts />} />
-            <Route path="companies" element={<DashboardCompanies />} />
-            <Route path="freelancers" element={<DashboardFreelancers />} />
-            <Route path="email-alerts" element={<EmailAlerts />} />
-          </Route>
-          <Route path="job-posts" element={<JobPosts />}>
-            <Route
-              path="job-applicants-data/:id?"
-              element={<JobApplicantsData />}
-            />
-            <Route path="job-details/:id?" element={<JobDetails />} />
-          </Route>
-          <Route path="companies" element={<Companies />} />
-          <Route path="freelancers" element={<Freelancers />} />
-          <Route path="categories" element={<Categories />}>
-            <Route path="add-category" element={<AddCategory />} />
-            <Route
-              path="update-category/:catId?"
-              element={<UpdateCategory />}
-            />
-          </Route>
-          <Route path="tags" element={<Tags />}>
-            <Route path="add-tag" element={<AddTag />} />
-            <Route path="update-tag/:tagId?" element={<UpdateTag />} />
-          </Route>
-          <Route path="subscribers" element={<Subscribers />}>
-            <Route index element={<Navigate to="companies" replace />} />
-            <Route path="companies" element={<CompaniesStats />} />
-            <Route path="categories" element={<CategoriesStats />} />
-            <Route path="tags" element={<TagsStats />} />
-          </Route>
-          <Route path="feedbacks" element={<Feedbacks />} />
-          <Route path="system-config" element={<SystemConfig />}>
-            <Route index element={<Navigate to="faq" replace />} />
-            <Route path="faq" element={<FAQ />}>
-              <Route path="add-faq" element={<AddFAQ />} />
-              <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
-            </Route>
-            <Route path="apgspptscp" element={<APGSPPTSCP />}>
-              <Route
-                path="update-apgspptscp/:pageId?"
-                element={<UpdateAPGSPPTSCP />}
-              />
-            </Route>
-            <Route path="testimonials" element={<Testimonials />}>
-              <Route
-                path="update-testimonial/:testimonialId?"
-                element={<UpdateTestimonial />}
-              />
-            </Route>
-            <Route path="hero" element={<Hero />}>
-              <Route path="update-hero/:sectionId?" element={<UpdateHero />} />
-            </Route>
-            <Route path="footer" element={<Footer />}>
-              <Route
-                path="update-footer/:sectionId?"
-                element={<UpdateFooter />}
-              />
-            </Route>
-          </Route>
-          <Route path="users" element={<Users />}>
-            <Route path="add-user" element={<AddUser />} />
-            <Route path="update-user/:userId?" element={<UpdateUser />} />
-          </Route>
-          <Route path="edit-profile" element={<EditProfile />} />
+    <AuthProvider>
+      <Router>
+        <AppRoutes />
+      </Router>
+    </AuthProvider>
+  );
+}
+
+function AppRoutes() {
+  const { isAuthenticated, loginUser } = useAuth();
+
+  return (
+    <Routes>
+      {/* Login Page */}
+      <Route
+        path="/login"
+        element={
+          isAuthenticated ? (
+            <Navigate to="/" replace />
+          ) : (
+            <Login loginUser={loginUser} />
+          )
+        }
+      />
+
+      {/* Protected Home */}
+      <Route
+        path="/"
+        element={
+          isAuthenticated ? <HomePage /> : <Navigate to="/login" replace />
+        }
+      >
+        {/* Nested Routes for Home */}
+        <Route index element={<Navigate to="dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<Navigate to="job-posts" replace />} />
+          <Route path="job-posts" element={<DashboardJobPosts />} />
+          <Route path="companies" element={<DashboardCompanies />} />
+          <Route path="freelancers" element={<DashboardFreelancers />} />
+          <Route path="email-alerts" element={<EmailAlerts />} />
         </Route>
-      </Routes>
-    </Router>
+        <Route path="job-posts" element={<JobPosts />}>
+          <Route
+            path="job-applicants-data/:id?"
+            element={<JobApplicantsData />}
+          />
+          <Route path="job-details/:id?" element={<JobDetails />} />
+        </Route>
+        <Route path="companies" element={<Companies />} />
+        <Route path="freelancers" element={<Freelancers />} />
+        <Route path="categories" element={<Categories />}>
+          <Route path="add-category" element={<AddCategory />} />
+          <Route path="update-category/:catId?" element={<UpdateCategory />} />
+        </Route>
+        <Route path="tags" element={<Tags />}>
+          <Route path="add-tag" element={<AddTag />} />
+          <Route path="update-tag/:tagId?" element={<UpdateTag />} />
+        </Route>
+        <Route path="subscribers" element={<Subscribers />}>
+          <Route index element={<Navigate to="companies" replace />} />
+          <Route path="companies" element={<CompaniesStats />} />
+          <Route path="categories" element={<CategoriesStats />} />
+          <Route path="tags" element={<TagsStats />} />
+        </Route>
+        <Route path="feedbacks" element={<Feedbacks />} />
+        <Route path="system-config" element={<SystemConfig />}>
+          <Route index element={<Navigate to="faq" replace />} />
+          <Route path="faq" element={<FAQ />}>
+            <Route path="add-faq" element={<AddFAQ />} />
+            <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
+          </Route>
+          <Route path="apgspptscp" element={<APGSPPTSCP />}>
+            <Route
+              path="update-apgspptscp/:pageId?"
+              element={<UpdateAPGSPPTSCP />}
+            />
+          </Route>
+          <Route path="testimonials" element={<Testimonials />}>
+            <Route
+              path="update-testimonial/:testimonialId?"
+              element={<UpdateTestimonial />}
+            />
+          </Route>
+          <Route path="hero" element={<Hero />}>
+            <Route path="update-hero/:sectionId?" element={<UpdateHero />} />
+          </Route>
+          <Route path="footer" element={<Footer />}>
+            <Route
+              path="update-footer/:sectionId?"
+              element={<UpdateFooter />}
+            />
+          </Route>
+        </Route>
+        <Route path="users" element={<Users />}>
+          <Route path="add-user" element={<AddUser />} />
+          <Route path="update-user/:userId?" element={<UpdateUser />} />
+        </Route>
+        <Route path="edit-profile" element={<EditProfile />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Route>
+
+      {/* Forgot Password and Other Pages */}
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/new-password" element={<NewPassword />} />
+      <Route path="/account-activation" element={<AccountActivation />} />
+      <Route path="/activation-form" element={<ActivationForm />} />
+
+      {/* Fallback 404 */}
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
   );
 }
 
