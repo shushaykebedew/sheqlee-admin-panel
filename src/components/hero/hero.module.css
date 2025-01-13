@@ -20,11 +20,11 @@
   justify-content: center;
 }
 .logo svg {
-  height: 12rem !important;
+  height: 11rem !important;
 }
 .title {
   text-align: center;
-  font: normal normal 900 2.4rem/3.2rem Recoleta;
+  font: normal normal 900 2.2rem/3rem Recoleta;
   color: var(--font-color);
   opacity: 1;
   font-family: "Recoleta";
@@ -37,7 +37,7 @@
 }
 
 .underline {
-  width: 18rem;
+  width: 17rem;
   height: 0.6rem;
   background-color: var(--primary-color);
   margin: 0.5rem auto 1rem;

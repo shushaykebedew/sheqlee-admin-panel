@@ -15,7 +15,9 @@
   color: #ffffff;
   position: relative;
 }
-
+.dropdown:focus {
+  outline: none;
+}
 .icon {
   position: absolute;
   top: 50%;

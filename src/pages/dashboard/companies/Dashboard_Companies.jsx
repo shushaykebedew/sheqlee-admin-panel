@@ -1,4 +1,4 @@
-import classes from "./dashboard_comapnies.module.css";
+import classes from "./dashboard_companies.module.css";
 import CounterCard from "../cards/CounterCard";
 import StatusCard from "../cards/StatusCard";
 import CardWithDropDown from "../cards/CardWithDropDown";

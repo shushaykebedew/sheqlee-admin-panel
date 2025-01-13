@@ -93,8 +93,8 @@ function Login() {
           </div>
         </form>
         <p className={classes["first-time-text"]}>
-          First time logging in? Click{" "}
-          <Link to="/account-activation">here</Link> to activate your account.
+          First time logging in? Click <Link to="/activation-form">here</Link>{" "}
+          to activate your account.
         </p>
       </div>
     </div>

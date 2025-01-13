@@ -17,9 +17,13 @@
 }
 
 .right {
+  margin-right: 2rem;
+  margin-bottom: 5rem;
   grid-column: 2;
   background-color: #f7f7f7;
   overflow-y: auto;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .right::-webkit-scrollbar {
   width: 5px;

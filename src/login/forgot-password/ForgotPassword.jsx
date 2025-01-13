@@ -30,7 +30,7 @@ function ForgotPassword() {
           className={classes["forgot-password-form"]}
           onSubmit={handleReset}
         >
-          <label>Forgot Password?</label>
+          <label>Forgot password?</label>
           <p className={classes["forgot-message"]}>
             Please enter your email to get a password reset code.
           </p>

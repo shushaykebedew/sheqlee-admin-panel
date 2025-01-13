@@ -58,14 +58,14 @@ function NewPassword() {
 
             <InputField
               type="text"
-              placeholder="Enter Code"
+              placeholder="Enter code..."
               value={resetCode}
               onChange={(e) => setResetCode(e.target.value)}
               error={isSubmitted && resetCodeError}
             />
           </div>
           <div className={classes.right}>
-            <label>New Password</label>
+            <label>New password</label>
             <PasswordField
               placeholder="Password..."
               value={passwordOne}
@@ -75,12 +75,12 @@ function NewPassword() {
               togglePasswordVisibility={togglePasswordVisibility}
             />
             <PasswordField
-              placeholder="Confirm Password..."
+              placeholder="Confirm password..."
               value={passwordTwo}
               error={isSubmitted && passwordError}
               onChange={(e) => setPasswordTwo(e.target.value)}
               showEyeIcon={false}
-              showPassword={showPassword}
+              // showPassword={showPassword}
               togglePasswordVisibility={togglePasswordVisibility}
             />
             <div className={classes["action-buttons"]}>

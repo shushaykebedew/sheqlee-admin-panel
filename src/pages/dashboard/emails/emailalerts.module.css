@@ -1,8 +1,8 @@
 .email-alerts {
-  margin-top: 8rem;
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 6rem;
 }
 .counter-cards {
   display: flex;

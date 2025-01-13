@@ -1,7 +1,3 @@
-:root {
-  --input-focus-border: 2px solid var(--primary-color);
-}
-
 .input-field input {
   width: 100%;
   height: 5rem;
@@ -10,15 +6,11 @@
   border: none;
   border-radius: 10px;
   font-size: 1.8rem;
-  color: var(--placeholder-color);
+  color: var(--font-color);
   background-color: var(--input-bg-color);
   font-family: inherit;
   outline: none;
 }
-
-/* .input-field input:focus {
-  border-bottom: var(--input-focus-border);
-} */
 
 .input-field input::placeholder {
   color: var(--placeholder-color);
