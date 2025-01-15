@@ -10,7 +10,7 @@ function FilterByCategory() {
 
   const options = [
     { value: "", label: "Category" },
-    { value: "all-categories", label: "All Categories" },
+    { value: "all-categories", label: "All" },
     { value: "backend-development", label: "Backend Development" },
     { value: "cloud-computing", label: "Cloud Computing" },
     {

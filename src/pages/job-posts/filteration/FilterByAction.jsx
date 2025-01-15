@@ -10,7 +10,7 @@ function FilterByAction() {
 
   const options = [
     { value: "", label: "Action" },
-    { value: "all-actions", label: "All Actions" },
+    { value: "all-actions", label: "All" },
     { value: "active", label: "Active" },
     { value: "deactivated", label: "Deactivated" },
   ];

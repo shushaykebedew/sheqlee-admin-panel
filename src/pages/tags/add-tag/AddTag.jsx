@@ -61,7 +61,7 @@ function AddTag() {
     tagTitle !== "" && description !== "" && icon !== defaultIcon;
 
   return (
-    <div className={classes["add-Tag"]}>
+    <div className={classes["add-tag"]}>
       <Headers />
       <form onSubmit={handleSubmit}>
         <div className={`${classes.label} ${isFormValid ? classes.valid : ""}`}>

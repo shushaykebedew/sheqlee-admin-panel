@@ -50,7 +50,7 @@
 
 .menu {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 30rem;
   background-color: #dfdfdf;
@@ -67,10 +67,9 @@
 
 .option {
   padding: 1rem 1rem 0.5rem 1rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   cursor: pointer;
   white-space: nowrap;
-  overflow: hidden;
   text-overflow: ellipsis;
   width: 100%;
   overflow-x: hidden;

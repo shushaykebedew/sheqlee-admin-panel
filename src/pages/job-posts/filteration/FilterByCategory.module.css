@@ -53,13 +53,13 @@
 
 .menu {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #dfdfdf;
   border-radius: 7px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+  z-index: 1000;
   list-style: none;
   padding: 0;
   margin: 0;

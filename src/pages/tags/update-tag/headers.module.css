@@ -1,9 +1,8 @@
 .headers {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
   margin-top: 1rem;
-  gap: 8rem;
+  gap: 5.5rem;
 }
 
 .main-header-text {

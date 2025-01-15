@@ -21,7 +21,7 @@
   width: 100%;
   max-width: 20rem;
   min-width: 20rem;
-  height: 4.4rem;
+  /* height: 4.4rem; */
   background-color: var(--input-bg-color);
   border-radius: 8px;
   border-top-right-radius: 0;
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1.2rem;
+  padding: 1rem 1.2rem;
   cursor: pointer;
   box-shadow: none;
   font-size: 1.6rem;
@@ -41,6 +41,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.6rem;
 }
 
 .iconDown {
@@ -54,7 +55,7 @@
 
 .menu {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #dfdfdf;
@@ -71,7 +72,6 @@
 
 .option {
   padding: 1rem 1rem 0.5rem 1rem;
-  font-size: 1.5rem;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;

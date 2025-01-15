@@ -1,7 +1,7 @@
 .companies {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 68.5vh;
 }
 
 .companies table {
@@ -9,6 +9,26 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
+}
+
+.companies::-webkit-scrollbar {
+  width: 6px;
+}
+
+.companies::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.companies::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.companies thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
 }
 
 .companies-table td {
@@ -22,9 +42,6 @@
 .companies-table td:nth-child(6) {
   text-align: center;
 }
-/* .companies-table td:nth-child(7) {
-  text-align: left;
-} */
 
 .companies-table .email-link a {
   text-decoration: none;
@@ -98,18 +115,13 @@
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: var(--input-bg-color);
   border-top: 4px solid #f7f7f7;
 }
-/* .pagination-even {
-  background-color: #f7f7f7;
-}
-.pagination-odd {
-  background-color: gray;
-} */
 
 .text {
   display: flex;
@@ -127,11 +139,7 @@
   padding-left: 0.5rem;
   display: flex;
 }
-/* .polygon-icon svg {
-  margin-left: 0.9rem;
-  height: 1rem;
-  cursor: pointer;
-} */
+
 ul {
   list-style: none;
 }

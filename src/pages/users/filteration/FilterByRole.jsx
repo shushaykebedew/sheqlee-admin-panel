@@ -12,7 +12,7 @@ function FilterByRole() {
 
   const options = [
     { value: "", label: "Role" },
-    { value: "all-roles", label: "All Roles" },
+    { value: "all-roles", label: "All" },
     { value: "superadmin", label: "Super admin" },
     { value: "admin", label: "Admin" },
     { value: "sales", label: "Sales" },

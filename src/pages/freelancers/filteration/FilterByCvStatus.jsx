@@ -8,9 +8,9 @@ function FilterByCvStatus() {
 
   const options = [
     { value: "", label: "CV status" },
-    { value: "all-status", label: "All Status" },
-    { value: "active", label: "Active" },
-    { value: "inactive", label: "Inactive" },
+    { value: "all-status", label: "All" },
+    { value: "active", label: "Complete" },
+    { value: "inactive", label: "Incomplete" },
   ];
 
   const handleOptionClick = (option) => {

@@ -10,7 +10,7 @@ function FilterByJobType() {
 
   const options = [
     { value: "", label: "Job Type" },
-    { value: "all-job-types", label: "All Job Types" },
+    { value: "all-job-types", label: "All" },
     { value: "contract", label: "Contract" },
     { value: "part-time", label: "Part-time" },
     { value: "fulltime", label: "Full-time" },

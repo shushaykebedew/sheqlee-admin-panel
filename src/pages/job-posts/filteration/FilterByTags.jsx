@@ -8,7 +8,7 @@ function FilterByTags() {
 
   const options = [
     { value: "", label: "Tags" },
-    { value: "all-tags", label: "All Tags" },
+    { value: "all-tags", label: "All" },
     { value: "active", label: "Active" },
     { value: "inactive", label: "Inactive" },
   ];

@@ -40,6 +40,8 @@ function AddTags({ onChange }) {
     onChange(newTags); // Pass selected tags back to parent
   };
 
+  const hasTags = selectedTags.length > 0;
+
   return (
     <div className={classes.container}>
       {/* Backdrop */}
@@ -53,13 +55,13 @@ function AddTags({ onChange }) {
       {/* Dropdown */}
       <div className={classes.dropdown}>
         <div
-          className={`${classes.control} ${
-            isDropdownOpen ? classes.active : ""
-          }`}
+          className={`${classes.control} 
+                       ${isDropdownOpen ? classes.active : ""} 
+                       ${hasTags ? classes["has-tags"] : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
           <span className={classes.label}>
-            {selectedTags.length > 0 ? "Add More Tags" : "Add Tags"}
+            {hasTags ? "Add More Tags" : "Add Tags"}
           </span>
           <PolygonDown className={classes.iconDown} />
         </div>

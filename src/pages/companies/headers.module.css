@@ -5,6 +5,11 @@
 .main-header {
   width: 60%;
 }
+
+.sub-header {
+  margin-top: 3rem;
+  margin-right: 2rem;
+}
 .main-header-text {
   font-weight: bold;
   color: #000000;
@@ -22,8 +27,7 @@
   font-size: 1.8rem;
   text-transform: uppercase;
   letter-spacing: -1px;
-  margin-top: 4rem;
-  margin-right: 2rem;
+
   font-family: inherit;
 }
 .main-header-line {

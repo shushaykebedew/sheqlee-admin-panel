@@ -10,7 +10,7 @@ function FilterBySkillLevel() {
 
   const options = [
     { value: "", label: "Skill Level" },
-    { value: "all-skills", label: "All Skills" },
+    { value: "all-skills", label: "All" },
     { value: "beginner", label: "Beginner" },
     { value: "intermediate", label: "Intermediate" },
     { value: "expert", label: "Expert" },
@@ -67,7 +67,10 @@ function FilterBySkillLevel() {
                 {index === 0 && (
                   <PolygonUp
                     className={classes.iconUp}
-                    style={{ width: "1.3rem", height: "1.3rem" }}
+                    style={{
+                      width: "1.3rem",
+                      height: "1.3rem",
+                    }}
                   />
                 )}
               </li>

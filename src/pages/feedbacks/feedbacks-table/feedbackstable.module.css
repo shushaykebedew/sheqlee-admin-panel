@@ -1,7 +1,7 @@
 .feedbacks {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 75vh;
 }
 
 .feedbacks table {
@@ -9,6 +9,26 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
+}
+
+.feedbacks::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feedbacks::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.feedbacks::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.feedbacks thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
 }
 
 .feedbacks-table td {
@@ -85,11 +105,12 @@
 
 .pagination {
   padding: 2rem;
-  padding-left: 62rem;
   font-size: 1.5rem;
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  padding-right: 3rem;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;

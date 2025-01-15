@@ -76,7 +76,7 @@ function Feedbacks() {
   const handleFeedbackDeletion = (feId) => {
     if (
       window.confirm(
-        `Are you sure you want to delete this company with id ${feId} ?`
+        `Are you sure you want to delete this feedback with id ${feId} ?`
       )
     ) {
       dispatch({ type: "DELETE_FEEDBACK", payload: feId });

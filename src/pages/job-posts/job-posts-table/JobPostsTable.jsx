@@ -141,10 +141,8 @@ function JobPostsTable() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(e.target.value)}
+                onChange={(e) => setRowsPerPage(Number(e.target.value))}
               />
             </div>
           </div>

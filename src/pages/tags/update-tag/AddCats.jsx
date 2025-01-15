@@ -40,6 +40,8 @@ function AddCats({ onChange }) {
     onChange(newCats); // Pass selected Cats back to parent
   };
 
+  const hasCats = selectedCats.length > 0;
+
   return (
     <div className={classes.container}>
       {/* Backdrop */}
@@ -53,13 +55,13 @@ function AddCats({ onChange }) {
       {/* Dropdown */}
       <div className={classes.dropdown}>
         <div
-          className={`${classes.control} ${
-            isDropdownOpen ? classes.active : ""
-          }`}
+          className={`${classes.control} 
+                                ${isDropdownOpen ? classes.active : ""} 
+                                ${hasCats ? classes["has-cats"] : ""}`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
           <span className={classes.label}>
-            {selectedCats.length > 0 ? "Add More Categories" : "Add Categories"}
+            {hasCats ? "Add More Categories" : "Add Categories"}
           </span>
           <PolygonDown className={classes.iconDown} />
         </div>

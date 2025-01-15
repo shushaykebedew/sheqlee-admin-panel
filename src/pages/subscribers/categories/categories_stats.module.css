@@ -2,7 +2,8 @@
   margin-top: 8rem;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 6rem;
+  padding-bottom: 5rem;
 }
 .counter-cards {
   display: flex;

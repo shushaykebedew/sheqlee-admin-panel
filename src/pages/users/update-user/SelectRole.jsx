@@ -22,7 +22,7 @@ function SelectRole({ onChange, selectedRole }) {
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onChange(option.value); // Notify parent about the change
+    onChange(option.value);
     setIsDropdownOpen(false);
   };
 

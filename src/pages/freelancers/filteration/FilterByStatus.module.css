@@ -21,7 +21,7 @@
   width: 100%;
   max-width: 16rem;
   min-width: 16rem;
-  height: 4.4rem;
+  height: 4.2rem;
   background-color: var(--input-bg-color);
   border-radius: 8px;
   display: flex;
@@ -52,7 +52,7 @@
 
 .menu {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 100%;
   background-color: #dfdfdf;

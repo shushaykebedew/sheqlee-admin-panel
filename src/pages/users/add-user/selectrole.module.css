@@ -50,7 +50,7 @@
 
 .menu {
   position: absolute;
-  top: 100%;
+  top: 0;
   left: 0;
   width: 30rem;
   background-color: #dfdfdf;

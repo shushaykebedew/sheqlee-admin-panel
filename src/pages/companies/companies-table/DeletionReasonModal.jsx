@@ -32,7 +32,7 @@ function DeletionReasonModal({ isOpen, onClose, company }) {
         <DeletionModal>
           <div className={classes["deletion-reason-modal"]}>
             <h2>{company?.companyName || "Unknown Company"}</h2>
-            <h3>Deletion Reason</h3>
+            <h3>Deletion reason</h3>
             <div className={classes["deletion-reason-content"]}>
               <p>
                 We could not find the types of developers we are looking for
@@ -44,7 +44,7 @@ function DeletionReasonModal({ isOpen, onClose, company }) {
             </div>
             <div className={classes["modal-action"]}>
               <button onClick={onClose} className={classes["modal-apply-btn"]}>
-                Okay, got it.
+                Okay, got it
               </button>
             </div>
           </div>

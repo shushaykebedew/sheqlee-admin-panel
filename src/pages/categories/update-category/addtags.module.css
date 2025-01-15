@@ -16,15 +16,16 @@
   cursor: pointer;
   background-color: var(--input-bg-color);
   border-radius: 8px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
   padding: 0 1.5rem;
   cursor: pointer;
   box-shadow: none;
   font-size: 1.6rem;
   color: var(--placeholder-color);
 }
-
+.has-tags {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .label {
   font-size: 1.6rem;
 }

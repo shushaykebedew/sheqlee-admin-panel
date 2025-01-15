@@ -11,7 +11,7 @@ function FilterByStatus() {
 
   const options = [
     { value: "", label: "Status" },
-    { value: "all-status", label: "All Statuses" },
+    { value: "all-status", label: "All" },
     { value: "active", label: "Active" },
     { value: "deleted", label: "Deleted" },
   ];

@@ -4,7 +4,7 @@
   column-gap: 3rem;
   background-color: #fcfcfc;
   font-family: "Kantumruy Pro", sans-serif;
-  height: 100vh;
+  /* height: 100vh; */
   overflow: hidden;
 }
 
@@ -17,13 +17,15 @@
 }
 
 .right {
-  margin-right: 2rem;
-  margin-bottom: 5rem;
+  margin-right: 1rem;
+  margin-bottom: 3rem;
   grid-column: 2;
   background-color: #f7f7f7;
   overflow-y: auto;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  position: relative;
+  /* height: 100vh; */
 }
 .right::-webkit-scrollbar {
   width: 5px;

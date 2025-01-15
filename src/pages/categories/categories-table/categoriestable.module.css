@@ -1,7 +1,7 @@
 .categories {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 65.8vh;
 }
 
 .categories table {
@@ -9,8 +9,27 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
 }
 
+.categories::-webkit-scrollbar {
+  width: 6px;
+}
+
+.categories::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.categories::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.categories thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
+}
 .categories-table td {
   padding: 0.9rem 1rem;
   max-width: 16rem;
@@ -95,6 +114,7 @@
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -118,11 +138,7 @@
   padding-left: 0.5rem;
   display: flex;
 }
-/* .polygon-icon svg {
-  margin-left: 0.9rem;
-  height: 1rem;
-  cursor: pointer;
-} */
+
 ul {
   list-style: none;
 }

@@ -1,18 +1,33 @@
 .feedbacks {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-}
-.header {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 15rem;
+  gap: 3rem;
+  position: relative;
 }
 .titles {
-  width: 64.5rem;
+  width: 55%;
 }
 .filters {
-  width: 100%;
+  width: 45%;
+  position: relative;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: #f7f7f7;
+}
+
+.feedbacks-table {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .no-data-message {
   font-size: 1.8rem;
   font-weight: 500;

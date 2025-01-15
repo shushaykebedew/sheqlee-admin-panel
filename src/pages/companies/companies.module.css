@@ -1,13 +1,26 @@
 .companies {
+  overflow: auto;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  position: relative;
 }
 .header {
-  height: 21rem;
   display: flex;
 }
 .titles {
   width: 62.5rem;
+}
+.companies-table {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.filters {
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: #f7f7f7;
 }
 .no-data-message {
   font-size: 1.8rem;

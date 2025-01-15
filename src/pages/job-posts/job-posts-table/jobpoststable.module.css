@@ -1,7 +1,7 @@
 .jobs {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 65vh;
 }
 
 .jobs table {
@@ -9,10 +9,25 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
+}
+.jobs::-webkit-scrollbar {
+  width: 6px;
 }
 
-.jobs-table td {
-  padding: 0.9rem 1rem;
+.jobs::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.jobs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.jobs-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
 }
 
 .jobs-table tr:nth-child(odd) {
@@ -22,10 +37,12 @@
 .jobs-table tr:nth-child(even) {
   background-color: var(--input-bg-color);
 }
+.jobs-table td {
+  padding: 0.9rem 1rem;
+}
 
 .jobs-table th {
   padding: 1.2rem 1rem;
-  background-color: var(--input-bg-color);
   color: #000000;
   font-weight: 500;
   font-size: 2rem;
@@ -74,23 +91,17 @@
 }
 .pagination {
   padding: 2rem;
-  padding-left: 62rem;
   font-size: 1.5rem;
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: var(--input-bg-color);
   border-top: 4px solid #f7f7f7;
 }
-/* .pagination-even {
-  background-color: #f7f7f7;
-}
-.pagination-odd {
-  background-color: gray;
-} */
 
 .text {
   display: flex;
@@ -108,11 +119,7 @@
   padding-left: 0.5rem;
   display: flex;
 }
-/* .polygon-icon svg {
-  margin-left: 0.9rem;
-  height: 1rem;
-  cursor: pointer;
-} */
+
 ul {
   list-style: none;
 }

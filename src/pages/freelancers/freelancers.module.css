@@ -1,15 +1,29 @@
 .freelancers {
+  overflow: auto;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  position: relative;
 }
-
 .header {
-  height: 21rem;
   display: flex;
+  justify-content: space-between;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  background-color: #f7f7f7;
 }
 .titles {
-  width: 64.5rem;
+  width: 62.5rem;
 }
+
+.freelancers-table {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .no-data-message {
   font-size: 1.8rem;
   font-weight: 500;

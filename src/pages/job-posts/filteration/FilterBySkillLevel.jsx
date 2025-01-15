@@ -10,7 +10,7 @@ function FilterBySkillLevel() {
 
   const options = [
     { value: "", label: "Skill Level" },
-    { value: "all-skills", label: "All Skills" },
+    { value: "all-skills", label: "All" },
     { value: "beginner", label: "Beginner" },
     { value: "intermediate", label: "Intermediate" },
     { value: "expert", label: "Expert" },

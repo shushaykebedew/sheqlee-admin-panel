@@ -32,7 +32,7 @@ function DeletionReasonModal({ isOpen, onClose, freelancer }) {
         <DeletionModal>
           <div className={classes["deletion-reason-modal"]}>
             <h2>{freelancer?.name}</h2>
-            <h3>Deletion Reason</h3>
+            <h3>Deletion reason</h3>
             <div className={classes["deletion-reason-content"]}>
               <p>
                 Thank you Sheqlee. I found a Korean company that wanted to hire
@@ -43,7 +43,7 @@ function DeletionReasonModal({ isOpen, onClose, freelancer }) {
             </div>
             <div className={classes["modal-action"]}>
               <button onClick={onClose} className={classes["modal-apply-btn"]}>
-                Okay, got it.
+                Okay, got it
               </button>
             </div>
           </div>
