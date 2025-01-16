@@ -27,15 +27,26 @@ function DatePicker() {
 
 function SearchInput() {
   const { onSearchChange } = useContext(FAQsContext);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSearchChange(inputValue);
+    }
+  };
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    onSearchChange(value);
+    setInputValue(e.target.value);
   };
 
   return (
     <div className={classes["search-input"]}>
-      <input type="text" placeholder="Search FAQ..." onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="Search FAQ..."
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
       <span className={classes["search-icon"]}>
         <SearchIcon />
       </span>

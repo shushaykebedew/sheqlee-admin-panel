@@ -1,7 +1,8 @@
 .footer {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 63vh;
+  min-height: 63vh;
 }
 
 .footer table {
@@ -21,11 +22,7 @@
   padding-left: 2rem;
   width: 18rem;
 }
-/* .footer-table th:nth-child(2),
-.footer-table td:nth-child(2) {
-  width: 70rem;
-  padding-right: 20rem;
-} */
+
 .footer-table a {
   text-decoration: none;
   color: #0c47ec;

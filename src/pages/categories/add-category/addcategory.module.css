@@ -30,6 +30,9 @@
 .image-inputs {
   width: 14rem;
   margin-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .dropdown {
   width: 32rem;

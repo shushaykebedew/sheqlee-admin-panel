@@ -8,7 +8,7 @@ function SelectAudience({ onChange, selectedAudience }) {
 
   const options = [
     { value: "", label: "Audience" },
-    { value: "all-audience", label: "All Audience" },
+    { value: "all-audience", label: "All" },
     { value: "freelancers", label: "Freelancers" },
     { value: "companies", label: "Companies" },
   ];
@@ -52,9 +52,20 @@ function SelectAudience({ onChange, selectedAudience }) {
               <li
                 key={option.value}
                 className={classes.option}
+                style={{
+                  borderBottom:
+                    index === options.length - 1
+                      ? "none"
+                      : index === 0
+                      ? "1px solid #B4B4B4"
+                      : "1px solid #b4b4b49d",
+
+                  marginLeft: index !== 0 ? "1rem" : "0",
+                  paddingLeft: index === 0 ? "1rem" : "0",
+                }}
                 onClick={() => handleOptionClick(option)}
               >
-                <span>{option.label}</span>
+                <span> {option.label}</span>
                 {index === 0 && (
                   <PolygonUp
                     className={classes.iconUp}

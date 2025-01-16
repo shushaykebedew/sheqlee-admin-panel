@@ -11,7 +11,7 @@ function FilterByAudience() {
 
   const options = [
     { value: "", label: "Audience" },
-    { value: "all-audience", label: "All Audience" },
+    { value: "all-audience", label: "All" },
     { value: "freelancers", label: "Freelancers" },
     { value: "companies", label: "Companies" },
   ];

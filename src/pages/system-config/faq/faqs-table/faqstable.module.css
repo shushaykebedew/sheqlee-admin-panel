@@ -1,7 +1,7 @@
 .faqs {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 63vh;
 }
 
 .faqs table {
@@ -9,6 +9,26 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
+}
+
+.faqs::-webkit-scrollbar {
+  width: 6px;
+}
+
+.faqs::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.faqs::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.faqs thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
 }
 
 .faqs-table td {
@@ -89,23 +109,18 @@
 
 .pagination {
   padding: 2rem;
-  padding-left: 62rem;
+  padding-right: 8rem;
   font-size: 1.5rem;
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   background-color: var(--input-bg-color);
   border-top: 4px solid #f7f7f7;
 }
-/* .pagination-even {
-  background-color: #f7f7f7;
-}
-.pagination-odd {
-  background-color: gray;
-} */
 
 .text {
   display: flex;

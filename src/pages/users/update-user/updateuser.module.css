@@ -35,7 +35,10 @@
 
 .image-inputs {
   width: 14rem;
-  margin-right: 5rem;
+  margin-right: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .dropdown {
   width: 32rem;
@@ -65,13 +68,13 @@
 
 .user-profile-container {
   background-color: var(--input-bg-color);
-  height: 14rem;
+  height: 15rem;
   width: 100%;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  /* padding: 2rem; */
 }
 .user-profile-container img {
   height: 100%;

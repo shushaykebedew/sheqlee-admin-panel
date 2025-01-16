@@ -3,7 +3,7 @@ import classes from "./updateuser.module.css";
 import Headers from "./Headers";
 import SelectRole from "./SelectRole";
 import Button from "../../../components/button/Button";
-import defaultProfile from "../../../images/settings - alt2.png";
+import defaultProfile from "../../../images/me.jpg";
 import { UsersContext } from "../Users";
 import { useNavigate, useParams } from "react-router-dom";
 

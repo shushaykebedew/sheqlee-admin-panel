@@ -3,7 +3,7 @@ import classes from "./adduser.module.css";
 import Headers from "./Headers";
 import SelectRole from "./SelectRole";
 import Button from "../../../components/button/Button";
-import defaultProfile from "../../../images/settings - alt2.png";
+import defaultProfile from "../../../images/me.jpg";
 import { UsersContext } from "../Users";
 import { useNavigate } from "react-router-dom";
 
@@ -74,7 +74,7 @@ function AddUser() {
             <div className={classes.input}>
               <input
                 type="text"
-                placeholder="Fullname"
+                placeholder="Full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />

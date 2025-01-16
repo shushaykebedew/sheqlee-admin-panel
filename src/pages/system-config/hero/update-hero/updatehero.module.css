@@ -113,3 +113,24 @@
 .textarea textarea[rows="4"] {
   height: calc(6em + 48px);
 }
+
+.file {
+  width: 100%;
+}
+.upload-button {
+  display: inline-block;
+  padding: 1.2rem 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-family: var(--font-family);
+  width: 100%;
+  text-align: center;
+}
+.file-input {
+  display: none;
+}
