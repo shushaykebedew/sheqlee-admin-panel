@@ -1,5 +1,5 @@
 import classes from "./filteration.module.css";
-import FilterByRole from "./DocType";
+import FilterByDocType from "./FilterByDocType";
 import SubHeader from "../headings/SubHeader";
 
 function Filteration() {
@@ -11,7 +11,7 @@ function Filteration() {
             <SubHeader />
           </div>
           <div className={classes["filteration-group"]}>
-            <FilterByRole />
+            <FilterByDocType />
           </div>
         </div>
       </div>

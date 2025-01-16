@@ -1,25 +1,34 @@
 import React, { useContext, useState } from "react";
 import { PolygonDown, PolygonUp } from "../../../../SvgIcons";
-import classes from "./DocType.module.css";
+import classes from "./FilterByDocType.module.css";
 import { APGSPPTSCP_Context } from "../APGSPPTSCP";
-
-function DocType() {
+import { dummyAPGSPPTSCP } from "../data";
+function FilterByDocType() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Doc-Type");
+  const [selectedOption, setSelectedOption] = useState("Doc Type");
 
   const { onFilterChange } = useContext(APGSPPTSCP_Context);
 
+  // Extract unique pageTitle options dynamically
+  const uniquePageTitles = Array.from(
+    new Set(dummyAPGSPPTSCP.map((page) => page.pageTitle))
+  );
+
   const options = [
     { value: "", label: "Doc Type" },
-    { value: "all-options", label: "All Options" },
-    { value: "option1", label: "Option1" },
-    { value: "option2", label: "Option2" },
+    { value: "all-options", label: "All" },
+    ...uniquePageTitles.map((pageTitle) => ({
+      value: pageTitle,
+      label: pageTitle,
+    })),
   ];
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
-    onFilterChange(`doc-type:${option.value}`);
     setIsDropdownOpen(false);
+
+    const filterValue = option.value === "all-options" ? "" : option.value;
+    onFilterChange(filterValue);
   };
 
   return (
@@ -61,7 +70,7 @@ function DocType() {
                 }}
                 onClick={() => handleOptionClick(option)}
               >
-                <span> {option.label}</span>
+                <span>{option.label}</span>
                 {index === 0 && (
                   <PolygonUp
                     className={classes.iconUp}
@@ -77,4 +86,4 @@ function DocType() {
   );
 }
 
-export default DocType;
+export default FilterByDocType;

@@ -1,19 +1,9 @@
 .apgsppttcp {
+  overflow: auto;
   display: flex;
   flex-direction: column;
-}
-.header {
-  height: 17rem;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.no-data-message {
-  font-size: 1.8rem;
-  font-weight: 500;
-  text-align: center;
-  margin-top: 3rem;
+  gap: 3rem;
+  position: relative;
 }
 .titles {
   width: 50%;
@@ -21,5 +11,26 @@
 .filters {
   width: 50%;
   position: relative;
-  /* padding-top: rem; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  z-index: 100;
+  top: 0;
+  background-color: #f7f7f7;
+}
+
+.apgsppttcp-table {
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.no-data-message {
+  font-size: 1.8rem;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 3rem;
 }

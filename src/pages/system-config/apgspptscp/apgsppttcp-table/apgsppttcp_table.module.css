@@ -1,7 +1,8 @@
 .apgsppttcp {
   position: relative;
   overflow: auto;
-  bottom: 2rem;
+  max-height: 68vh;
+  min-height: 68vh;
 }
 
 .apgsppttcp table {
@@ -9,8 +10,27 @@
   border-collapse: collapse;
   font-size: 1.6rem;
   overflow-y: auto;
+  z-index: 1;
 }
 
+.apgsppttcp::-webkit-scrollbar {
+  width: 6px;
+}
+
+.apgsppttcp::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.apgsppttcp::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.apgsppttcp thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
+}
 .apgsppttcp-table td {
   padding: 0.9rem 1rem;
   max-width: 16rem;
@@ -56,11 +76,12 @@
 
 .pagination {
   padding: 2rem;
-  padding-left: 62rem;
+  padding-right: 8rem;
   font-size: 1.5rem;
   height: 6rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 2.4rem;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
