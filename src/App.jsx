@@ -48,6 +48,7 @@ import UpdateAPGSPPTSCP from "./pages/system-config/apgspptscp/update-apgspptscp
 import JobDetails from "./pages/job-posts/job-details/JobDetails";
 import PageNotFound from "./components/page-not-found/PageNotFound";
 import { AuthProvider, useAuth } from "./authentication/AuthContext";
+import ReadAPGSPPTSCP from "./pages/system-config/apgspptscp/read-apgspptscp/ReadAPGSPPTSCP";
 
 function App() {
   return (
@@ -123,6 +124,10 @@ function AppRoutes() {
             <Route path="update-faq/:faqId?" element={<UpdateFAQ />} />
           </Route>
           <Route path="apgspptscp" element={<APGSPPTSCP />}>
+            <Route
+              path="read-apgspptscp/:pageId?"
+              element={<ReadAPGSPPTSCP />}
+            />
             <Route
               path="update-apgspptscp/:pageId?"
               element={<UpdateAPGSPPTSCP />}

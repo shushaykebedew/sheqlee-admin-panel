@@ -1,4 +1,4 @@
-.update-apgspptscp {
+.read-apgspptscp {
   margin-left: 3rem;
   margin-right: 3rem;
   display: flex;
@@ -44,15 +44,9 @@
 }
 
 .version {
-  width: 18%;
+  width: 30%;
   margin-top: 5rem;
   position: relative;
-  background-color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  color: white;
 }
 .polygon-down svg {
   position: absolute;
@@ -81,7 +75,7 @@
   padding: 1.2rem 1.5rem;
   cursor: pointer;
 }
-.update-apgspptscp .rich-text-editor {
+.read-apgspptscp .rich-text-editor {
   height: 40rem;
   background-color: #dfdfdf;
   width: 100%;

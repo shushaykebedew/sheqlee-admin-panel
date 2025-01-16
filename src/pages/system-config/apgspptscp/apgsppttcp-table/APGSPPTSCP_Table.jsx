@@ -84,7 +84,11 @@ function APGSPPTSCP_Table() {
                     {getStatusIcon(data.pageTitle, data.updatedOn)}
                   </span>
                   <button
-                    onClick={() => navigate(`update-apgspptscp/${data.pageId}`)}
+                    onClick={() =>
+                      navigate(`read-apgspptscp/${data.pageId}`, {
+                        state: { iteration: data.iteration },
+                      })
+                    }
                   >
                     <EditIcon />
                   </button>

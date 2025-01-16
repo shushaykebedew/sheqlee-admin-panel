@@ -7,7 +7,7 @@ import Quill from "quill";
 import "quill/dist/quill.snow.css";
 
 function UpdateAPGSPPTSCP() {
-  const { onUpdatePage, dummyAPGSPPTSCP } = useContext(APGSPPTSCP_Context);
+  const { dispatch, dummyAPGSPPTSCP } = useContext(APGSPPTSCP_Context);
   const { pageId } = useParams();
   const navigate = useNavigate();
 
@@ -84,26 +84,16 @@ function UpdateAPGSPPTSCP() {
   }, [selectedIteration]);
 
   const handleSave = () => {
-    const updatedPages = dummyAPGSPPTSCP.map((item) =>
-      item.pageId === pageId
-        ? {
-            ...item,
-            iterations: item.iterations.map((iteration) =>
-              iteration.id === selectedIteration.id
-                ? { ...iteration, content: selectedIteration.content }
-                : iteration
-            ),
-          }
-        : item
-    );
+    dispatch({
+      type: "UPDATE_PAGE",
+      payload: {
+        pageId,
+        updatedContent: selectedIteration,
+      },
+    });
 
-    onUpdatePage(updatedPages);
-    console.log("Updated Data:", updatedPages);
     navigate("..");
   };
-
-  // Check if it's the first iteration
-  const isFirstIteration = selectedIteration?.iteration === "1";
 
   return (
     <div className={classes["update-apgspptscp"]}>
@@ -114,24 +104,17 @@ function UpdateAPGSPPTSCP() {
           </button>
           <div className={classes["main-header"]}>
             <h1 className={classes["main-header-text"]}>
-              {isFirstIteration
-                ? `Edit ${page.pageTitle}`
-                : `Update ${page.pageTitle}`}
+              Update {page.pageTitle}
             </h1>
             <div className={classes["main-header-line"]}></div>
           </div>
         </div>
         <div className={classes.version}>
-          <span>v{selectedIteration?.iteration}</span>{" "}
-          <span className={classes["polygon-down"]}>
-            <PolygonDown />
-          </span>
+          <span>v{Number(selectedIteration?.iteration) + 1}</span>{" "}
         </div>
         <div className={classes["button-container"]}>
           <button className={classes["create-button"]} onClick={handleSave}>
-            {isFirstIteration
-              ? `Create new ${page.pageTitle}`
-              : `Update ${page.pageTitle}`}
+            Update {page.pageTitle}
           </button>
         </div>
       </div>

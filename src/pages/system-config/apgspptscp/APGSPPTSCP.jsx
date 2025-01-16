@@ -31,6 +31,28 @@ const APGSPPTSCP_Reducer = (state, action) => {
       };
     }
 
+    case "UPDATE_PAGE": {
+      const { pageId, updatedContent } = action.payload;
+
+      const updatedPages = state.filteredPages.map((page) =>
+        page.pageId === pageId
+          ? {
+              ...page,
+              iterations: page.iterations.map((iteration) =>
+                iteration.id === updatedContent.id
+                  ? { ...iteration, ...updatedContent }
+                  : iteration
+              ),
+            }
+          : page
+      );
+
+      return {
+        ...state,
+        filteredPages: updatedPages,
+      };
+    }
+
     default:
       console.error(`Unknown action type: ${action.type}`);
       return state;
@@ -39,7 +61,7 @@ const APGSPPTSCP_Reducer = (state, action) => {
 
 function APGSPPTSCP() {
   const location = useLocation();
-  const isAddAPGSPPTSCPRoute = location.pathname.endsWith("add-apgsppttcp");
+  const isReadAPGSPPTSCPRoute = location.pathname.includes("read-apgspptscp");
   const isUpdateAPGSPPTSCPRoute =
     location.pathname.includes("update-apgspptscp");
 
@@ -59,10 +81,11 @@ function APGSPPTSCP() {
       value={{
         onFilterChange: handleFilterChange,
         dummyAPGSPPTSCP: state.filteredPages,
+        dispatch,
       }}
     >
       <div className={classes["apgsppttcp"]}>
-        {!isAddAPGSPPTSCPRoute &&
+        {!isReadAPGSPPTSCPRoute &&
         !isUpdateAPGSPPTSCPRoute &&
         dummyAPGSPPTSCP.length === 0 ? (
           <p className={classes["no-data-message"]}>
@@ -70,7 +93,7 @@ function APGSPPTSCP() {
           </p>
         ) : (
           <>
-            {!isAddAPGSPPTSCPRoute && !isUpdateAPGSPPTSCPRoute && (
+            {!isReadAPGSPPTSCPRoute && !isUpdateAPGSPPTSCPRoute && (
               <>
                 <div className={classes["header"]}>
                   <div className={classes.titles}>
