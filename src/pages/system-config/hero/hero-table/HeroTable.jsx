@@ -32,6 +32,12 @@ function HeroTable() {
     }
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className={classes.hero}>
       <table className={classes["hero-table"]}>
@@ -68,10 +74,8 @@ function HeroTable() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(Number(e.target.value))}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>

@@ -51,6 +51,12 @@ function UsersTable() {
     Deleted: <img src={statusGray} alt="deleted" />,
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   const handleModalOpen = (user) => {
     setSelectedUser(user);
     setIsModalOpen(true);
@@ -144,10 +150,8 @@ function UsersTable() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(e.target.value)}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>

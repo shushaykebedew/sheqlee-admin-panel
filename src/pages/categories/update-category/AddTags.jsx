@@ -68,11 +68,21 @@ function AddTags({ onChange }) {
 
         {isDropdownOpen && (
           <ul className={classes.menu}>
-            {options.map((option) => (
+            {options.map((option, index) => (
               <li
                 key={option.value}
                 className={classes.option}
                 onClick={() => handleOptionClick(option)}
+                style={{
+                  borderBottom:
+                    index === options.length - 1
+                      ? "none"
+                      : index === 0
+                      ? "1px solid #B4B4B4"
+                      : "1px solid #b4b4b49d",
+
+                  paddingLeft: "1rem",
+                }}
               >
                 <span>{option.label}</span>
               </li>

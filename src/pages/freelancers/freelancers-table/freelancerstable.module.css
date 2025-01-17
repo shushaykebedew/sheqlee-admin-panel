@@ -30,12 +30,27 @@
   background-color: var(--input-bg-color);
   z-index: 9;
 }
+.freelancers-table th,
 .freelancers-table td {
-  padding: 0.8rem 1rem;
-  max-width: 16rem;
+  max-width: 17rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.freelancers-table th {
+  padding: 1.2rem 1rem;
+  background-color: var(--input-bg-color);
+  color: #000000;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+}
+.freelancers-table th:last-child {
+  padding-left: 2rem;
+}
+
+.freelancers-table td {
+  padding: 0.8rem 1rem;
 }
 .freelancers-table td:nth-child(5),
 .freelancers-table td:nth-child(6) {
@@ -56,18 +71,6 @@
 
 .freelancers-table tr:nth-child(even) {
   background-color: var(--input-bg-color);
-}
-
-.freelancers-table th {
-  padding: 1.2rem 1rem;
-  background-color: var(--input-bg-color);
-  color: #000000;
-  font-weight: 500;
-  font-size: 2rem;
-  text-align: left;
-}
-.freelancers-table th:last-child {
-  padding-left: 2rem;
 }
 
 .sort-icon {

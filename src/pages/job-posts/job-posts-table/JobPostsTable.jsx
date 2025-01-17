@@ -39,6 +39,12 @@ function JobPostsTable() {
     }
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   const getSortIndicator = (column) => {
     if (sortBy === column) {
       return sortOrder === "asc" ? "▼" : "▲";
@@ -142,7 +148,7 @@ function JobPostsTable() {
               <input
                 type="number"
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(Number(e.target.value))}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>

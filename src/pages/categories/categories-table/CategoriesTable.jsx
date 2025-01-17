@@ -45,6 +45,12 @@ function CategoriesTable() {
     }
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   const getStatusIcon = {
     Active: <img src={statusGreen} alt="active" />,
     Inactive: <img src={statusRed} alt="inactive" />,
@@ -77,93 +83,95 @@ function CategoriesTable() {
 
   return (
     <div className={classes.categories}>
-      <table className={classes["categories-table"]}>
-        <thead>
-          <tr>
-            <th>
-              Cat. ID
-              <button
-                className={classes["sort-icon"]}
-                onClick={() => onSortChange("catId")}
-              >
-                {getSortIndicator("catId")}
-              </button>
-            </th>
-            <th>
-              Category title
-              <button
-                className={classes["sort-icon"]}
-                onClick={() => onSortChange("title")}
-              >
-                {getSortIndicator("title")}
-              </button>
-            </th>
-            <th>Tags</th>
+      <div className={classes["table-container"]}>
+        <table className={classes["categories-table"]}>
+          <thead>
+            <tr>
+              <th>
+                Cat. ID
+                <button
+                  className={classes["sort-icon"]}
+                  onClick={() => onSortChange("catId")}
+                >
+                  {getSortIndicator("catId")}
+                </button>
+              </th>
+              <th>
+                Category title
+                <button
+                  className={classes["sort-icon"]}
+                  onClick={() => onSortChange("title")}
+                >
+                  {getSortIndicator("title")}
+                </button>
+              </th>
+              <th>Tags</th>
 
-            <th>
-              Jobs
-              <button
-                className={classes["sort-icon"]}
-                onClick={() => onSortChange("jobs")}
-              >
-                {getSortIndicator("jobs")}
-              </button>
-            </th>
-            <th>
-              Subs
-              <button
-                className={classes["sort-icon"]}
-                onClick={() => onSortChange("subs")}
-              >
-                {getSortIndicator("subs")}
-              </button>
-            </th>
-            <th>Created on</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentCategories.map((category) => (
-            <tr key={category.catId}>
-              <td>{category.catId}</td>
-              <td>{category.title}</td>
-              <td>{category.tags}</td>
-              <td>
-                <div className={classes.status}>
-                  <span>{category.jobs}</span>
-                  {
-                    <button
-                      className={classes["link-icon"]}
-                      onClick={() => handleModalOpen(category)}
-                    >
-                      <LinkIcon />
-                    </button>
-                  }
-                </div>
-              </td>
-              <td>{category.subs}</td>
-              <td>{category.createdOn}</td>
-              <td>
-                <div className={classes.action}>
-                  <button
-                    className={classes["status-icon"]}
-                    onClick={() => onToggleStatus(category.catId)}
-                  >
-                    {getStatusIcon[category.status]}
-                  </button>
-
-                  <button onClick={() => handleNavigateUpdate(category)}>
-                    <EditIcon />
-                  </button>
-                  <button onClick={() => onDelete(category.catId)}>
-                    <DeleteIcon />
-                  </button>
-                </div>
-              </td>
+              <th>
+                Jobs
+                <button
+                  className={classes["sort-icon"]}
+                  onClick={() => onSortChange("jobs")}
+                >
+                  {getSortIndicator("jobs")}
+                </button>
+              </th>
+              <th>
+                Subs
+                <button
+                  className={classes["sort-icon"]}
+                  onClick={() => onSortChange("subs")}
+                >
+                  {getSortIndicator("subs")}
+                </button>
+              </th>
+              <th>Created on</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {currentCategories.map((category) => (
+              <tr key={category.catId}>
+                <td>{category.catId}</td>
+                <td>{category.title}</td>
+                <td>{category.tags}</td>
+                <td>
+                  <div className={classes.status}>
+                    <span>{category.jobs}</span>
+                    {
+                      <button
+                        className={classes["link-icon"]}
+                        onClick={() => handleModalOpen(category)}
+                      >
+                        <LinkIcon />
+                      </button>
+                    }
+                  </div>
+                </td>
+                <td>{category.subs}</td>
+                <td>{category.createdOn}</td>
+                <td>
+                  <div className={classes.action}>
+                    <button
+                      className={classes["status-icon"]}
+                      onClick={() => onToggleStatus(category.catId)}
+                    >
+                      {getStatusIcon[category.status]}
+                    </button>
+
+                    <button onClick={() => handleNavigateUpdate(category)}>
+                      <EditIcon />
+                    </button>
+                    <button onClick={() => onDelete(category.catId)}>
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {totalPages > 1 && (
         <div className={classes.pagination}>
           <div className={classes.text}>
@@ -171,10 +179,8 @@ function CategoriesTable() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(e.target.value)}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>

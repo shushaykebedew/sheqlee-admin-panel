@@ -59,6 +59,12 @@ function APGSPPTSCP_Table() {
     }
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className={classes.apgsppttcp}>
       <table className={classes["apgsppttcp-table"]}>
@@ -108,10 +114,8 @@ function APGSPPTSCP_Table() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>

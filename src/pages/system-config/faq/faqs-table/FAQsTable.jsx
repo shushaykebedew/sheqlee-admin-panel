@@ -42,6 +42,12 @@ function FAQsTable() {
     }
   };
 
+  const handleRowsPerPageChange = (e) => {
+    const value = Math.max(1, Number(e.target.value) || 1);
+    setRowsPerPage(value);
+    setCurrentPage(1);
+  };
+
   const getStatusIcon = {
     Active: <img src={statusGreen} alt="active" />,
     Inactive: <img src={statusRed} alt="inactive" />,
@@ -123,10 +129,8 @@ function FAQsTable() {
             <div className={classes["rows-per-page"]}>
               <input
                 type="number"
-                min={1}
-                max={10}
                 value={rowsPerPage}
-                onChange={(e) => setRowsPerPage(e.target.value)}
+                onChange={handleRowsPerPageChange}
               />
             </div>
           </div>
