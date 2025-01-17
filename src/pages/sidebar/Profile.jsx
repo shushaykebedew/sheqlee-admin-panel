@@ -3,7 +3,7 @@ import classes from "./profile.module.css";
 import { useAuth } from "../../authentication/AuthContext";
 
 function Profile() {
-  const { logoutUser } = useAuth();
+  const { logoutUser, currentUser } = useAuth();
 
   const handleLogout = (event) => {
     event.stopPropagation();
@@ -13,8 +13,14 @@ function Profile() {
   return (
     <div className={classes["account-details"]}>
       <div className={classes["account-detail"]}>
-        <img src={profile} alt="profile" className={classes["profile-img"]} />
-        <p className={classes.username}>Muruts Yifter</p>
+        <img
+          src={currentUser?.profile || profile}
+          alt="profile"
+          className={classes["profile-img"]}
+        />
+        <p className={classes.username}>
+          {currentUser?.fullName || "Muruts Yifter"}
+        </p>
       </div>
       <div className={classes.action}>
         <button className={classes["logout-button"]} onClick={handleLogout}>

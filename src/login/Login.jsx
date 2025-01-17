@@ -37,13 +37,11 @@ function Login() {
     setIsSubmitted(true);
 
     if (isFormValid) {
-      // Check if the user exists and if the password matches
       const user = dummyUsers.find((user) => user.email === email);
 
       if (user && user.password === password) {
-        // Update isAuthenticated state in App component
-        loginUser();
-        // Redirect to home if credentials are valid
+        // Pass user details to the loginUser function
+        loginUser(user);
         navigate("/");
       } else {
         setLoginError("Invalid email or password.");

@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { BackwardArrowIcon, PencilIcon } from "../../SvgIcons";
 import classes from "./editprofile.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultProfile from "../../images/profile-lg.png";
 import Button from "../../components/button/Button";
+import { useAuth } from "../../authentication/AuthContext";
 
 function EditProfile() {
+  const { currentUser, updateUser } = useAuth();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -14,6 +16,16 @@ function EditProfile() {
   const [profile, setProfile] = useState(defaultProfile);
 
   const navigate = useNavigate();
+
+  // Prefill form fields with current user data
+  useEffect(() => {
+    if (currentUser) {
+      setFullName(currentUser.fullName || "");
+      setEmail(currentUser.email || "");
+      setPhone(currentUser.phone || "");
+      setProfile(currentUser.profile || defaultProfile);
+    }
+  }, [currentUser]);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -27,26 +39,33 @@ function EditProfile() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (password && password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
     // Construct updated user data
     const updatedUser = {
+      ...currentUser,
       fullName,
       email,
       phone,
-      password,
       profile,
+      ...(password && { password }), // Include password only if provided
     };
 
-    console.log("Updated user:", updatedUser);
+    // Update user data (context or backend call)
+    updateUser(updatedUser);
 
     // Navigate back to the previous page
-    navigate("..");
+    // navigate("..");
   };
 
   const isFormValid =
     fullName.trim() !== "" &&
     email.trim() !== "" &&
     phone.trim() !== "" &&
-    password === confirmPassword &&
+    (!password || password === confirmPassword) &&
     profile !== defaultProfile;
 
   return (
@@ -57,7 +76,6 @@ function EditProfile() {
           <BackwardArrowIcon />
         </div>
         <div className={classes["main-header"]}>
-          {" "}
           <h1 className={classes["main-header-text"]}>Edit Profile</h1>
           <div className={classes["main-header-line"]}></div>
         </div>
@@ -66,7 +84,7 @@ function EditProfile() {
       {/* Form */}
       <form onSubmit={handleSubmit}>
         <div className={`${classes.label} ${isFormValid ? classes.valid : ""}`}>
-          <p className={classes["user-id"]}>USR005</p>
+          <p className={classes["user-id"]}>{currentUser?.id || "USR001"}</p>
           <p>~ User ID</p>
         </div>
         <div className={classes.inputs}>
@@ -75,7 +93,7 @@ function EditProfile() {
             <div className={classes.input}>
               <input
                 type="text"
-                placeholder="FullName"
+                placeholder="Full name"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />
@@ -100,7 +118,7 @@ function EditProfile() {
                 placeholder="Phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-              />{" "}
+              />
               <span className={classes.pencil}>
                 <PencilIcon />
               </span>
@@ -121,7 +139,7 @@ function EditProfile() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
-            <p>Leave this empty if you don't want change your password.</p>
+            <p>Leave this empty if you don't want to change your password.</p>
           </div>
 
           {/* Profile Picture */}
