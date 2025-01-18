@@ -1,6 +1,6 @@
 .freelancers {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   max-height: 67vh;
 }
 
@@ -8,21 +8,41 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
 }
 
-.freelancers::-webkit-scrollbar {
+.freelancers-table tbody {
+  display: block;
+  max-height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.freelancers-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.freelancers::-webkit-scrollbar-thumb {
+.freelancers-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.freelancers::-webkit-scrollbar-track {
+.freelancers-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.freelancers-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.freelancers-table tbody tr {
+  height: 4rem;
 }
 .freelancers thead th {
   position: sticky;
@@ -32,7 +52,7 @@
 }
 .freelancers-table th,
 .freelancers-table td {
-  max-width: 17rem;
+  max-width: 18rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -48,10 +68,23 @@
 .freelancers-table th:last-child {
   padding-left: 2rem;
 }
+.freelancers-table th:nth-child(1),
+.freelancers-table td:nth-child(1) {
+  width: 10rem;
+}
+.freelancers-table th:nth-child(2),
+.freelancers-table td:nth-child(2),
+.freelancers-table th:nth-child(3),
+.freelancers-table td:nth-child(3),
+.freelancers-table th:nth-child(4),
+.freelancers-table td:nth-child(4) {
+  width: 18rem;
+}
 
 .freelancers-table td {
   padding: 0.8rem 1rem;
 }
+
 .freelancers-table td:nth-child(5),
 .freelancers-table td:nth-child(6) {
   text-align: center;

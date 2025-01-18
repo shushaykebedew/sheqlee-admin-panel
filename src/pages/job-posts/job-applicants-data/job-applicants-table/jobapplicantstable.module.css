@@ -1,23 +1,92 @@
 .applicants {
   position: relative;
-  overflow: auto;
-  bottom: 2rem;
+  overflow: hidden;
+  max-height: 66.25vh;
 }
 
 .applicants table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
+  z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
 }
 
+.applicants-table tbody {
+  display: block;
+  max-height: 45vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.applicants-table tbody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.applicants-table tbody::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.applicants-table tbody::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.applicants-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.applicants-table tbody tr {
+  height: 4rem;
+}
+
+.applicants-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
+}
+
+.applicants-table tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.applicants-table tr:nth-child(even) {
+  background-color: var(--input-bg-color);
+}
+
+.applicants-table th,
 .applicants-table td {
-  padding: 0.9rem 1rem;
-  max-width: 16rem;
+  max-width: 20rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.applicants-table th:nth-child(2),
+.applicants-table td:nth-child(2) {
+  width: 20rem;
+}
+.applicants-table td {
+  padding: 0.9rem 1rem;
+}
+
+.applicants-table th {
+  padding: 1.2rem 1rem;
+  color: #000000;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+  position: relative;
+}
+.applicants-table th:last-child {
+  padding-left: 2rem;
+}
+
 .applicants-table td:nth-child(5),
 .applicants-table th:nth-child(5) {
   text-align: center;

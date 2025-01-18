@@ -1,28 +1,48 @@
 .tags {
   position: relative;
-  overflow: auto;
-  max-height: 65.5vh;
+  overflow: hidden;
+  max-height: 65vh;
 }
 
 .tags table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
 }
 
-.tags::-webkit-scrollbar {
+.tags-table tbody {
+  display: block;
+  max-height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.tags-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.tags::-webkit-scrollbar-thumb {
+.tags-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.tags::-webkit-scrollbar-track {
+.tags-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.tags-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.tags-table tbody tr {
+  height: 4rem;
 }
 .tags thead th {
   position: sticky;
@@ -30,6 +50,28 @@
   background-color: var(--input-bg-color);
   z-index: 9;
 }
+.tags-table td {
+  padding: 0.9rem 1rem;
+  max-width: 24rem;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.tags-table tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.tags-table tr:nth-child(even) {
+  background-color: var(--input-bg-color);
+}
+.tags-table th:nth-child(1),
+.tags-table td:nth-child(1) {
+  padding-left: 2rem;
+  width: 12rem;
+}
+
 .tags-table td {
   padding: 0.9rem 1rem;
   max-width: 16rem;
@@ -45,11 +87,6 @@
 
 .tags-table tr:nth-child(even) {
   background-color: var(--input-bg-color);
-}
-
-.tags-table th:nth-child(1),
-.tags-table td:nth-child(1) {
-  padding-left: 2rem;
 }
 
 .tags-table th {

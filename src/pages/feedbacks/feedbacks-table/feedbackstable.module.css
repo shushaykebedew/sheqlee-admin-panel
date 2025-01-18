@@ -1,6 +1,6 @@
 .feedbacks {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
   max-height: 75vh;
 }
 
@@ -8,22 +8,70 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 65vh;
+  table-layout: fixed;
 }
 
-.feedbacks::-webkit-scrollbar {
+.feedbacks-table tbody {
+  display: block;
+  max-height: 58vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.feedbacks-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.feedbacks::-webkit-scrollbar-thumb {
+.feedbacks-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.feedbacks::-webkit-scrollbar-track {
+.feedbacks-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
+.feedbacks-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.feedbacks-table tbody tr {
+  height: 4rem;
+}
+.feedbacks thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
+}
+.feedbacks-table td {
+  padding: 0.9rem 1rem;
+  max-width: 24rem;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.feedbacks-table tr:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+.feedbacks-table tr:nth-child(even) {
+  background-color: var(--input-bg-color);
+}
+.feedbacks-table th:nth-child(1),
+.feedbacks-table td:nth-child(1) {
+  padding-left: 2rem;
+  width: 12rem;
+}
+
 .feedbacks thead th {
   position: sticky;
   top: 0;
@@ -33,21 +81,21 @@
 
 .feedbacks-table td {
   padding: 1.5rem 1rem;
-  max-width: 16rem;
+  max-width: 36rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.feedbacks-table th:first-child,
-.feedbacks-table td:first-child {
-  width: 10rem;
-}
+
 .feedbacks-table th:nth-child(2),
 .feedbacks-table td:nth-child(2) {
-  width: 50rem;
+  width: 36rem;
   padding-right: 2rem;
 }
-
+.feedbacks-table th:nth-child(4),
+.feedbacks-table td:nth-child(4) {
+  width: 26rem;
+}
 .feedbacks-table td:last-child {
   padding-left: 3rem;
 }

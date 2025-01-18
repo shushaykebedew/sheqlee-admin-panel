@@ -1,48 +1,77 @@
 .companies {
   position: relative;
-  overflow: auto;
-  max-height: 68.5vh;
+  overflow: hidden;
+  max-height: 66vh;
 }
 
 .companies table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
 }
 
-.companies::-webkit-scrollbar {
+.companies-table tbody {
+  display: block;
+  max-height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.companies-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.companies::-webkit-scrollbar-thumb {
+.companies-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.companies::-webkit-scrollbar-track {
+.companies-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
+.companies-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.companies-table tbody tr {
+  height: 4rem;
+}
+
 .companies thead th {
   position: sticky;
   top: 0;
   background-color: var(--input-bg-color);
   z-index: 9;
-}
-
-.companies-table td {
-  padding: 0.9rem 1rem;
-  max-width: 16rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.companies-table td:nth-child(5),
-.companies-table td:nth-child(6) {
-  text-align: center;
+
+.companies-table td,
+.companies-table th {
+  max-width: 18rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
+.companies-table th:nth-child(2),
+.companies-table td:nth-child(2),
+.companies-table th:nth-child(3),
+.companies-table td:nth-child(3) {
+  width: 18rem;
+}
+.companies-table td {
+  padding: 0.8rem 1rem;
+}
 .companies-table .email-link a {
   text-decoration: none;
   color: #0c47ec;

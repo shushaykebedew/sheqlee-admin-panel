@@ -1,28 +1,50 @@
 .jobs {
   position: relative;
-  overflow: auto;
-  max-height: 65vh;
+  overflow: hidden;
+  max-height: 66.25vh;
 }
 
 .jobs table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
 }
-.jobs::-webkit-scrollbar {
+
+.jobs-table tbody {
+  display: block;
+  max-height: 50vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.jobs-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.jobs::-webkit-scrollbar-thumb {
+.jobs-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.jobs::-webkit-scrollbar-track {
+.jobs-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
+
+.jobs-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.jobs-table tbody tr {
+  height: 4rem;
+}
+
 .jobs-table thead th {
   position: sticky;
   top: 0;
@@ -40,10 +62,14 @@
 
 .jobs-table th,
 .jobs-table td {
-  max-width: 17rem;
+  max-width: 20rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.jobs-table th:nth-child(2),
+.jobs-table td:nth-child(2) {
+  width: 20rem;
 }
 .jobs-table td {
   padding: 0.9rem 1rem;

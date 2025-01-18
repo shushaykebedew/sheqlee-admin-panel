@@ -9,21 +9,41 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 54vh;
+  table-layout: fixed;
 }
 
-.apgsppttcp::-webkit-scrollbar {
+.apgsppttcp-table tbody {
+  display: block;
+  max-height: 47vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.apgsppttcp-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.apgsppttcp::-webkit-scrollbar-thumb {
+.apgsppttcp-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.apgsppttcp::-webkit-scrollbar-track {
+.apgsppttcp-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.apgsppttcp-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.apgsppttcp-table tbody tr {
+  height: 4rem;
 }
 .apgsppttcp thead th {
   position: sticky;
@@ -43,7 +63,9 @@
 .apgsppttcp-table td:nth-child(1) {
   padding-left: 2rem;
 }
-
+.apgsppttcp-table td:nth-child(2) {
+  padding-left: 3rem;
+}
 .apgsppttcp-table tr:nth-child(odd) {
   background-color: #f7f7f7;
 }

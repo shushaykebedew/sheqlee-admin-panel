@@ -1,8 +1,11 @@
-.top {
-  display: flex;
-  height: 24rem;
-}
 .job-applicants {
+  overflow: auto;
   display: flex;
   flex-direction: column;
+  position: relative;
+  gap: 2rem;
+}
+
+.top {
+  display: flex;
 }

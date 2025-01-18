@@ -1,28 +1,48 @@
 .faqs {
   position: relative;
-  overflow: auto;
-  max-height: 63vh;
+  overflow: hidden;
+  max-height: 68vh;
 }
 
 .faqs table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
-  overflow-y: auto;
   z-index: 1;
+  height: auto;
+  min-height: 54vh;
+  table-layout: fixed;
 }
 
-.faqs::-webkit-scrollbar {
+.faqs-table tbody {
+  display: block;
+  max-height: 47vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+
+.faqs-table tbody::-webkit-scrollbar {
   width: 6px;
 }
 
-.faqs::-webkit-scrollbar-thumb {
+.faqs-table tbody::-webkit-scrollbar-thumb {
   background-color: #b4b4b4;
   border-radius: 3px;
 }
 
-.faqs::-webkit-scrollbar-track {
+.faqs-table tbody::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.faqs-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.faqs-table tbody tr {
+  height: 4rem;
 }
 .faqs thead th {
   position: sticky;
@@ -33,7 +53,7 @@
 
 .faqs-table td {
   padding: 0.9rem 1rem;
-  max-width: 16rem;
+  max-width: 45rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -42,11 +62,12 @@
 .faqs-table th:nth-child(1),
 .faqs-table td:nth-child(1) {
   padding-left: 2rem;
-  max-width: 7rem;
+  width: 13rem;
 }
 .faqs-table th:nth-child(2),
 .faqs-table td:nth-child(2) {
-  max-width: 30rem;
+  width: 45rem;
+  padding-right: 2rem;
 }
 
 .faqs-table tr:nth-child(odd) {
@@ -64,6 +85,10 @@
   font-weight: 500;
   font-size: 2rem;
   text-align: left;
+  max-width: 45rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .faqs-table th:last-child {
   padding-left: 2rem;
