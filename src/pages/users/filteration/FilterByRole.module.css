@@ -32,16 +32,18 @@
   padding: 1rem 1.2rem;
   cursor: pointer;
   box-shadow: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--placeholder-color);
   position: relative;
 }
-
+.control span {
+  font-size: 1.7rem;
+}
 .label {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .iconDown {
@@ -80,6 +82,9 @@
   overflow-x: hidden;
   display: flex;
   justify-content: space-between;
+}
+.option span {
+  font-size: 1.7rem;
 }
 
 .lastOption {

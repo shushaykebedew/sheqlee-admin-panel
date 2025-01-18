@@ -80,3 +80,9 @@
 .lastOption {
   border-bottom: none;
 }
+.control span {
+  font-size: 1.8rem;
+}
+.option span {
+  font-size: 1.7rem;
+}
