@@ -31,18 +31,14 @@ const APGSPPTSCP_Reducer = (state, action) => {
       };
     }
 
-    case "UPDATE_PAGE": {
-      const { pageId, updatedContent } = action.payload;
+    case "ADD_NEW_ITERATION": {
+      const { pageId, newIteration } = action.payload;
 
       const updatedPages = state.filteredPages.map((page) =>
         page.pageId === pageId
           ? {
               ...page,
-              iterations: page.iterations.map((iteration) =>
-                iteration.id === updatedContent.id
-                  ? { ...iteration, ...updatedContent }
-                  : iteration
-              ),
+              iterations: [...page.iterations, newIteration], // Add the new iteration
             }
           : page
       );

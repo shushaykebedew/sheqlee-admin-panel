@@ -21,11 +21,12 @@
   font-size: 1.5rem;
   color: #000000;
   font-weight: 500;
-  max-width: 9.5rem;
-  min-width: 9.5rem;
+  max-width: 10rem;
+  /* min-width: 100%; */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-transform: capitalize;
 }
 .action {
   font-weight: bold;
@@ -45,7 +46,8 @@
   border-bottom: 2px solid rgb(39, 37, 37);
 }
 .forward-arrow svg {
-  margin-right: 0.8rem;
+  /* margin-right: 0.8rem; */
   margin-bottom: -0.16rem;
   height: 0.9rem !important;
+  padding-right: 0.8rem;
 }

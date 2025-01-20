@@ -12,17 +12,18 @@ function APGSPPTSCP_Table() {
 
   const navigate = useNavigate();
 
-  // Flatten and sort data by updatedOn (Latest to Oldest)
+  // Flatten and sort data by iteration (Latest to Oldest)
   const flattenedData = dummyAPGSPPTSCP
     .flatMap((page) =>
       page.iterations.map((iteration) => ({
         pageTitle: page.pageTitle,
         status: page.status,
         pageId: page.pageId,
+        iterations: page.iterations, // Pass the full iterations array
         ...iteration,
       }))
     )
-    .sort((a, b) => new Date(b.updatedOn) - new Date(a.updatedOn)); // Sort in descending order
+    .sort((a, b) => Number(b.iteration) - Number(a.iteration)); // Sort by iteration in descending order
 
   const totalIterations = flattenedData.length;
   const totalPages = Math.ceil(totalIterations / rowsPerPage);
@@ -32,22 +33,19 @@ function APGSPPTSCP_Table() {
     currentPage * rowsPerPage
   );
 
-  const latestDatesByPage = dummyAPGSPPTSCP.reduce((acc, page) => {
-    const latestDate = page.iterations.reduce((latest, iteration) =>
-      new Date(iteration.updatedOn) > new Date(latest.updatedOn)
-        ? iteration
-        : latest
-    );
-    acc[page.pageTitle] = latestDate.updatedOn;
-    return acc;
-  }, {});
-
   // Determine the status icon
-  const getStatusIcon = (page, updatedOn) => {
-    const isLatest = updatedOn === latestDatesByPage[page];
+  const getStatusIcon = (iterations, iteration) => {
+    // Find the latest iteration based on the iteration number
+    const latestIteration = iterations.reduce((latest, current) =>
+      Number(current.iteration) > Number(latest.iteration) ? current : latest
+    );
+
+    // Check if the current iteration is the latest one
+    const isLatest = iteration === latestIteration.iteration;
     const dotClass = isLatest
       ? `${classes.dot} ${classes["dot-green"]}`
       : `${classes.dot} ${classes["dot-red"]}`;
+
     return <span className={dotClass}></span>;
   };
 
@@ -87,7 +85,7 @@ function APGSPPTSCP_Table() {
               <td>
                 <div className={classes.action}>
                   <span className={classes["status-icon"]}>
-                    {getStatusIcon(data.pageTitle, data.updatedOn)}
+                    {getStatusIcon(data.iterations, data.iteration)}
                   </span>
                   <button
                     onClick={() =>

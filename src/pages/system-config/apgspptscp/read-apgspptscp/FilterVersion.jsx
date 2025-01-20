@@ -57,18 +57,18 @@ function FilterVersion({ currentIteration, uniqueVersions, onFilterChange }) {
                       : index === 0
                       ? "1px solid #B4B4B4"
                       : "1px solid #b4b4b49d",
-                  marginLeft: index !== 0 ? "1rem" : "0",
-                  paddingLeft: index === 0 ? "1rem" : "0",
+
+                  paddingLeft: "1rem",
                 }}
                 onClick={() => handleOptionClick(option)}
               >
                 <span>{option.label}</span>
-                {index === 0 && (
+                {/* {index === 0 && (
                   <PolygonUp
                     className={classes.iconUp}
                     style={{ width: "1.5rem", height: "1.5rem" }}
                   />
-                )}
+                )} */}
               </li>
             ))}
           </ul>

@@ -84,11 +84,27 @@ function UpdateAPGSPPTSCP() {
   }, [selectedIteration]);
 
   const handleSave = () => {
+    // Format the current date to match the desired format
+    const formattedDate = new Date().toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+    // Create a new iteration object
+    const newIteration = {
+      ...selectedIteration,
+      iteration: Number(selectedIteration.iteration) + 1, // Increment version
+      updatedOn: formattedDate, // Set the formatted date
+      content: quillInstance.current?.root.innerHTML || "", // Get the current content from Quill
+    };
+
+    // Dispatch an action to add the new iteration
     dispatch({
-      type: "UPDATE_PAGE",
+      type: "ADD_NEW_ITERATION",
       payload: {
         pageId,
-        updatedContent: selectedIteration,
+        newIteration,
       },
     });
 

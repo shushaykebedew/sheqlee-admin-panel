@@ -1,12 +1,13 @@
 .update-apgspptscp {
   margin-left: 3rem;
   margin-right: 3rem;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3rem; */
 }
 .headers {
   margin-top: 1rem;
+  margin-bottom: 3rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 2rem;
@@ -86,6 +87,8 @@
   background-color: #dfdfdf;
   width: 100%;
   border-radius: 10px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
   font-size: 2rem;
   border: none;
   padding: 2rem;

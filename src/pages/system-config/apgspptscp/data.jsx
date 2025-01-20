@@ -167,7 +167,7 @@ export const dummyAPGSPPTSCP = [
         id: 5,
         iteration: "5",
         updatedBy: "Muruts Yifter",
-        updatedOn: "14 Jun 2025",
+        updatedOn: "01 Jan 2025",
         content:
           "Any violations of these terms may result in suspension or termination of your account.",
       },
