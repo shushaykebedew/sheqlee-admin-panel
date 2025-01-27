@@ -62,14 +62,18 @@
 
 .jobs-table th,
 .jobs-table td {
-  max-width: 20rem;
+  max-width: 24rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.jobs-table th:nth-child(1),
+.jobs-table td:nth-child(1) {
+  width: 10rem;
+}
 .jobs-table th:nth-child(2),
 .jobs-table td:nth-child(2) {
-  width: 20rem;
+  width: 24rem;
 }
 .jobs-table td {
   padding: 0.9rem 1rem;

@@ -7,6 +7,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0002",
@@ -16,6 +17,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Deleted",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0003",
@@ -25,6 +27,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0004",
@@ -34,6 +37,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0005",
@@ -43,6 +47,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Deleted",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0006",
@@ -52,6 +57,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0007",
@@ -61,6 +67,7 @@ export const dummyFreelancers = [
     regDate: "14 Jun 2019",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0008",
@@ -70,6 +77,7 @@ export const dummyFreelancers = [
     regDate: "15 Jun 2019",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0009",
@@ -79,6 +87,7 @@ export const dummyFreelancers = [
     regDate: "16 Jun 2019",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0010",
@@ -88,6 +97,7 @@ export const dummyFreelancers = [
     regDate: "17 Jun 2019",
     status: "Deleted",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0011",
@@ -97,6 +107,7 @@ export const dummyFreelancers = [
     regDate: "18 Jun 2019",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0012",
@@ -106,6 +117,7 @@ export const dummyFreelancers = [
     regDate: "19 Jun 2020",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0013",
@@ -115,6 +127,7 @@ export const dummyFreelancers = [
     regDate: "20 Jun 2020",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0014",
@@ -124,6 +137,7 @@ export const dummyFreelancers = [
     regDate: "21 Jun 2020",
     status: "Active",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0015",
@@ -133,6 +147,7 @@ export const dummyFreelancers = [
     regDate: "22 Jun 2020",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0016",
@@ -142,6 +157,7 @@ export const dummyFreelancers = [
     regDate: "23 Jun 2020",
     status: "Deleted",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0017",
@@ -151,6 +167,7 @@ export const dummyFreelancers = [
     regDate: "24 Jun 2020",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0018",
@@ -160,6 +177,7 @@ export const dummyFreelancers = [
     regDate: "25 Jun 2020",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0019",
@@ -169,6 +187,7 @@ export const dummyFreelancers = [
     regDate: "26 Jun 2020",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0020",
@@ -178,6 +197,7 @@ export const dummyFreelancers = [
     regDate: "27 Jun 2020",
     status: "Deleted",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0021",
@@ -187,6 +207,7 @@ export const dummyFreelancers = [
     regDate: "28 Jun 2021",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0022",
@@ -196,6 +217,7 @@ export const dummyFreelancers = [
     regDate: "29 Jun 2021",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0023",
@@ -205,6 +227,7 @@ export const dummyFreelancers = [
     regDate: "30 Jun 2021",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0024",
@@ -214,6 +237,7 @@ export const dummyFreelancers = [
     regDate: "1 Jul 2021",
     status: "Active",
     skillLevel: "Beginner",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0025",
@@ -223,6 +247,7 @@ export const dummyFreelancers = [
     regDate: "2 Jul 2021",
     status: "Deleted",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0026",
@@ -232,6 +257,7 @@ export const dummyFreelancers = [
     regDate: "3 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0027",
@@ -241,6 +267,7 @@ export const dummyFreelancers = [
     regDate: "4 Jul 2022",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0028",
@@ -250,6 +277,7 @@ export const dummyFreelancers = [
     regDate: "5 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0029",
@@ -259,6 +287,7 @@ export const dummyFreelancers = [
     regDate: "6 Jul 2022",
     status: "Deleted",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0030",
@@ -268,6 +297,7 @@ export const dummyFreelancers = [
     regDate: "7 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0031",
@@ -277,6 +307,7 @@ export const dummyFreelancers = [
     regDate: "8 Jul 2022",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0032",
@@ -286,6 +317,7 @@ export const dummyFreelancers = [
     regDate: "9 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0033",
@@ -295,6 +327,7 @@ export const dummyFreelancers = [
     regDate: "10 Jul 2022",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0034",
@@ -304,6 +337,7 @@ export const dummyFreelancers = [
     regDate: "11 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0035",
@@ -313,6 +347,7 @@ export const dummyFreelancers = [
     regDate: "12 Jul 2022",
     status: "Deleted",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0036",
@@ -322,6 +357,7 @@ export const dummyFreelancers = [
     regDate: "13 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0037",
@@ -331,6 +367,7 @@ export const dummyFreelancers = [
     regDate: "14 Jul 2022",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0038",
@@ -340,6 +377,7 @@ export const dummyFreelancers = [
     regDate: "15 Jul 2022",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0039",
@@ -349,6 +387,7 @@ export const dummyFreelancers = [
     regDate: "16 Jul 2023",
     status: "Deleted",
     skillLevel: "Expert",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0040",
@@ -358,6 +397,7 @@ export const dummyFreelancers = [
     regDate: "17 Jul 2023",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0041",
@@ -367,6 +407,7 @@ export const dummyFreelancers = [
     regDate: "18 Jul 2023",
     status: "Active",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0042",
@@ -376,6 +417,7 @@ export const dummyFreelancers = [
     regDate: "19 Jul 2023",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0043",
@@ -385,6 +427,7 @@ export const dummyFreelancers = [
     regDate: "20 Jul 2023",
     status: "Deleted",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0044",
@@ -394,6 +437,7 @@ export const dummyFreelancers = [
     regDate: "21 Jul 2024",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0045",
@@ -403,6 +447,7 @@ export const dummyFreelancers = [
     regDate: "22 Jul 2024",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0046",
@@ -412,6 +457,7 @@ export const dummyFreelancers = [
     regDate: "23 Jul 2024",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0047",
@@ -421,6 +467,7 @@ export const dummyFreelancers = [
     regDate: "24 Jul 2024",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0048",
@@ -430,6 +477,7 @@ export const dummyFreelancers = [
     regDate: "25 Jul 2024",
     status: "Deleted",
     skillLevel: "Beginner",
+    cvStatus: "Complete",
   },
   {
     frId: "FID0049",
@@ -439,6 +487,7 @@ export const dummyFreelancers = [
     regDate: "26 Jul 2024",
     status: "Active",
     skillLevel: "Intermediate",
+    cvStatus: "Incomplete",
   },
   {
     frId: "FID0050",
@@ -448,5 +497,6 @@ export const dummyFreelancers = [
     regDate: "27 Jul 2025",
     status: "Active",
     skillLevel: "Expert",
+    cvStatus: "Incomplete",
   },
 ];

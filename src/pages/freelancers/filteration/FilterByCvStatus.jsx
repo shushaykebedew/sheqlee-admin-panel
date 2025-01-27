@@ -1,20 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { PolygonDown, PolygonUp } from "../../../SvgIcons";
 import classes from "./FilterByCvStatus.module.css";
+import { FreelancersContext } from "../Freelancers";
 
 function FilterByCvStatus() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("CV status");
+  const { onFilterChange } = useContext(FreelancersContext);
 
   const options = [
     { value: "", label: "CV status" },
     { value: "all-status", label: "All" },
-    { value: "active", label: "Complete" },
-    { value: "inactive", label: "Incomplete" },
+    { value: "complete", label: "Complete" },
+    { value: "incomplete", label: "Incomplete" },
   ];
 
   const handleOptionClick = (option) => {
     setSelectedOption(option.label);
+    onFilterChange(`cvStatus:${option.value}`);
     setIsDropdownOpen(false);
   };
 

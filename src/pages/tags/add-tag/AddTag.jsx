@@ -96,7 +96,7 @@ function AddTag() {
               <img src={icon} alt="Tag-icon" className={classes["Tag-icon"]} />
             </div>
             <label className={classes["upload-button"]}>
-              Upload icon
+              {icon !== defaultIcon ? "Change icon" : "Upload icon"}
               <input
                 type="file"
                 accept="images/*"
