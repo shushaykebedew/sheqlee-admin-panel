@@ -1,5 +1,4 @@
 import { Eye, EyeSlash } from "../../SvgIcons";
-
 import classes from "./passwordfield.module.css";
 
 function PasswordField({
@@ -11,14 +10,36 @@ function PasswordField({
   showPassword,
   togglePasswordVisibility,
 }) {
+  const getMaskedPassword = () => value.replace(/./g, "*");
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+
+    if (!showPassword) {
+      // Masked mode: Only allow adding or removing from the end of the string
+      if (inputValue.length < value.length) {
+        // Handle deletion
+        onChange({ target: { value: value.slice(0, inputValue.length) } });
+      } else {
+        // Handle addition
+        const addedChar = inputValue[inputValue.length - 1];
+        onChange({ target: { value: value + addedChar } });
+      }
+    } else {
+      // Unmasked mode: Directly update the password
+      onChange(e);
+    }
+  };
+
   return (
     <div className={classes["password-field"]}>
       <div className={classes["password-field-form"]}>
         <input
-          type={showPassword ? "text" : "password"}
+          type="text"
           placeholder={placeholder}
-          value={value}
-          onChange={onChange}
+          value={showPassword ? value : getMaskedPassword()}
+          onChange={handleInputChange}
+          autoComplete="off"
         />
         {showEyeIcon && (
           <span
