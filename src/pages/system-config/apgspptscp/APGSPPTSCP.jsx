@@ -38,7 +38,7 @@ const APGSPPTSCP_Reducer = (state, action) => {
         page.pageId === pageId
           ? {
               ...page,
-              iterations: [...page.iterations, newIteration], // Add the new iteration
+              iterations: [...page.iterations, newIteration],
             }
           : page
       );
@@ -48,7 +48,30 @@ const APGSPPTSCP_Reducer = (state, action) => {
         filteredPages: updatedPages,
       };
     }
+    case "DELETE_PAGE": {
+      const { pageId, iterationId } = action.payload;
 
+      const updatedPages = state.filteredPages
+        .map((page) => {
+          if (page.pageId === pageId) {
+            const updatedIterations = page.iterations.filter(
+              (iteration) => iteration.id !== iterationId
+            );
+
+            // If no iterations remain, remove the entire page
+            return updatedIterations.length > 0
+              ? { ...page, iterations: updatedIterations }
+              : null;
+          }
+          return page;
+        })
+        .filter(Boolean); // Remove null values if entire pages are deleted
+
+      return {
+        ...state,
+        filteredPages: updatedPages,
+      };
+    }
     default:
       console.error(`Unknown action type: ${action.type}`);
       return state;
@@ -71,6 +94,14 @@ function APGSPPTSCP() {
   const handleFilterChange = (filterValue) => {
     dispatch({ type: "SET_FILTER", payload: { filterValue } });
   };
+  const handleDelete = (pageId, iterationId) => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this iteration?"
+    );
+    if (isConfirmed) {
+      dispatch({ type: "DELETE_PAGE", payload: { pageId, iterationId } });
+    }
+  };
 
   return (
     <APGSPPTSCP_Context.Provider
@@ -78,6 +109,7 @@ function APGSPPTSCP() {
         onFilterChange: handleFilterChange,
         dummyAPGSPPTSCP: state.filteredPages,
         dispatch,
+        onDelete: handleDelete,
       }}
     >
       <div className={classes["apgsppttcp"]}>
