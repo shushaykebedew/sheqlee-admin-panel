@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import classes from "./newpassword.module.css";
 import Hero from "../../components/hero/Hero";
@@ -13,24 +14,23 @@ function NewPassword() {
   const [passwordTwo, setPasswordTwo] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const { resetCode, setResetCode, resetCodeError, validateResetCode } =
     useResetCodeValidation();
-
   const { passwordError } = usePasswordValidation(passwordOne, passwordTwo);
 
   useEffect(() => {
     if (resetCode) {
       validateResetCode();
     }
-  }, [resetCode]);
+  }, [resetCode, validateResetCode]);
 
   function handleSubmit(e) {
-    setIsSubmitted(true);
     e.preventDefault();
-    if (resetCodeError) {
-      console.log("Password successfully reset!");
-    }
+    setIsSubmitted(true);
+    if (!isFormValid) return;
+    navigate("/login");
   }
 
   function togglePasswordVisibility() {
@@ -80,8 +80,6 @@ function NewPassword() {
               error={isSubmitted && passwordError}
               onChange={(e) => setPasswordTwo(e.target.value)}
               showEyeIcon={false}
-              // showPassword={showPassword}
-              togglePasswordVisibility={togglePasswordVisibility}
             />
             <div className={classes["action-buttons"]}>
               <Button
@@ -90,6 +88,7 @@ function NewPassword() {
                   isFormValid ? classes.valid : ""
                 }`}
                 disabled={!isFormValid}
+                aria-disabled={!isFormValid}
               >
                 Save
               </Button>

@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 import classes from "./activationform.module.css";
 import Hero from "../../components/hero/Hero";
 import Button from "../../components/button/Button";
@@ -12,23 +14,23 @@ function ActivationForm() {
   const [passwordTwo, setPasswordTwo] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
+
   const { resetCode, setResetCode, resetCodeError, validateResetCode } =
     useResetCodeValidation();
-
   const { passwordError } = usePasswordValidation(passwordOne, passwordTwo);
 
   useEffect(() => {
     if (resetCode) {
       validateResetCode();
     }
-  }, [resetCode]);
+  }, [resetCode, validateResetCode]);
 
   function handleSubmit(e) {
-    setIsSubmitted(true);
     e.preventDefault();
-    if (!passwordError && !resetCodeError) {
-      console.log("Password successfully reset!");
-    }
+    setIsSubmitted(true);
+    if (!isFormValid) return;
+    navigate("/login");
   }
 
   function togglePasswordVisibility() {
@@ -37,7 +39,7 @@ function ActivationForm() {
 
   const isFormValid =
     passwordOne &&
-    (passwordTwo ? passwordTwo : true) &&
+    passwordTwo &&
     resetCode &&
     !passwordError &&
     !resetCodeError;
@@ -47,7 +49,7 @@ function ActivationForm() {
       <Hero />
       <div className={classes["activation-form-container"]}>
         <form className={classes["activation-form"]} onSubmit={handleSubmit}>
-          <div className={classes["left"]}>
+          <div className={classes.left}>
             <label>Enter Code</label>
             <p className={classes["activation-message"]}>
               Please enter the one-time code sent to your email and set a new
@@ -62,7 +64,7 @@ function ActivationForm() {
               error={isSubmitted && resetCodeError}
             />
           </div>
-          <div className={classes["right"]}>
+          <div className={classes.right}>
             <label>New Password</label>
             <PasswordField
               placeholder="Password..."
@@ -79,17 +81,16 @@ function ActivationForm() {
               error={isSubmitted && passwordError}
               onChange={(e) => setPasswordTwo(e.target.value)}
               showEyeIcon={false}
-              // showPassword={showPassword}
-              togglePasswordVisibility={togglePasswordVisibility}
             />
 
             <div className={classes["action-buttons"]}>
               <Button
                 type="submit"
-                className={`${classes.button}${
+                className={`${classes.button} ${
                   isFormValid ? classes.valid : ""
                 }`}
                 disabled={!isFormValid}
+                aria-disabled={!isFormValid}
               >
                 Save
               </Button>
