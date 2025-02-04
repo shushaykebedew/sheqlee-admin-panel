@@ -17,7 +17,12 @@ function FilterByAudience() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-audience") {
+      setSelectedOption("Audience");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`audience:${option.value}`);
     setIsDropdownOpen(false);
   };

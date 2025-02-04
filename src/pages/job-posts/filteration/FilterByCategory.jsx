@@ -28,7 +28,12 @@ function FilterByCategory() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-categories") {
+      setSelectedOption("Category");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`category:${option.value}`);
     setIsDropdownOpen(false);
   };

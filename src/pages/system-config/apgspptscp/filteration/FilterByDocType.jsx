@@ -24,11 +24,14 @@ function FilterByDocType() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
-    setIsDropdownOpen(false);
-
+    if (option.value === "" || option.value === "all-options") {
+      setSelectedOption("Doc Type");
+    } else {
+      setSelectedOption(option.label);
+    }
     const filterValue = option.value === "all-options" ? "" : option.value;
     onFilterChange(filterValue);
+    setIsDropdownOpen(false);
   };
 
   return (

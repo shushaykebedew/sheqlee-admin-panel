@@ -17,9 +17,12 @@ function FilterByStatus() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-status") {
+      setSelectedOption("Status");
+    } else {
+      setSelectedOption(option.label);
+    }
     onFilterChange(`status:${option.value}`);
-    console.log(`status:${option.value}`);
     setIsDropdownOpen(false);
   };
 

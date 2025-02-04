@@ -137,7 +137,7 @@ function FreelancersTable() {
               <td>
                 <div className={classes.action}>
                   <span className={classes["status-icon"]}>
-                    {getStatusIcon[freelancer.status]}
+                    {getStatusIcon[freelancer.action]}
                   </span>
                   <button>
                     <DocumentIcon />

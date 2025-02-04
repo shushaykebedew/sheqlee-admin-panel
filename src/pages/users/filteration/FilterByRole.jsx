@@ -19,7 +19,12 @@ function FilterByRole() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-roles") {
+      setSelectedOption("Role");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`role:${option.value}`);
     setIsDropdownOpen(false);
   };

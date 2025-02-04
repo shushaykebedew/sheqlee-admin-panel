@@ -14,12 +14,17 @@ function FilterByJobType() {
     { value: "contract", label: "Contract" },
     { value: "part-time", label: "Part-time" },
     { value: "fulltime", label: "Full-time" },
-    { value: "per-project", label: "Per-project" },
+    { value: "per-diem", label: "Per-diem" },
     { value: "temporary", label: "Temporary" },
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-job-types") {
+      setSelectedOption("Job Type");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`jobType:${option.value}`);
     setIsDropdownOpen(false);
   };

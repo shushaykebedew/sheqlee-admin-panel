@@ -16,7 +16,11 @@ function FilterByAction() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-actions") {
+      setSelectedOption("Action");
+    } else {
+      setSelectedOption(option.label);
+    }
     onFilterChange(`action:${option.value}`);
     setIsDropdownOpen(false);
   };

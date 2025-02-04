@@ -16,7 +16,12 @@ function FilterByCvStatus() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-status") {
+      setSelectedOption("CV status");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`cvStatus:${option.value}`);
     setIsDropdownOpen(false);
   };

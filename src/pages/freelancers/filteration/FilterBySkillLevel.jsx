@@ -9,7 +9,7 @@ function FilterBySkillLevel() {
   const { onFilterChange } = useContext(FreelancersContext);
 
   const options = [
-    { value: "", label: "Skill Level" },
+    { value: "", label: "Skills" },
     { value: "all-skills", label: "All" },
     { value: "beginner", label: "Beginner" },
     { value: "intermediate", label: "Intermediate" },
@@ -17,7 +17,12 @@ function FilterBySkillLevel() {
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-skills") {
+      setSelectedOption("Skills");
+    } else {
+      setSelectedOption(option.label);
+    }
+
     onFilterChange(`skillLevel:${option.value}`);
     setIsDropdownOpen(false);
   };

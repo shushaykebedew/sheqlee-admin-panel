@@ -83,3 +83,6 @@
 .lastOption {
   border-bottom: none;
 }
+.control span {
+  font-size: 1.6rem;
+}

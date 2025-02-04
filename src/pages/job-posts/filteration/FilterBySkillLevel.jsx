@@ -10,15 +10,20 @@ function FilterBySkillLevel() {
 
   const options = [
     { value: "", label: "Skill Level" },
-    { value: "all-skills", label: "All" },
+    { value: "all-skill-levels", label: "All" },
     { value: "beginner", label: "Beginner" },
     { value: "intermediate", label: "Intermediate" },
     { value: "expert", label: "Expert" },
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
-    onFilterChange(`skills:${option.value}`);
+    if (option.value === "" || option.value === "all-skill-levels") {
+      setSelectedOption("Skill level");
+    } else {
+      setSelectedOption(option.label);
+    }
+
+    onFilterChange(`skillLevel:${option.value}`);
     setIsDropdownOpen(false);
   };
 
