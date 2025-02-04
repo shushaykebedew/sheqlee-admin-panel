@@ -74,14 +74,14 @@ function AddCategory() {
             <div className={classes.input}>
               <input
                 type="text"
-                placeholder="Category title"
+                placeholder="Category title..."
                 value={categoryTitle}
                 onChange={(e) => setCategoryTitle(e.target.value)}
               />
             </div>
             <div className={classes.textarea}>
               <textarea
-                placeholder="Brief description"
+                placeholder="Brief description..."
                 rows={4}
                 maxLength={128}
                 value={description}

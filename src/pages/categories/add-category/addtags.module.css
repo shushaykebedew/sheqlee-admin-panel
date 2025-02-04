@@ -17,17 +17,16 @@
 }
 
 .control {
-  height: 4.2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   background-color: var(--input-bg-color);
   border-radius: 8px;
-  padding: 0 1.5rem;
+  padding: 0.95rem 1.5rem;
   cursor: pointer;
   box-shadow: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--placeholder-color);
 }
 .has-tags {
@@ -36,7 +35,7 @@
 }
 
 .label {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .iconDown {

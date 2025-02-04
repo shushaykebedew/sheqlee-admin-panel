@@ -65,7 +65,7 @@ function AddTag() {
       <Headers />
       <form onSubmit={handleSubmit}>
         <div className={`${classes.label} ${isFormValid ? classes.valid : ""}`}>
-          <p className={classes["cat-id"]}>TGID009</p>
+          <p className={classes["tag-id"]}>TGID009</p>
           <p>~ Tag ID</p>
         </div>
         <div className={classes.inputs}>
@@ -73,14 +73,14 @@ function AddTag() {
             <div className={classes.input}>
               <input
                 type="text"
-                placeholder="Tag title"
+                placeholder="Tag title..."
                 value={tagTitle}
                 onChange={(e) => setTagTitle(e.target.value)}
               />
             </div>
             <div className={classes.textarea}>
               <textarea
-                placeholder="Brief description"
+                placeholder="Brief description..."
                 rows={4}
                 maxLength={128}
                 value={description}
@@ -92,7 +92,7 @@ function AddTag() {
             </div>
           </div>
           <div className={classes["image-inputs"]}>
-            <div className={classes["cat-icon-container"]}>
+            <div className={classes["tag-icon-container"]}>
               <img src={icon} alt="Tag-icon" className={classes["Tag-icon"]} />
             </div>
             <label className={classes["upload-button"]}>
