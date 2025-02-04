@@ -1,9 +1,6 @@
 .update-apgspptscp {
   margin-left: 3rem;
   margin-right: 3rem;
-  /* display: flex;
-  flex-direction: column;
-  gap: 3rem; */
 }
 .headers {
   margin-top: 1rem;
@@ -55,6 +52,9 @@
   border-radius: 8px;
   color: white;
 }
+.version span {
+  font-size: 1.8rem;
+}
 .polygon-down svg {
   position: absolute;
   right: 1rem;
@@ -66,21 +66,20 @@
 
 .button-container {
   /* margin-left: 36rem; */
-  margin-top: 4rem;
+  margin-top: 5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
 }
 .create-button {
   all: unset;
   background-color: var(--primary-color);
   color: #ffffff;
-  width: 75%;
   border-radius: 8px;
-  font-size: 1.6rem;
-  padding: 1.2rem 1.5rem;
+  font-size: 1.7rem;
+  padding: 0 1.5rem;
   cursor: pointer;
+  text-align: center;
 }
 .update-apgspptscp .rich-text-editor {
   height: 40rem;

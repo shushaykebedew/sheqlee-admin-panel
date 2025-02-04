@@ -21,16 +21,16 @@
   width: 100%;
   max-width: 8rem;
   min-width: 8rem;
-  height: 4.4rem;
+  /* height: 4.4rem; */
   background-color: var(--input-bg-color);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1.2rem;
+  padding: 1.1rem 1.2rem;
   cursor: pointer;
   box-shadow: none;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: #000000;
   position: relative;
 }
@@ -82,4 +82,10 @@
 
 .lastOption {
   border-bottom: none;
+}
+.control span {
+  font-size: 1.8rem;
+}
+.option span {
+  font-size: 1.7rem;
 }

@@ -58,22 +58,21 @@
 }
 
 .button-container {
-  /* margin-left: 36rem; */
-  margin-top: 4rem;
+  margin-top: 5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
 }
 .create-button {
   all: unset;
   background-color: var(--primary-color);
   color: #ffffff;
-  width: 75%;
+  /* width: 75%; */
   border-radius: 8px;
-  font-size: 1.6rem;
-  padding: 1.2rem 1.5rem;
+  font-size: 1.7rem;
+  padding: 0rem 1.5rem;
   cursor: pointer;
+  text-align: center;
 }
 .read-apgspptscp .rich-text-editor {
   height: 40rem;

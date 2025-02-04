@@ -63,12 +63,6 @@ function FilterVersion({ currentIteration, uniqueVersions, onFilterChange }) {
                 onClick={() => handleOptionClick(option)}
               >
                 <span>{option.label}</span>
-                {/* {index === 0 && (
-                  <PolygonUp
-                    className={classes.iconUp}
-                    style={{ width: "1.5rem", height: "1.5rem" }}
-                  />
-                )} */}
               </li>
             ))}
           </ul>
