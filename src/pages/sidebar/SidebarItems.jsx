@@ -8,7 +8,7 @@ function SidebarItems() {
   const navigate = useNavigate();
 
   const [sidebarActiveIndex, setSidebarActiveIndex] = useLocalStorage(
-    0,
+    1,
     "sidebarActiveIndex"
   );
 

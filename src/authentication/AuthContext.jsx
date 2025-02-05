@@ -26,6 +26,9 @@ export const AuthProvider = ({ children }) => {
     setCurrentUser(null);
     localStorage.removeItem("isAuthenticated");
     localStorage.removeItem("currentUser");
+    localStorage.removeItem("sidebarActiveIndex");
+    localStorage.removeItem("dashboardActiveIndex");
+    localStorage.removeItem("subscribersActiveIndex");
   };
 
   // Update user and save to localStorage
