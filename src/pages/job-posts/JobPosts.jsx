@@ -20,6 +20,13 @@ const jobPostsReducer = (state, action) => {
       const filteredJobs = dummyJobPosts.filter((jobPost) =>
         Object.entries(updatedFilters).every(([key, value]) => {
           if (value.startsWith("all-") || !value) return true;
+
+          if (key === "tags") {
+            return jobPost.tags.some((tag) =>
+              tag.toLowerCase().includes(value.toLowerCase())
+            );
+          }
+
           const jobValue = jobPost[key]?.toLowerCase() || "";
           return jobValue === value.toLowerCase();
         })

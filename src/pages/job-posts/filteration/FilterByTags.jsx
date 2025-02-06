@@ -1,20 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
 import { PolygonDown, PolygonUp } from "../../../SvgIcons";
 import classes from "./FilterByTags.module.css";
+import { JobsContext } from "../JobPosts";
 
 function FilterByTags() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("Tags");
 
+  const { onFilterChange } = useContext(JobsContext);
+
   const options = [
     { value: "", label: "Tags" },
     { value: "all-tags", label: "All" },
-    { value: "active", label: "Active" },
-    { value: "inactive", label: "Inactive" },
+    { value: "python", label: "Python" },
+    { value: "react", label: "React" },
+    { value: "flutter", label: "Flutter" },
+    { value: "node.js", label: "Node.JS" },
+    { value: "mysql", label: "MySQL" },
   ];
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option.label);
+    if (option.value === "" || option.value === "all-tags") {
+      setSelectedOption("Tags");
+    } else {
+      setSelectedOption(option.label);
+    }
+
+    onFilterChange(`tags:${option.value}`);
     setIsDropdownOpen(false);
   };
 

@@ -134,3 +134,17 @@
 .file-input {
   display: none;
 }
+.upload-json {
+  display: inline-block;
+  padding: 1.2rem 1rem;
+  color: var(--placeholder-color);
+  background-color: var(--input-bg-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-family: var(--font-family);
+  width: 100%;
+  text-align: center;
+}

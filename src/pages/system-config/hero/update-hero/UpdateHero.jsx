@@ -10,6 +10,7 @@ function UpdateHero() {
   const { onUpdateSection, heroData } = useContext(HeroContext);
   const [content, setContent] = useState("");
   const [showCounter, setShowCounter] = useState(true);
+  const [isFileUpload, setIsFileUpload] = useState(false);
   const navigate = useNavigate();
   const { sectionId } = useParams();
 
@@ -20,6 +21,7 @@ function UpdateHero() {
       setContent(section.content || "");
       const config = getSectionConfig(sectionId);
       setShowCounter(config.showCounter);
+      setIsFileUpload(config.isFileUpload);
     }
   }, [section, sectionId]);
 
@@ -32,6 +34,7 @@ function UpdateHero() {
           rows: 2,
           placeholder: "Enter title...",
           showCounter: true,
+          isFileUpload: false,
         };
       case "hero-description":
         return {
@@ -39,13 +42,15 @@ function UpdateHero() {
           rows: 4,
           placeholder: "Enter description...",
           showCounter: true,
+          isFileUpload: false,
         };
       case "hero-animation":
         return {
-          maxChars: 128,
+          maxChars: 0,
           rows: 1,
-          placeholder: "Enter animation URL...",
+          placeholder: "",
           showCounter: false,
+          isFileUpload: true,
         };
       default:
         return {
@@ -53,11 +58,22 @@ function UpdateHero() {
           rows: 4,
           placeholder: "Update content...",
           showCounter: true,
+          isFileUpload: false,
         };
     }
   };
 
   const { maxChars, rows, placeholder } = getSectionConfig(sectionId);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file && file.type === "application/json") {
+      setContent(file.name);
+    } else {
+      alert("Please upload a valid JSON file.");
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,7 +87,9 @@ function UpdateHero() {
     navigate("..");
   };
 
-  const isFormValid = content.trim() !== "";
+  const isFormValid = isFileUpload
+    ? content.trim() !== ""
+    : content.trim() !== "";
 
   return (
     <div className={classes["update-hero"]}>
@@ -83,21 +101,35 @@ function UpdateHero() {
         <div className={classes.inputs}>
           <div className={classes["text-inputs"]}>
             <div className={classes.textarea}>
-              <textarea
-                placeholder={placeholder}
-                rows={rows}
-                maxLength={maxChars}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-              {showCounter && (
-                <span className={classes.counter}>
-                  {content.length}/{maxChars}
-                </span>
+              {isFileUpload ? (
+                <label className={classes["upload-json"]}>
+                  Upload Json
+                  <input
+                    type="file"
+                    accept=".json"
+                    onChange={handleFileChange}
+                    className={classes["file-input"]}
+                  />
+                </label>
+              ) : (
+                <>
+                  <textarea
+                    placeholder={placeholder}
+                    rows={rows}
+                    maxLength={maxChars}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                  />
+                  {showCounter && (
+                    <span className={classes.counter}>
+                      {content.length}/{maxChars}
+                    </span>
+                  )}
+                  <span className={classes.pencil}>
+                    <PencilIcon />
+                  </span>
+                </>
               )}
-              <span className={classes.pencil}>
-                <PencilIcon />
-              </span>
             </div>
           </div>
         </div>
