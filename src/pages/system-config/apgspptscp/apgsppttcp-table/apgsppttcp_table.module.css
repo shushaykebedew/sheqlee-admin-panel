@@ -52,7 +52,7 @@
   z-index: 9;
 }
 .apgsppttcp-table td {
-  padding: 0.9rem 1rem;
+  padding: 1.1rem 1rem;
   max-width: 16rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -196,4 +196,7 @@ ul {
 .status-icon {
   display: flex;
   align-items: center;
+}
+.placeholderRow td {
+  height: 4.2rem;
 }

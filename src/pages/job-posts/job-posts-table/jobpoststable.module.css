@@ -201,3 +201,6 @@ ul {
   align-items: center;
   justify-content: center;
 }
+.placeholderRow {
+  height: 4.3rem !important;
+}

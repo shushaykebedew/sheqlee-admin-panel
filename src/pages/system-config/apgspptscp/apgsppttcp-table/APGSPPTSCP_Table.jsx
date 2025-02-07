@@ -33,14 +33,18 @@ function APGSPPTSCP_Table() {
     currentPage * rowsPerPage
   );
 
+  // Ensure that at least 7 rows are displayed
+  const minRows = 7;
+  const placeholderRows = Array.from({
+    length: Math.max(0, minRows - currentData.length),
+  });
+
   // Determine the status icon
   const getStatusIcon = (iterations, iteration) => {
-    // Find the latest iteration based on the iteration number
     const latestIteration = iterations.reduce((latest, current) =>
       Number(current.iteration) > Number(latest.iteration) ? current : latest
     );
 
-    // Check if the current iteration is the latest one
     const isLatest = iteration === latestIteration.iteration;
     const dotClass = isLatest
       ? `${classes.dot} ${classes["dot-green"]}`
@@ -101,6 +105,13 @@ function APGSPPTSCP_Table() {
                   </button>
                 </div>
               </td>
+            </tr>
+          ))}
+          {/* Render placeholder rows to fill up to the minimum of 7 rows */}
+          {placeholderRows.map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="5"></td>{" "}
+              {/* Adjust the colspan based on your table structure */}
             </tr>
           ))}
         </tbody>

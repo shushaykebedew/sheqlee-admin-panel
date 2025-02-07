@@ -149,3 +149,6 @@ ul {
   text-align: center;
   margin-top: 3rem;
 }
+.placeholderRow td {
+  height: 8.8rem;
+}

@@ -62,7 +62,6 @@ function CompaniesTable() {
     return "▼";
   };
 
-  // Initialize the sorting state if not set
   useEffect(() => {
     if (!sortBy) {
       onSortChange("coID", "desc");
@@ -157,8 +156,21 @@ function CompaniesTable() {
               </td>
             </tr>
           ))}
+
+          {/* Always render 7 placeholder rows if there are fewer rows on the current page */}
+          {Array.from({ length: Math.max(0, 7 - currentCompanies.length) }).map(
+            (_, index) => (
+              <tr
+                key={`placeholder-${index}`}
+                className={classes.placeholderRow}
+              >
+                <td colSpan="8"></td>
+              </tr>
+            )
+          )}
         </tbody>
       </table>
+
       {totalPages > 1 && (
         <div className={classes.pagination}>
           <div className={classes.text}>
@@ -198,6 +210,7 @@ function CompaniesTable() {
           </ul>
         </div>
       )}
+
       {isModalOpen && (
         <DeletionReasonModal
           isOpen={isModalOpen}

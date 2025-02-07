@@ -10,10 +10,12 @@ import DeletionReasonModal from "./DeletionReasonModal";
 import { useNavigate } from "react-router-dom";
 
 function UsersTable() {
-  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const minRows = 7;
+  const [rowsPerPage, setRowsPerPage] = useState(minRows);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+
   const {
     dummyUsers,
     onDelete,
@@ -24,18 +26,28 @@ function UsersTable() {
   } = useContext(UsersContext);
 
   const navigate = useNavigate();
+
   const handleNavigateUpdate = (user) => {
     navigate(`update-user/${user.userId}`);
-    console.log(user.userId);
   };
 
   const totalUsers = dummyUsers.length;
   const totalPages = Math.ceil(totalUsers / rowsPerPage);
 
+  // Slice users for current page
   const currentUsers = dummyUsers.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
   );
+
+  // Ensure at least 7 rows by filling placeholders
+  const placeholderCount = Math.max(0, minRows - currentUsers.length);
+  const placeholders = Array.from({ length: placeholderCount }, (_, i) => ({
+    userId: `empty-${currentPage}-${i}`,
+    isPlaceholder: true,
+  }));
+
+  const displayedUsers = [...currentUsers, ...placeholders];
 
   const handlePageChange = (direction) => {
     if (direction === "next" && currentPage < totalPages) {
@@ -74,7 +86,6 @@ function UsersTable() {
     return "▼";
   };
 
-  // Initialize the sorting state if not set
   useEffect(() => {
     if (!sortBy) {
       onSortChange("userId", "desc");
@@ -111,77 +122,83 @@ function UsersTable() {
           </tr>
         </thead>
         <tbody>
-          {currentUsers.map((user) => (
-            <tr key={user.userId}>
-              <td>{user.userId}</td>
-              <td>{user.fullName}</td>
-              <td className={classes["email-link"]}>
-                <a href={`mailto:${user.email}`} className={classes.email}>
-                  {user.email}
-                </a>
-              </td>
-
-              <td>{user.phone}</td>
-              <td>{user.role}</td>
+          {displayedUsers.map((user) => (
+            <tr
+              key={user.userId}
+              className={user.isPlaceholder ? classes.placeholderRow : ""}
+            >
+              <td>{user.isPlaceholder ? "" : user.userId}</td>
+              <td>{user.isPlaceholder ? "" : user.fullName}</td>
               <td>
-                <div className={classes.action}>
-                  <button
-                    className={classes["status-icon"]}
-                    onClick={() => onToggleStatus(user.userId)}
-                  >
-                    {getStatusIcon[user.status]}
-                  </button>
-                  <button onClick={() => handleNavigateUpdate(user)}>
-                    <EditIcon />
-                  </button>
-                  <button onClick={() => onDelete(user.userId)}>
-                    <DeleteIcon />
-                  </button>
-                </div>
+                {user.isPlaceholder ? (
+                  ""
+                ) : (
+                  <a href={`mailto:${user.email}`} className={classes.email}>
+                    {user.email}
+                  </a>
+                )}
+              </td>
+              <td>{user.isPlaceholder ? "" : user.phone}</td>
+              <td>{user.isPlaceholder ? "" : user.role}</td>
+              <td>
+                {!user.isPlaceholder && (
+                  <div className={classes.action}>
+                    <button
+                      className={classes["status-icon"]}
+                      onClick={() => onToggleStatus(user.userId)}
+                    >
+                      {getStatusIcon[user.status]}
+                    </button>
+                    <button onClick={() => handleNavigateUpdate(user)}>
+                      <EditIcon />
+                    </button>
+                    <button onClick={() => onDelete(user.userId)}>
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                )}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {totalPages > 1 && (
-        <div className={classes.pagination}>
-          <div className={classes.text}>
-            Rows per page:
-            <div className={classes["rows-per-page"]}>
-              <input
-                type="number"
-                value={rowsPerPage}
-                onChange={handleRowsPerPageChange}
-              />
-            </div>
+      <div className={classes.pagination}>
+        <div className={classes.text}>
+          Rows per page:
+          <div className={classes["rows-per-page"]}>
+            <input
+              type="number"
+              value={rowsPerPage}
+              onChange={handleRowsPerPageChange}
+            />
           </div>
-          <div>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(
-            currentPage * rowsPerPage,
-            totalUsers
-          )} of ${totalUsers}`}</div>
-          <ul className={classes.pages}>
-            <li
-              className={`${classes.backward} ${
-                currentPage === 1 ? classes.disabled : ""
-              }`}
-            >
-              <button onClick={() => handlePageChange("prev")}>
-                <IoChevronBack />
-              </button>
-            </li>
-            <li className={classes["page-number"]}>{currentPage}</li>
-            <li
-              className={`${classes.backward} ${
-                currentPage === totalPages ? classes.disabled : ""
-              }`}
-            >
-              <button onClick={() => handlePageChange("next")}>
-                <IoChevronForward />
-              </button>
-            </li>
-          </ul>
         </div>
-      )}
+        <div>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(
+          currentPage * rowsPerPage,
+          totalUsers
+        )} of ${totalUsers}`}</div>
+        <ul className={classes.pages}>
+          <li
+            className={`${classes.backward} ${
+              currentPage === 1 ? classes.disabled : ""
+            }`}
+          >
+            <button onClick={() => handlePageChange("prev")}>
+              <IoChevronBack />
+            </button>
+          </li>
+          <li className={classes["page-number"]}>{currentPage}</li>
+          <li
+            className={`${classes.backward} ${
+              currentPage === totalPages ? classes.disabled : ""
+            }`}
+          >
+            <button onClick={() => handlePageChange("next")}>
+              <IoChevronForward />
+            </button>
+          </li>
+        </ul>
+      </div>
       {isModalOpen && (
         <DeletionReasonModal
           isOpen={isModalOpen}

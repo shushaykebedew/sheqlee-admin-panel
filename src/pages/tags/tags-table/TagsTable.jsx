@@ -166,6 +166,14 @@ function TagsTable() {
               </td>
             </tr>
           ))}
+          {/* Always render 7 placeholder rows if there are fewer rows on the current page */}
+          {Array.from({
+            length: Math.max(0, 7 - currentTags.length),
+          }).map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="6"></td>
+            </tr>
+          ))}
         </tbody>
       </table>
       {totalPages > 1 && (

@@ -106,7 +106,6 @@ function CategoriesTable() {
                 </button>
               </th>
               <th>Tags</th>
-
               <th>
                 Jobs
                 <button
@@ -138,14 +137,12 @@ function CategoriesTable() {
                 <td>
                   <div className={classes.status}>
                     <span>{category.jobs}</span>
-                    {
-                      <button
-                        className={classes["link-icon"]}
-                        onClick={() => handleModalOpen(category)}
-                      >
-                        <LinkIcon />
-                      </button>
-                    }
+                    <button
+                      className={classes["link-icon"]}
+                      onClick={() => handleModalOpen(category)}
+                    >
+                      <LinkIcon />
+                    </button>
                   </div>
                 </td>
                 <td>{category.subs}</td>
@@ -167,6 +164,17 @@ function CategoriesTable() {
                     </button>
                   </div>
                 </td>
+              </tr>
+            ))}
+            {/* Always render 7 placeholder rows if there are fewer rows on the current page */}
+            {Array.from({
+              length: Math.max(0, 7 - currentCategories.length),
+            }).map((_, index) => (
+              <tr
+                key={`placeholder-${index}`}
+                className={classes.placeholderRow}
+              >
+                <td colSpan="7"></td>
               </tr>
             ))}
           </tbody>

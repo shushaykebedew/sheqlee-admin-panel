@@ -149,8 +149,18 @@ function FreelancersTable() {
               </td>
             </tr>
           ))}
+
+          {/* Always render 7 placeholder rows if there are fewer rows on the current page */}
+          {Array.from({
+            length: Math.max(0, 7 - currentFreelancers.length),
+          }).map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="7"></td>
+            </tr>
+          ))}
         </tbody>
       </table>
+
       {totalPages > 1 && (
         <div className={classes.pagination}>
           <div className={classes.text}>
@@ -190,6 +200,7 @@ function FreelancersTable() {
           </ul>
         </div>
       )}
+
       {isModalOpen && (
         <DeletionReasonModal
           isOpen={isModalOpen}

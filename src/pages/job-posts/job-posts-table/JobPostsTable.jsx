@@ -8,7 +8,8 @@ import { JobsContext } from "../JobPosts";
 import { useNavigate } from "react-router-dom";
 
 function JobPostsTable() {
-  const [rowsPerPage, setRowsPerPage] = useState(7);
+  const minRows = 7; // Minimum 7 rows rule
+  const [rowsPerPage, setRowsPerPage] = useState(minRows);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
@@ -24,11 +25,20 @@ function JobPostsTable() {
   const totalPosts = dummyJobPosts.length;
   const totalPages = Math.ceil(totalPosts / rowsPerPage);
 
-  // Get the posts to display on the current page
+  // Get posts for the current page
   const currentPosts = dummyJobPosts.slice(
     (currentPage - 1) * rowsPerPage,
     currentPage * rowsPerPage
   );
+
+  // Ensure at least 7 rows by adding placeholders
+  const placeholderCount = Math.max(0, minRows - currentPosts.length);
+  const placeholders = Array.from({ length: placeholderCount }, (_, i) => ({
+    id: `empty-${currentPage}-${i}`,
+    isPlaceholder: true,
+  }));
+
+  const displayedPosts = [...currentPosts, ...placeholders];
 
   const handlePageChange = (direction) => {
     if (direction === "next" && currentPage < totalPages) {
@@ -52,7 +62,6 @@ function JobPostsTable() {
     return "▼";
   };
 
-  // Initialize the sorting state if not set
   useEffect(() => {
     if (!sortBy) {
       onSortChange("id", "desc");
@@ -98,43 +107,52 @@ function JobPostsTable() {
           </tr>
         </thead>
         <tbody>
-          {currentPosts.map((post) => (
-            <tr key={post.id}>
-              <td>{post.id}</td>
-              <td>{post.title}</td>
-              <td>{post.company}</td>
+          {displayedPosts.map((post) => (
+            <tr
+              key={post.id}
+              className={post.isPlaceholder ? classes.placeholderRow : ""}
+            >
+              <td>{post.isPlaceholder ? "" : post.id}</td>
+              <td>{post.isPlaceholder ? "" : post.title}</td>
+              <td>{post.isPlaceholder ? "" : post.company}</td>
               <td>
-                <div className={classes.applicants}>
-                  <span>{post.applicants}</span>
-                  <button
-                    className={classes["link-icon"]}
-                    onClick={() => navigate(`job-applicants-data/${post.id}`)}
-                  >
-                    {<LinkIcon />}
-                  </button>
-                </div>
+                {post.isPlaceholder ? (
+                  ""
+                ) : (
+                  <div className={classes.applicants}>
+                    <span>{post.applicants}</span>
+                    <button
+                      className={classes["link-icon"]}
+                      onClick={() => navigate(`job-applicants-data/${post.id}`)}
+                    >
+                      {<LinkIcon />}
+                    </button>
+                  </div>
+                )}
               </td>
-              <td>{post.postDate}</td>
-              <td>{post.status}</td>
+              <td>{post.isPlaceholder ? "" : post.postDate}</td>
+              <td>{post.isPlaceholder ? "" : post.status}</td>
               <td>
-                <div className={classes.action}>
-                  <button
-                    className={classes["status-icon"]}
-                    onClick={() => onToggleStatus(post.id)}
-                  >
-                    {post.action === "Active" ? (
-                      <img src={statusGreen} alt="active" />
-                    ) : (
-                      <img src={statusRed} alt="inactive" />
-                    )}
-                  </button>
-                  <button onClick={() => navigate(`job-details/${post.id}`)}>
-                    <EditIcon />
-                  </button>
-                  <button onClick={() => onDelete(post.id)}>
-                    <DeleteIcon />
-                  </button>
-                </div>
+                {!post.isPlaceholder && (
+                  <div className={classes.action}>
+                    <button
+                      className={classes["status-icon"]}
+                      onClick={() => onToggleStatus(post.id)}
+                    >
+                      {post.action === "Active" ? (
+                        <img src={statusGreen} alt="active" />
+                      ) : (
+                        <img src={statusRed} alt="inactive" />
+                      )}
+                    </button>
+                    <button onClick={() => navigate(`job-details/${post.id}`)}>
+                      <EditIcon />
+                    </button>
+                    <button onClick={() => onDelete(post.id)}>
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                )}
               </td>
             </tr>
           ))}

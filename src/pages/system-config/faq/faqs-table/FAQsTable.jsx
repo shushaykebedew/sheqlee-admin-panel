@@ -68,6 +68,12 @@ function FAQsTable() {
     }
   }, [sortBy, onSortChange]);
 
+  // Ensure that at least 7 rows are displayed
+  const minRows = 7;
+  const placeholderRows = Array.from({
+    length: Math.max(0, minRows - currentFAQs.length),
+  });
+
   return (
     <div className={classes.faqs}>
       <table className={classes["faqs-table"]}>
@@ -92,7 +98,6 @@ function FAQsTable() {
               </button>
             </th>
             <th>Audience</th>
-
             <th>Action</th>
           </tr>
         </thead>
@@ -118,6 +123,12 @@ function FAQsTable() {
                   </button>
                 </div>
               </td>
+            </tr>
+          ))}
+          {/* Render placeholder rows to fill up to the minimum of 7 rows */}
+          {placeholderRows.map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="4"></td>{" "}
             </tr>
           ))}
         </tbody>

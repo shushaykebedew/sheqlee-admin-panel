@@ -1,20 +1,62 @@
 .footer {
   position: relative;
   overflow: auto;
-  max-height: 63vh;
-  min-height: 63vh;
+  max-height: 65vh;
 }
 
 .footer table {
   width: 100%;
   border-collapse: collapse;
   font-size: 1.6rem;
+  z-index: 1;
+  height: auto;
+  min-height: 55vh;
+  table-layout: fixed;
+}
+.footer-table tbody {
+  display: block;
+  max-height: 55vh;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #b4b4b4 #f1f1f1;
+}
+.footer-table tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.footer::-webkit-scrollbar {
+  width: 6px;
 }
 
+.footer::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+
+.footer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.footer thead th {
+  position: sticky;
+  top: 0;
+  background-color: var(--input-bg-color);
+  z-index: 9;
+}
+.footer-table th {
+  padding: 1.3rem 1rem;
+  background-color: var(--input-bg-color);
+  color: #000000;
+  font-weight: 500;
+  font-size: 2rem;
+  text-align: left;
+}
 .footer-table td {
-  padding: 1.5rem 1rem;
+  padding: 1.1rem 1rem;
   max-width: 16rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .footer-table th:nth-child(1),
@@ -22,7 +64,15 @@
   padding-left: 2rem;
   width: 18rem;
 }
-
+.footer-table td:nth-child(2) {
+  padding-left: 3rem;
+}
+.footer-table th:last-child {
+  padding-left: 30rem;
+}
+.footer-table td:last-child {
+  padding-left: 32rem;
+}
 .footer-table a {
   text-decoration: none;
   color: #0c47ec;
@@ -36,24 +86,6 @@
 .footer-table tr:nth-child(even) {
   background-color: var(--input-bg-color);
 }
-.footer-table tr {
-  height: auto;
-}
-.footer-table th {
-  padding: 1.5rem 1rem;
-  background-color: var(--input-bg-color);
-  color: #000000;
-  font-weight: 500;
-  font-size: 2rem;
-  text-align: left;
-}
-
-.footer-table th:last-child {
-  padding-left: 50rem;
-}
-.footer-table td:last-child {
-  padding-left: 51rem;
-}
 
 .action {
   display: flex;
@@ -66,11 +98,6 @@
   border: none;
   outline: none;
   cursor: pointer;
-}
-.status {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
 }
 
 .pagination {
@@ -152,4 +179,7 @@ ul {
   font-weight: 500;
   text-align: center;
   margin-top: 3rem;
+}
+.placeholderRow td {
+  height: 4.3rem;
 }

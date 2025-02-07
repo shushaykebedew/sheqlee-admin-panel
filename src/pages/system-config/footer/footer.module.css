@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 .header {
-  height: 15rem;
+  height: 14rem;
   display: flex;
   justify-content: space-between;
   width: 100%;

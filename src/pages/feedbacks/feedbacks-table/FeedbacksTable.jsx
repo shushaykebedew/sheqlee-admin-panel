@@ -28,11 +28,13 @@ function FeedbacksTable() {
       setCurrentPage((prevPage) => prevPage - 1);
     }
   };
+
   const handleRowsPerPageChange = (e) => {
     const value = Math.max(1, Number(e.target.value) || 1);
     setRowsPerPage(value);
     setCurrentPage(1);
   };
+
   const handleModalOpen = (feedback) => {
     setSelectedFeedback(feedback);
     setIsModalOpen(true);
@@ -43,6 +45,12 @@ function FeedbacksTable() {
     setIsModalOpen(false);
   };
 
+  // Ensure that at least 7 rows are displayed
+  const minRows = 7;
+  const placeholderRows = Array.from({
+    length: Math.max(0, minRows - currentFeedbacks.length),
+  });
+
   return (
     <div className={classes.feedbacks}>
       <table className={classes["feedbacks-table"]}>
@@ -52,7 +60,6 @@ function FeedbacksTable() {
             <th>Message</th>
             <th>Name</th>
             <th>E-mail</th>
-
             <th>Action</th>
           </tr>
         </thead>
@@ -67,7 +74,6 @@ function FeedbacksTable() {
                   {feedback.email}
                 </a>
               </td>
-
               <td>
                 <div className={classes.action}>
                   <button onClick={() => handleModalOpen(feedback)}>
@@ -78,6 +84,13 @@ function FeedbacksTable() {
                   </button>
                 </div>
               </td>
+            </tr>
+          ))}
+          {/* Render placeholder rows to fill up to the minimum of 7 rows */}
+          {placeholderRows.map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="5"></td>{" "}
+              {/* Adjust the colspan based on your table structure */}
             </tr>
           ))}
         </tbody>

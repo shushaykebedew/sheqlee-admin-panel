@@ -31,4 +31,9 @@ export const footerData = [
     title: "Linkedin",
     content: "https://www.linkedin.com/sheqlee",
   },
+  {
+    sectionId: "footer-youtube",
+    title: "Youtube",
+    content: "https://www.youtube.com/sheqlee",
+  },
 ];

@@ -38,6 +38,12 @@ function HeroTable() {
     setCurrentPage(1);
   };
 
+  // Ensure at least 4 rows are displayed
+  const minRows = 4;
+  const placeholderRows = Array.from({
+    length: Math.max(0, minRows - currentSections.length),
+  });
+
   return (
     <div className={classes.hero}>
       <table className={classes["hero-table"]}>
@@ -63,6 +69,12 @@ function HeroTable() {
                   </button>
                 </div>
               </td>
+            </tr>
+          ))}
+          {/* Render placeholder rows to ensure at least 4 rows */}
+          {placeholderRows.map((_, index) => (
+            <tr key={`placeholder-${index}`} className={classes.placeholderRow}>
+              <td colSpan="3"></td>
             </tr>
           ))}
         </tbody>
