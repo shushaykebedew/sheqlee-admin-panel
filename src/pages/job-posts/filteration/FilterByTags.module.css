@@ -69,7 +69,7 @@
 }
 
 .option {
-  padding: 1rem;
+  padding: 1rem 1rem 0.5rem 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   white-space: nowrap;
@@ -107,4 +107,10 @@
 }
 .control span {
   font-size: 1.6rem;
+}
+.option:first-child {
+  position: sticky;
+  top: 0;
+  background-color: #dfdfdf;
+  z-index: 10;
 }

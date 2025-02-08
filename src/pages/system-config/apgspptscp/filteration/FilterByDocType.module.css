@@ -64,7 +64,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  /* max-height: 30rem; */
+  max-height: 30rem;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -87,4 +87,23 @@
 }
 .control span {
   font-size: 1.7rem;
+}
+/* making scrollable and sticky*/
+.menu::-webkit-scrollbar {
+  width: 5px;
+  height: 20px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+  border-radius: 3px;
+}
+.control span {
+  font-size: 1.6rem;
+}
+.option:first-child {
+  position: sticky;
+  top: 0;
+  background-color: #dfdfdf;
+  z-index: 10;
 }

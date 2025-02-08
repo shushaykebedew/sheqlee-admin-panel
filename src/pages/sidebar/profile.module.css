@@ -22,7 +22,7 @@
   color: #000000;
   font-weight: 500;
   max-width: 10rem;
-  /* min-width: 100%; */
+  min-width: 10rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

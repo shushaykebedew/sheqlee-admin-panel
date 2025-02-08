@@ -31,9 +31,9 @@ export const dummyUsers = [
   },
   {
     userId: "USR004",
-    fullName: "Yidnekachew Asfaw",
-    email: "yidne.asfaw@gmail.com",
-    password: "yidne123",
+    fullName: "Shushay Keb",
+    email: "shushayke@gmail.com",
+    password: "shushay123",
     phone: "+251943261893",
     role: "Admin",
     createdOn: "02 Sep 2023",
