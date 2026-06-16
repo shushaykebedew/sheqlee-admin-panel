@@ -1,9 +1,9 @@
 export const dummyUsers = [
   {
     userId: "USR001",
-    fullName: "Shaqa Gurmesa",
-    email: "shaqa.g@gmail.com",
-    password: "shaqa123",
+    fullName: "Abel Yalew",
+    email: "abel.y@gmail.com",
+    password: "abel123",
     phone: "+251921453682",
     role: "Superadmin",
     createdOn: "02 Sep 2020",

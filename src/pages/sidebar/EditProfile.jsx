@@ -20,9 +20,9 @@ function EditProfile() {
   // Prefill form fields with current user data
   useEffect(() => {
     if (currentUser) {
-      setFullName(currentUser.fullName || "");
-      setEmail(currentUser.email || "");
-      setPhone(currentUser.phone || "");
+      setFullName(currentUser.fullName || "Miruts Yfter");
+      setEmail(currentUser.email || "miruts@gmail.com");
+      setPhone(currentUser.phone || "+251912345678");
       setProfile(currentUser.profile || defaultProfile);
     }
   }, [currentUser]);

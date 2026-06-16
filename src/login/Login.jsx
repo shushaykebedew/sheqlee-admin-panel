@@ -32,22 +32,38 @@ function Login() {
 
   const isFormValid = email && password && !emailError && !passwordError;
 
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setIsSubmitted(true);
+
+  //   if (isFormValid) {
+  //     const user = dummyUsers.find((user) => user.email === email);
+
+  //     if (user && user.password === password) {
+  //       // Pass user details to the loginUser function
+  //       loginUser(user);
+  //       navigate("/");
+  //     } else {
+  //       setLoginError("Invalid email or password.");
+  //     }
+  //   }
+  // }
+
   function handleSubmit(e) {
-    e.preventDefault();
-    setIsSubmitted(true);
+  e.preventDefault();
+  setIsSubmitted(true);
 
-    if (isFormValid) {
-      const user = dummyUsers.find((user) => user.email === email);
+  if (isFormValid) {
+    const demoUser = {
+      id: "demo-user",
+      name: "Demo User",
+      email,
+    };
 
-      if (user && user.password === password) {
-        // Pass user details to the loginUser function
-        loginUser(user);
-        navigate("/");
-      } else {
-        setLoginError("Invalid email or password.");
-      }
-    }
+    loginUser(demoUser);
+    navigate("/");
   }
+}
 
   return (
     <div className={classes["login-container"]}>
