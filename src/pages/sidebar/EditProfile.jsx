@@ -54,7 +54,7 @@ function EditProfile() {
       ...(password && { password }), // Include password only if provided
     };
 
-    // Update user data (context or backend call)
+    // Update user data
     updateUser(updatedUser);
 
     // Navigate back to the previous page
