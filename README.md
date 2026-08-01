@@ -1,6 +1,6 @@
 # Sheqlee Admin Panel
 
-A modern React-based admin panel built with Vite, providing a fast and responsive user interface for managing operations.
+A modern React-based admin panel built with Vite, providing a fast and user friendly user interface for managing operations.
 
 ## Tech Stack
 
